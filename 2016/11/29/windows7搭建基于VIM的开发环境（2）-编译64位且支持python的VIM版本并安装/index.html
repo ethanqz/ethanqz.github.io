@@ -84,19 +84,49 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="windows7搭建基于VIM的开发环境（2）本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+
+搭建msys2下64位编译环境
+编译64位且支持python的VIM版本并安装&amp;lt;本篇&amp;gt;
+VIM基本配置
+VIM安装vundle
+VIM安装开发环境所需插件
+VIM编译安装youcompleteme
+开发环境验证
+
+
+本篇我们主要讲解编译64位且支">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://qz757.github.com/2016/11/29/hello-world/index.html">
+<meta property="og:title" content="qz757's blog">
+<meta property="og:url" content="http://qz757.github.com/2016/11/29/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/index.html">
 <meta property="og:site_name" content="qz757's blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-11-28T17:35:57.852Z">
+<meta property="og:description" content="windows7搭建基于VIM的开发环境（2）本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+
+搭建msys2下64位编译环境
+编译64位且支持python的VIM版本并安装&amp;lt;本篇&amp;gt;
+VIM基本配置
+VIM安装vundle
+VIM安装开发环境所需插件
+VIM编译安装youcompleteme
+开发环境验证
+
+
+本篇我们主要讲解编译64位且支">
+<meta property="og:updated_time" content="2016-11-29T14:06:05.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="qz757's blog">
+<meta name="twitter:description" content="windows7搭建基于VIM的开发环境（2）本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+
+搭建msys2下64位编译环境
+编译64位且支持python的VIM版本并安装&amp;lt;本篇&amp;gt;
+VIM基本配置
+VIM安装vundle
+VIM安装开发环境所需插件
+VIM编译安装youcompleteme
+开发环境验证
+
+
+本篇我们主要讲解编译64位且支">
 
 
 
@@ -124,13 +154,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://qz757.github.com/2016/11/29/hello-world/"/>
+  <link rel="canonical" href="http://qz757.github.com/2016/11/29/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/"/>
 
 
 
 
 
-  <title> Hello World | qz757's blog </title>
+  <title>  | qz757's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +271,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/11/29/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/11/29/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="qz757">
@@ -265,7 +295,7 @@ Quick">
             
             
               
-                Hello World
+                
               
             
           </h1>
@@ -278,7 +308,7 @@ Quick">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T01:35:57+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T22:06:05+08:00">
                 2016-11-29
               </time>
             
@@ -314,15 +344,48 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="windows7搭建基于VIM的开发环境（2）"><a href="#windows7搭建基于VIM的开发环境（2）" class="headerlink" title="windows7搭建基于VIM的开发环境（2）"></a>windows7搭建基于VIM的开发环境（2）</h1><p>本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：</p>
+<ul>
+<li><strong>搭建msys2下64位编译环境</strong></li>
+<li><strong>编译64位且支持python的VIM版本并安装</strong>&lt;<font color="red">本篇</font>&gt;</li>
+<li><strong>VIM基本配置</strong></li>
+<li><strong>VIM安装vundle</strong></li>
+<li><strong>VIM安装开发环境所需插件</strong></li>
+<li><strong>VIM编译安装youcompleteme</strong></li>
+<li><strong>开发环境验证</strong></li>
+</ul>
+<blockquote>
+<p>本篇我们主要讲解编译64位且支持python的VIM版本并安装。</p>
+</blockquote>
+<h2 id="一、下载VIM源码"><a href="#一、下载VIM源码" class="headerlink" title="一、下载VIM源码"></a>一、下载VIM源码</h2><p>从<a href="https://github.com/vim/vim" target="_blank" rel="external"> https://github.com/vim/vim </a>下载vim源码，下载zip包比直接<code>git clone https://github.com/vim/vim.git</code>速度快一些。将下载的源码解压到$VIM_MASTER_PATH。</p>
+<h2 id="二、修改编译脚本"><a href="#二、修改编译脚本" class="headerlink" title="二、修改编译脚本"></a>二、修改编译脚本</h2><p>1.打开msys2 command,切换到$VIM_MASTER_PATH/src</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd $VIM_MASTER_PATH</div></pre></td></tr></table></figure>
+<p>2.复制Make_cyg_ming.mak编译脚本为current.mak</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp Make_cyg_ming.mak current.mak</div></pre></td></tr></table></figure>
+<p>3.编辑current.mak<br>查看<code>PYTHON_VER</code>和<code>PYTHON3_VER</code>是否与自己的python版本匹配，不匹配则修改为自己的python版本。</p>
+<blockquote>
+<font color="blue">注：需要提前安装python2和python3，例如安装目录分别为：<code>D:/python/Python27</code>和<code>D:/python/Python35</code>。</font>
+
+</blockquote>
+<p>搜索<code>ifdef PYTHON</code>，在<code>ifdef PYTHON</code>前增加<code>PYTHON=D:/python/Python27</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PYTHON=D:/python/Python27</div><div class="line">ifdef PYTHON</div></pre></td></tr></table></figure>
+<p>搜索<code>ifdef PYTHON3</code>，在<code>ifdef PYTHON3</code>前增加<code>PYTHON=D:/python/Python35</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PYTHON=D:/python/Python35</div><div class="line">ifdef PYTHON3</div></pre></td></tr></table></figure>
+<h2 id="三、编译VIM并打包"><a href="#三、编译VIM并打包" class="headerlink" title="三、编译VIM并打包"></a>三、编译VIM并打包</h2><p>1.编译：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make.exe -f current.mak</div></pre></td></tr></table></figure>
+<p>如果有编译失败，重新编译需要增加clean参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make.exe -f custom.mak clean</div></pre></td></tr></table></figure>
+<p>编译成功后在src目录下会生成<code>gvim.exe</code>。</p>
+<p>2.打包</p>
+<p>切换到代码根目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ..</div></pre></td></tr></table></figure></p>
+<p>创建运行脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim package.sh</div></pre></td></tr></table></figure></p>
+<p>将以下内容复制到脚本中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mkdir -p vimx64/vim</div><div class="line">cp -a runtime/* vimx64/vim</div><div class="line">cp -a src/*.exe vimx64/vim</div><div class="line">cp -a src/GvimExt/gvimext.dll vimx64/vim</div><div class="line">cp -a src/xxd/xxd.exe vimx64/vim</div><div class="line">cp -a vimtutor.bat vimx64/vim</div></pre></td></tr></table></figure>
+<p>运行打包脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./package.sh</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>至此，在<code>vimx64</code>下打包vim安装包。</p>
+</blockquote>
+<p>3.安装<br>将vim安装包拷贝到待安装的目录，并更改vim文件夹名称为vim+版本号，例如我的安装目录为D:\vim，版本为8.0，则安装路径为：D:\vim\vim80。<br>以管理员身份运行install.exe，输入d并回车确认，安装成功后，会在D:\vim目录下生成vimfiles和_vimrc。</p>
 
       
     </div>
@@ -349,14 +412,18 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/11/29/windows7搭建基于VIM的开发环境（3）-VIM基本配置/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/29/test/" rel="prev" title="test">
-                test <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/29/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -463,7 +530,7 @@ Quick">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows7搭建基于VIM的开发环境（2）"><span class="nav-number">1.</span> <span class="nav-text">windows7搭建基于VIM的开发环境（2）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载VIM源码"><span class="nav-number">1.1.</span> <span class="nav-text">一、下载VIM源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、修改编译脚本"><span class="nav-number">1.2.</span> <span class="nav-text">二、修改编译脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、编译VIM并打包"><span class="nav-number">1.3.</span> <span class="nav-text">三、编译VIM并打包</span></a></li></ol></li></ol></div>
             
 
           </div>

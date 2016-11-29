@@ -84,19 +84,49 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="windows7搭建基于VIM的开发环境（4）本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+
+搭建msys2下64位编译环境
+编译64位且支持python的VIM版本并安装
+VIM基本配置
+VIM安装vundle&amp;lt;本篇&amp;gt;
+VIM安装开发环境所需插件
+VIM编译安装youcompleteme
+开发环境验证
+
+
+本篇我们主要讲解vim安装vu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://qz757.github.com/2016/11/29/hello-world/index.html">
+<meta property="og:title" content="qz757's blog">
+<meta property="og:url" content="http://qz757.github.com/2016/11/29/windows7搭建基于VIM的开发环境（4）-VIM安装vundle/index.html">
 <meta property="og:site_name" content="qz757's blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-11-28T17:35:57.852Z">
+<meta property="og:description" content="windows7搭建基于VIM的开发环境（4）本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+
+搭建msys2下64位编译环境
+编译64位且支持python的VIM版本并安装
+VIM基本配置
+VIM安装vundle&amp;lt;本篇&amp;gt;
+VIM安装开发环境所需插件
+VIM编译安装youcompleteme
+开发环境验证
+
+
+本篇我们主要讲解vim安装vu">
+<meta property="og:updated_time" content="2016-11-29T14:06:05.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="qz757's blog">
+<meta name="twitter:description" content="windows7搭建基于VIM的开发环境（4）本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+
+搭建msys2下64位编译环境
+编译64位且支持python的VIM版本并安装
+VIM基本配置
+VIM安装vundle&amp;lt;本篇&amp;gt;
+VIM安装开发环境所需插件
+VIM编译安装youcompleteme
+开发环境验证
+
+
+本篇我们主要讲解vim安装vu">
 
 
 
@@ -124,13 +154,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://qz757.github.com/2016/11/29/hello-world/"/>
+  <link rel="canonical" href="http://qz757.github.com/2016/11/29/windows7搭建基于VIM的开发环境（4）-VIM安装vundle/"/>
 
 
 
 
 
-  <title> Hello World | qz757's blog </title>
+  <title>  | qz757's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +271,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/11/29/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/11/29/windows7搭建基于VIM的开发环境（4）-VIM安装vundle/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="qz757">
@@ -265,7 +295,7 @@ Quick">
             
             
               
-                Hello World
+                
               
             
           </h1>
@@ -278,7 +308,7 @@ Quick">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T01:35:57+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-29T22:06:05+08:00">
                 2016-11-29
               </time>
             
@@ -314,15 +344,29 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="windows7搭建基于VIM的开发环境（4）"><a href="#windows7搭建基于VIM的开发环境（4）" class="headerlink" title="windows7搭建基于VIM的开发环境（4）"></a>windows7搭建基于VIM的开发环境（4）</h1><p>本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：</p>
+<ul>
+<li><strong>搭建msys2下64位编译环境</strong></li>
+<li><strong>编译64位且支持python的VIM版本并安装</strong></li>
+<li><strong>VIM基本配置</strong></li>
+<li><strong>VIM安装vundle</strong>&lt;<font color="red">本篇</font>&gt;</li>
+<li><strong>VIM安装开发环境所需插件</strong></li>
+<li><strong>VIM编译安装youcompleteme</strong></li>
+<li><strong>开发环境验证</strong></li>
+</ul>
+<blockquote>
+<p>本篇我们主要讲解vim安装vundle，并使用vundle安装插件。</p>
+</blockquote>
+<h2 id="一、下载vundle"><a href="#一、下载vundle" class="headerlink" title="一、下载vundle"></a>一、下载vundle</h2><p>打开mingw64.exe，切换目录到vimfiles，并创建vundle目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /d/Vim/vimfiles/</div><div class="line">mkdir bundle</div><div class="line">cd bundle</div></pre></td></tr></table></figure>
+<p>从github更新vundle工程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/gmarik/vundle.git</div></pre></td></tr></table></figure>
+<h2 id="二、修改-vrmrc"><a href="#二、修改-vrmrc" class="headerlink" title="二、修改_vrmrc"></a>二、修改_vrmrc</h2><p>新增vundle配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot; vundle配置</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">filetype off  &quot;vundle依赖filetype关闭</div><div class="line">&quot; 此处规定Vundle的路径  </div><div class="line">set rtp+=$VIM/vimfiles/bundle/vundle/  </div><div class="line">call vundle#rc(&apos;$VIM/vimfiles/bundle/&apos;)  </div><div class="line">Bundle &apos;gmarik/vundle&apos;  </div><div class="line">filetype plugin indent on     &quot; required!</div></pre></td></tr></table></figure>
+<h2 id="三、使用vundle安装插件"><a href="#三、使用vundle安装插件" class="headerlink" title="三、使用vundle安装插件"></a>三、使用vundle安装插件</h2><blockquote>
+<p>在github上的插件, 如过是vim-scripts账户下的 插件 , 直接写;<br>在github上的插件, 如果不是 vim-scripts账户下的插件, 写成 “账户名/插件名”<br>安装：新增配置后，重新打开vim,在命令模式下输入命令PluginInstall。<br>移除：删除插件配置后，重打开vim，在命令模式下输入命名PluginClean。</p>
+</blockquote>
+<p>例如：NERDTree插件的安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot; NERDTree</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot;NERDTree快捷键</div><div class="line">Bundle &apos;scrooloose/nerdtree&apos;</div><div class="line">nmap &lt;F2&gt; :NERDTree  &lt;CR&gt;</div><div class="line">&quot; NERDTree.vim</div><div class="line">let g:NERDTreeWinPos=&quot;left&quot;</div><div class="line">let g:NERDTreeWinSize=25</div><div class="line">let g:NERDTreeShowLineNumbers=1</div><div class="line">let g:neocomplcache_enable_at_startup = 1</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -349,14 +393,18 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/11/29/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/29/test/" rel="prev" title="test">
-                test <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/29/windows7搭建基于VIM的开发环境（3）-VIM基本配置/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -463,7 +511,7 @@ Quick">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows7搭建基于VIM的开发环境（4）"><span class="nav-number">1.</span> <span class="nav-text">windows7搭建基于VIM的开发环境（4）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、下载vundle"><span class="nav-number">1.1.</span> <span class="nav-text">一、下载vundle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、修改-vrmrc"><span class="nav-number">1.2.</span> <span class="nav-text">二、修改_vrmrc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、使用vundle安装插件"><span class="nav-number">1.3.</span> <span class="nav-text">三、使用vundle安装插件</span></a></li></ol></li></ol></div>
             
 
           </div>
