@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vim,windows,x86_64," />
+  <meta name="keywords" content="git,ssh," />
 
 
 
@@ -84,52 +84,28 @@
 
 
 
-<meta name="description" content="本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+<meta name="description" content="配置用户名和Email
+用户名和Email是用于代码提交日志标识。12git config --global user.name &amp;quot;name&amp;quot; git config --global user.email &amp;quot;mailaddress&amp;quot;
 
-
-搭建msys2下64位编译环境
-编译64位且支持python的VIM版本并安装&amp;lt;本篇&amp;gt;
-VIM基本配置
-VIM安装vundle
-VIM安装开发环境所需插件
-
-
-本篇我们主要讲解编译64位且支持python和lua的VIM版本并安装。
-
-#安装python安装python到：D:\pyth">
+配置git push
+如果要使用git进行推送,则必须配置push.default ,否则推送失败1git config -">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装">
-<meta property="og:url" content="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/index.html">
+<meta property="og:title" content="git配置">
+<meta property="og:url" content="http://qz757.github.com/2016/12/04/git配置/index.html">
 <meta property="og:site_name" content="qz757's blog">
-<meta property="og:description" content="本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+<meta property="og:description" content="配置用户名和Email
+用户名和Email是用于代码提交日志标识。12git config --global user.name &amp;quot;name&amp;quot; git config --global user.email &amp;quot;mailaddress&amp;quot;
 
-
-搭建msys2下64位编译环境
-编译64位且支持python的VIM版本并安装&amp;lt;本篇&amp;gt;
-VIM基本配置
-VIM安装vundle
-VIM安装开发环境所需插件
-
-
-本篇我们主要讲解编译64位且支持python和lua的VIM版本并安装。
-
-#安装python安装python到：D:\pyth">
-<meta property="og:updated_time" content="2016-12-04T11:49:53.791Z">
+配置git push
+如果要使用git进行推送,则必须配置push.default ,否则推送失败1git config -">
+<meta property="og:updated_time" content="2016-12-04T12:23:56.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装">
-<meta name="twitter:description" content="本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
+<meta name="twitter:title" content="git配置">
+<meta name="twitter:description" content="配置用户名和Email
+用户名和Email是用于代码提交日志标识。12git config --global user.name &amp;quot;name&amp;quot; git config --global user.email &amp;quot;mailaddress&amp;quot;
 
-
-搭建msys2下64位编译环境
-编译64位且支持python的VIM版本并安装&amp;lt;本篇&amp;gt;
-VIM基本配置
-VIM安装vundle
-VIM安装开发环境所需插件
-
-
-本篇我们主要讲解编译64位且支持python和lua的VIM版本并安装。
-
-#安装python安装python到：D:\pyth">
+配置git push
+如果要使用git进行推送,则必须配置push.default ,否则推送失败1git config -">
 
 
 
@@ -157,13 +133,13 @@ VIM安装开发环境所需插件
 
 
 
-  <link rel="canonical" href="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/"/>
+  <link rel="canonical" href="http://qz757.github.com/2016/12/04/git配置/"/>
 
 
 
 
 
-  <title> windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装 | qz757's blog </title>
+  <title> git配置 | qz757's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -284,7 +260,7 @@ VIM安装开发环境所需插件
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/">
+  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/12/04/git配置/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="qz757">
@@ -308,7 +284,7 @@ VIM安装开发环境所需插件
             
             
               
-                windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装
+                git配置
               
             
           </h1>
@@ -321,7 +297,7 @@ VIM安装开发环境所需插件
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T19:49:53+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T20:23:56+08:00">
                 2016-12-04
               </time>
             
@@ -355,8 +331,8 @@ VIM安装开发环境所需插件
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/" itemprop="commentCount"></span>
+                <a href="/2016/12/04/git配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/git配置/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,52 +358,24 @@ VIM安装开发环境所需插件
       
 
       
-        <blockquote>
-<p>本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：</p>
+        <h1 id="配置用户名和Email"><a href="#配置用户名和Email" class="headerlink" title="配置用户名和Email"></a>配置用户名和Email</h1><blockquote>
+<p>用户名和Email是用于代码提交日志标识。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;name&quot; </div><div class="line">git config --global user.email &quot;mailaddress&quot;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<ul>
-<li><strong>搭建msys2下64位编译环境</strong></li>
-<li><strong>编译64位且支持python的VIM版本并安装</strong>&lt;<font color="red">本篇</font>&gt;</li>
-<li><strong>VIM基本配置</strong></li>
-<li><strong>VIM安装vundle</strong></li>
-<li><strong>VIM安装开发环境所需插件</strong></li>
-</ul>
+<h1 id="配置git-push"><a href="#配置git-push" class="headerlink" title="配置git push"></a>配置git push</h1><blockquote>
+<p>如果要使用git进行推送,则必须配置push.default ,否则推送失败<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global push.default simple</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="在单独工程设置提交名称和email"><a href="#在单独工程设置提交名称和email" class="headerlink" title="在单独工程设置提交名称和email"></a>在单独工程设置提交名称和email</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config  user.name &quot;name&quot; </div><div class="line">git config  user.email &quot;mailaddress&quot;</div></pre></td></tr></table></figure>
+<h1 id="缓存https连接用户名和密码"><a href="#缓存https连接用户名和密码" class="headerlink" title="缓存https连接用户名和密码"></a>缓存https连接用户名和密码</h1><p>linux<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config--global credential.helper  &apos;cache --timeout 3600&apos;</div></pre></td></tr></table></figure></p>
+<p>windows git bash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper store</div></pre></td></tr></table></figure></p>
 <blockquote>
-<p>本篇我们主要讲解编译64位且支持python和lua的VIM版本并安装。</p>
+<p>注：<font color="red">msys2使用的是windows的配置方法</font></p>
+<h1 id="ssh-key配置"><a href="#ssh-key配置" class="headerlink" title="ssh key配置"></a>ssh key配置</h1><h2 id="在客户主机生成key"><a href="#在客户主机生成key" class="headerlink" title="在客户主机生成key"></a>在客户主机生成key</h2><p>运行以下命令，会在~/.ssh/下生成id_rsa.pub文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure></p>
 </blockquote>
-<p>#安装python<br>安装python到：D:\python\Python27,添加<code>D:\python\Python27;D:\python\Python27\Scripts</code>到PATH；</p>
-<p>#安装Lua<br>从Lua官网下载<code>lua-5.3.3_Win64_dllw4_lib.zip</code>和<code>lua-5.3.3_Win64_bin.zip</code>，将<code>lua-5.3.3_Win64_dllw4_lib.zip</code>解压到<code>D:\lua</code>下，将<code>lua-5.3.3_Win64_bin.zip</code>解压到<code>D:\lua\bin</code>目录下，让后将两个目录都添加到PATH目录下即可。</p>
-<blockquote>
-<p>vim安装完后要将<code>D:\lua\lua53.dll</code>拷贝到与gvim.exe相同目录下。</p>
+<h2 id="将生成的公钥文件拷贝到目标服务器"><a href="#将生成的公钥文件拷贝到目标服务器" class="headerlink" title="将生成的公钥文件拷贝到目标服务器"></a>将生成的公钥文件拷贝到目标服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp ~/.ssh/id_rsa.pub user@ip:/home/user/new.pub</div></pre></td></tr></table></figure>
+<h2 id="在被访问主机添加"><a href="#在被访问主机添加" class="headerlink" title="在被访问主机添加"></a>在被访问主机添加</h2><blockquote>
+<p>上一步会将公钥文件拷贝到用户home目录下，查看是否存在new.pub，如果在~/.ssh目录下没有authorized_keys文件，则自己生成空文件，然后运行以下命令。</p>
 </blockquote>
-<h1 id="下载VIM源码"><a href="#下载VIM源码" class="headerlink" title="下载VIM源码"></a>下载VIM源码</h1><p>从<a href="https://github.com/vim/vim" target="_blank" rel="external"> https://github.com/vim/vim </a>下载vim源码，下载zip包比直接<code>git clone https://github.com/vim/vim.git</code>速度快一些。将下载的源码解压到$VIM_MASTER_PATH。</p>
-<h1 id="修改编译脚本"><a href="#修改编译脚本" class="headerlink" title="修改编译脚本"></a>修改编译脚本</h1><p>1.打开msys2 command,切换到$VIM_MASTER_PATH/src</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd $VIM_MASTER_PATH/src</div></pre></td></tr></table></figure>
-<p>2.复制Make_cyg_ming.mak编译脚本为current.mak</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp Make_cyg_ming.mak current.mak</div></pre></td></tr></table></figure>
-<p>3.编辑current.mak<br>查看<code>PYTHON_VER</code>和<code>PYTHON3_VER</code>是否与自己的python版本匹配，不匹配则修改为自己的python版本。</p>
-<blockquote>
-<font color="blue">注：需要提前安装python2和python3，例如安装目录分别为：<code>D:/python/Python27</code>和<code>D:/python/Python35</code>。</font>
-
-</blockquote>
-<p>在最上边增加：<br>搜索<code>ifdef PYTHON</code>，在<code>ifdef PYTHON</code>前增加<code>PYTHON=D:/python/Python27</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PYTHON=D:/python/Python27</div><div class="line">PYTHON3=D:/python/Python35</div><div class="line">LUA=D:/lua</div></pre></td></tr></table></figure>
-<h1 id="编译VIM并打包"><a href="#编译VIM并打包" class="headerlink" title="编译VIM并打包"></a>编译VIM并打包</h1><p>1.编译：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make.exe -f current.mak</div></pre></td></tr></table></figure>
-<p>如果有编译失败，重新编译需要增加clean参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make.exe -f custom.mak clean</div></pre></td></tr></table></figure>
-<p>编译成功后在src目录下会生成<code>gvim.exe</code>。</p>
-<p>2.打包</p>
-<p>切换到代码根目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ..</div></pre></td></tr></table></figure></p>
-<p>创建运行脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim package.sh</div></pre></td></tr></table></figure></p>
-<p>将以下内容复制到脚本中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mkdir -p vimx64/vim</div><div class="line">cp -a runtime/* vimx64/vim</div><div class="line">cp -a src/*.exe vimx64/vim</div><div class="line">cp -a src/GvimExt/gvimext.dll vimx64/vim</div><div class="line">cp -a src/xxd/xxd.exe vimx64/vim</div><div class="line">cp -a vimtutor.bat vimx64/vim</div></pre></td></tr></table></figure>
-<p>运行打包脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +x package.sh</div><div class="line">./package.sh</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>至此，在<code>vimx64</code>下打包vim安装包。</p>
-</blockquote>
-<p>3.安装<br>将vim安装包拷贝到待安装的目录，并更改vim文件夹名称为vim+版本号，例如我的安装目录为D:\vim，版本为8.0，则安装路径为：D:\vim\vim80。<br>以管理员身份运行install.exe，输入d并回车确认，安装成功后，会在D:\vim目录下生成vimfiles和_vimrc。</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/new.pub &gt;&gt; ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -450,11 +398,9 @@ VIM安装开发环境所需插件
       
         <div class="post-tags">
           
-            <a href="/tags/vim/" rel="tag"># vim</a>
+            <a href="/tags/git/" rel="tag"># git</a>
           
-            <a href="/tags/windows/" rel="tag"># windows</a>
-          
-            <a href="/tags/x86-64/" rel="tag"># x86_64</a>
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
           
         </div>
       
@@ -463,8 +409,8 @@ VIM安装开发环境所需插件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/04/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/" rel="next" title="windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境">
-                <i class="fa fa-chevron-left"></i> windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境
+              <a href="/2016/12/04/windows7搭建基于VIM的开发环境（5）-VIM安装开发环境所需插件/" rel="next" title="windows7搭建基于VIM的开发环境（4）- VIM安装vundle">
+                <i class="fa fa-chevron-left"></i> windows7搭建基于VIM的开发环境（4）- VIM安装vundle
               </a>
             
           </div>
@@ -472,10 +418,6 @@ VIM安装开发环境所需插件
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/04/windows7搭建基于VIM的开发环境（3）-VIM基本配置/" rel="prev" title="windows7搭建基于VIM的开发环境（3）- VIM基本配置">
-                windows7搭建基于VIM的开发环境（3）- VIM基本配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -517,8 +459,8 @@ var duoshuoQuery = {short_name:"qz757"};
 <!-- 多说公共JS代码 end -->
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/"
-           data-title="windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装" data-url="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/">
+      <div class="ds-thread" data-thread-key="2016/12/04/git配置/"
+           data-title="git配置" data-url="http://qz757.github.com/2016/12/04/git配置/">
       </div>
     
   </div>
@@ -615,7 +557,7 @@ var duoshuoQuery = {short_name:"qz757"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载VIM源码"><span class="nav-number">1.</span> <span class="nav-text">下载VIM源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改编译脚本"><span class="nav-number">2.</span> <span class="nav-text">修改编译脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译VIM并打包"><span class="nav-number">3.</span> <span class="nav-text">编译VIM并打包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置用户名和Email"><span class="nav-number">1.</span> <span class="nav-text">配置用户名和Email</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置git-push"><span class="nav-number">2.</span> <span class="nav-text">配置git push</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在单独工程设置提交名称和email"><span class="nav-number">3.</span> <span class="nav-text">在单独工程设置提交名称和email</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存https连接用户名和密码"><span class="nav-number">4.</span> <span class="nav-text">缓存https连接用户名和密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh-key配置"><span class="nav-number">5.</span> <span class="nav-text">ssh key配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在客户主机生成key"><span class="nav-number">5.1.</span> <span class="nav-text">在客户主机生成key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将生成的公钥文件拷贝到目标服务器"><span class="nav-number">5.2.</span> <span class="nav-text">将生成的公钥文件拷贝到目标服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在被访问主机添加"><span class="nav-number">5.3.</span> <span class="nav-text">在被访问主机添加</span></a></li></ol></li></ol></div>
             
 
           </div>

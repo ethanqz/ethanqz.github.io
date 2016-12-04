@@ -246,6 +246,164 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/12/04/git配置/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="qz757">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww4.sinaimg.cn/mw1024/006u2hUgjw1faez0nf9f9j30qo0k0myz.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="qz757's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="qz757's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/04/git配置/" itemprop="url">
+                  git配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T20:23:56+08:00">
+                2016-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发环境搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">开发环境搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/04/git配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/git配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="配置用户名和Email"><a href="#配置用户名和Email" class="headerlink" title="配置用户名和Email"></a>配置用户名和Email</h1><blockquote>
+<p>用户名和Email是用于代码提交日志标识。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;name&quot; </div><div class="line">git config --global user.email &quot;mailaddress&quot;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="配置git-push"><a href="#配置git-push" class="headerlink" title="配置git push"></a>配置git push</h1><blockquote>
+<p>如果要使用git进行推送,则必须配置push.default ,否则推送失败<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global push.default simple</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="在单独工程设置提交名称和email"><a href="#在单独工程设置提交名称和email" class="headerlink" title="在单独工程设置提交名称和email"></a>在单独工程设置提交名称和email</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config  user.name &quot;name&quot; </div><div class="line">git config  user.email &quot;mailaddress&quot;</div></pre></td></tr></table></figure>
+<h1 id="缓存https连接用户名和密码"><a href="#缓存https连接用户名和密码" class="headerlink" title="缓存https连接用户名和密码"></a>缓存https连接用户名和密码</h1><p>linux<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config--global credential.helper  &apos;cache --timeout 3600&apos;</div></pre></td></tr></table></figure></p>
+<p>windows git bash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper store</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：<font color="red">msys2使用的是windows的配置方法</font></p>
+<h1 id="ssh-key配置"><a href="#ssh-key配置" class="headerlink" title="ssh key配置"></a>ssh key配置</h1><h2 id="在客户主机生成key"><a href="#在客户主机生成key" class="headerlink" title="在客户主机生成key"></a>在客户主机生成key</h2><p>运行以下命令，会在~/.ssh/下生成id_rsa.pub文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="将生成的公钥文件拷贝到目标服务器"><a href="#将生成的公钥文件拷贝到目标服务器" class="headerlink" title="将生成的公钥文件拷贝到目标服务器"></a>将生成的公钥文件拷贝到目标服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp ~/.ssh/id_rsa.pub user@ip:/home/user/new.pub</div></pre></td></tr></table></figure>
+<h2 id="在被访问主机添加"><a href="#在被访问主机添加" class="headerlink" title="在被访问主机添加"></a>在被访问主机添加</h2><blockquote>
+<p>上一步会将公钥文件拷贝到用户home目录下，查看是否存在new.pub，如果在~/.ssh目录下没有authorized_keys文件，则自己生成空文件，然后运行以下命令。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/new.pub &gt;&gt; ~/.ssh/authorized_keys</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（5）-VIM安装开发环境所需插件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -578,166 +736,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（3）-VIM基本配置/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="qz757">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww4.sinaimg.cn/mw1024/006u2hUgjw1faez0nf9f9j30qo0k0myz.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="qz757's blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="qz757's blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/04/windows7搭建基于VIM的开发环境（3）-VIM基本配置/" itemprop="url">
-                  windows7搭建基于VIM的开发环境（3）- VIM基本配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-04T19:55:24+08:00">
-                2016-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发环境搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">开发环境搭建</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/04/windows7搭建基于VIM的开发环境（3）-VIM基本配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/windows7搭建基于VIM的开发环境（3）-VIM基本配置/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：</p>
-</blockquote>
-<ul>
-<li><strong>搭建msys2下64位编译环境</strong></li>
-<li><strong>编译64位且支持python的VIM版本并安装</strong></li>
-<li><strong>VIM基本配置</strong>&lt;<font color="red">本篇</font>&gt;</li>
-<li><strong>VIM安装vundle</strong></li>
-<li><strong>VIM安装开发环境所需插件</strong></li>
-</ul>
-<blockquote>
-<p>本篇我们主要讲解VIM的基本配置，在<a href="http://qz757.github.io/2016/12/04/windows7%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8EVIM%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%882%EF%BC%89-%E7%BC%96%E8%AF%9164%E4%BD%8D%E4%B8%94%E6%94%AF%E6%8C%81python%E7%9A%84VIM%E7%89%88%E6%9C%AC%E5%B9%B6%E5%AE%89%E8%A3%85/" target="_blank" rel="external">上一篇</a>我们已经完成了VIM的安装，本篇的配置主要是修改上篇安装生成的_vrmrc。</p>
-</blockquote>
-<h1 id="安装中文vimdoc"><a href="#安装中文vimdoc" class="headerlink" title="安装中文vimdoc"></a>安装中文vimdoc</h1><p>从<a href="http://vimcdoc.sourceforge.net/" target="_blank" rel="external"> http://vimcdoc.sourceforge.net/</a>下载最新中文版vimdoc并安装。安装时vim安装目录要选择到<code>D:\Vim\vim80\</code>。</p>
-<h1 id="同步官方exe默认配置"><a href="#同步官方exe默认配置" class="headerlink" title="同步官方exe默认配置"></a>同步官方exe默认配置</h1><p>安装完成后默认配置为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source $VIMRUNTIME/vimrc_example.vim</div><div class="line">source $VIMRUNTIME/mswin.vim</div><div class="line">behave mswin</div></pre></td></tr></table></figure>
-<p>增加diff配置，此为官方exe安装版diff配置，默认添加即可，未验证具体功能。修改后为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot; 默认</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">source $VIMRUNTIME/vimrc_example.vim</div><div class="line">source $VIMRUNTIME/mswin.vim</div><div class="line">behave mswin</div><div class="line"></div><div class="line">set diffexpr=MyDiff()</div><div class="line">function MyDiff()</div><div class="line">  let opt = &apos;-a --binary &apos;</div><div class="line">  if &amp;diffopt =~ &apos;icase&apos; | let opt = opt . &apos;-i &apos; | endif</div><div class="line">  if &amp;diffopt =~ &apos;iwhite&apos; | let opt = opt . &apos;-b &apos; | endif</div><div class="line">  let arg1 = v:fname_in</div><div class="line">  if arg1 =~ &apos; &apos; | let arg1 = &apos;&quot;&apos; . arg1 . &apos;&quot;&apos; | endif</div><div class="line">  let arg2 = v:fname_new</div><div class="line">  if arg2 =~ &apos; &apos; | let arg2 = &apos;&quot;&apos; . arg2 . &apos;&quot;&apos; | endif</div><div class="line">  let arg3 = v:fname_out</div><div class="line">  if arg3 =~ &apos; &apos; | let arg3 = &apos;&quot;&apos; . arg3 . &apos;&quot;&apos; | endif</div><div class="line">  if $VIMRUNTIME =~ &apos; &apos;</div><div class="line">    if &amp;sh =~ &apos;\&lt;cmd&apos;</div><div class="line">      if empty(&amp;shellxquote)</div><div class="line">        let l:shxq_sav = &apos;&apos;</div><div class="line">        set shellxquote&amp;</div><div class="line">      endif</div><div class="line">      let cmd = &apos;&quot;&apos; . $VIMRUNTIME . &apos;\diff&quot;&apos;</div><div class="line">    else</div><div class="line">      let cmd = substitute($VIMRUNTIME, &apos; &apos;, &apos;&quot; &apos;, &apos;&apos;) . &apos;\diff&quot;&apos;</div><div class="line">    endif</div><div class="line">  else</div><div class="line">    let cmd = $VIMRUNTIME . &apos;\diff&apos;</div><div class="line">  endif</div><div class="line">  silent execute &apos;!&apos; . cmd . &apos; &apos; . opt . arg1 . &apos; &apos; . arg2 . &apos; &gt; &apos; . arg3</div><div class="line">  if exists(&apos;l:shxq_sav&apos;)</div><div class="line">    let &amp;shellxquote=l:shxq_sav</div><div class="line">  endif</div><div class="line">endfunction</div></pre></td></tr></table></figure>
-<h1 id="增加中文支持"><a href="#增加中文支持" class="headerlink" title="增加中文支持"></a>增加中文支持</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot; 配置多语言环境,解决中文乱码问题</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">if has(&quot;multi_byte&quot;) </div><div class="line">    &quot; UTF-8 编码 </div><div class="line">    set encoding=utf-8 </div><div class="line">    set termencoding=utf-8 </div><div class="line">    set formatoptions+=mM </div><div class="line">    set fencs=utf-8,gbk </div><div class="line">    if v:lang =~? &apos;^/(zh/)/|/(ja/)/|/(ko/)&apos; </div><div class="line">        set ambiwidth=double </div><div class="line">    endif </div><div class="line">    if has(&quot;win32&quot;) </div><div class="line">        source $VIMRUNTIME/delmenu.vim </div><div class="line">        source $VIMRUNTIME/menu.vim </div><div class="line">        language messages zh_CN.utf-8 </div><div class="line">    endif </div><div class="line">else </div><div class="line">    echoerr &quot;Sorry, this version of (g)vim was not compiled with +multi_byte&quot; </div><div class="line">endif</div></pre></td></tr></table></figure>
-<h1 id="修改编辑配置"><a href="#修改编辑配置" class="headerlink" title="修改编辑配置"></a>修改编辑配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot; 配置VIM标准显示</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">set nu!</div><div class="line">colorscheme desert </div><div class="line">syntax enable </div><div class="line">syntax on</div><div class="line">&quot;set lines=35 columns=118 &quot;窗口大小</div><div class="line">set hlsearch        &quot; 高亮显示搜索结果</div><div class="line">set incsearch       &quot; 查询时非常方便，如要查找book单词，当输入到/b时，会自动找到</div><div class="line">autocmd GUIEnter * simalt ~x &quot;窗口最大</div><div class="line">set cursorcolumn</div><div class="line">set cursorline</div><div class="line">set nobackup</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot; 编程相关的设置</div><div class="line">&quot;--------------------------------------------------------------------------------</div><div class="line">&quot;set completeopt=longest,menu    &quot; 关掉智能补全时的预览窗口</div><div class="line">&quot;filetype pluginindenton       &quot; 加了这句才可以用智能补全</div><div class="line">set showmatch       &quot; 设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号</div><div class="line">set smartindent     &quot; 智能对齐方式</div><div class="line">set tabstop=4       &quot;tab对应的长度</div><div class="line">set softtabstop=4   &quot;回退时退回的缩进长度</div><div class="line">set shiftwidth=4    &quot; 换行时行间交错使用4个空格</div><div class="line">set expandtab       &quot;缩进用空格表示</div><div class="line">set noexpandtab     &quot;缩进用制表符表示</div><div class="line">set autoindent      &quot; 自动对齐</div><div class="line">set ai!             &quot; 设置自动缩进</div><div class="line">&quot;自动补全括号</div><div class="line">inoremap ( ()&lt;ESC&gt;i</div><div class="line">inoremap [ []&lt;ESC&gt;i</div><div class="line">inoremap &#123; &#123;&#125;&lt;ESC&gt;i</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -783,7 +781,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -800,7 +798,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
