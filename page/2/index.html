@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vim,windows,x86_64," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,52 +84,12 @@
 
 
 
-<meta name="description" content="本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
-
-
-搭建msys2下64位编译环境&amp;lt;本篇&amp;gt;
-编译64位且支持python的VIM版本并安装
-VIM基本配置
-VIM安装vundle
-VIM安装开发环境所需插件
-
-
-本篇我们主要讲解msys2下64位编译环境的部署。
-
-下载并安装msys2从 msys2官网 下载64位msys2安装程序并安装">
-<meta property="og:type" content="article">
-<meta property="og:title" content="windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境">
-<meta property="og:url" content="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="qz757's blog">
+<meta property="og:url" content="http://qz757.github.com/page/2/index.html">
 <meta property="og:site_name" content="qz757's blog">
-<meta property="og:description" content="本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
-
-
-搭建msys2下64位编译环境&amp;lt;本篇&amp;gt;
-编译64位且支持python的VIM版本并安装
-VIM基本配置
-VIM安装vundle
-VIM安装开发环境所需插件
-
-
-本篇我们主要讲解msys2下64位编译环境的部署。
-
-下载并安装msys2从 msys2官网 下载64位msys2安装程序并安装">
-<meta property="og:updated_time" content="2016-12-04T11:08:16.355Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境">
-<meta name="twitter:description" content="本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：
-
-
-搭建msys2下64位编译环境&amp;lt;本篇&amp;gt;
-编译64位且支持python的VIM版本并安装
-VIM基本配置
-VIM安装vundle
-VIM安装开发环境所需插件
-
-
-本篇我们主要讲解msys2下64位编译环境的部署。
-
-下载并安装msys2从 msys2官网 下载64位msys2安装程序并安装">
+<meta name="twitter:title" content="qz757's blog">
 
 
 
@@ -157,13 +117,13 @@ VIM安装开发环境所需插件
 
 
 
-  <link rel="canonical" href="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/"/>
+  <link rel="canonical" href="http://qz757.github.com/page/2/"/>
 
 
 
 
 
-  <title> windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境 | qz757's blog </title>
+  <title> qz757's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -184,7 +144,9 @@ VIM安装开发环境所需插件
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,9 +235,9 @@ VIM安装开发环境所需插件
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -308,7 +270,10 @@ VIM安装开发环境所需插件
             
             
               
-                windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境
+                
+                <a class="post-title-link" href="/2016/12/04/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/" itemprop="url">
+                  windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境
+                </a>
               
             
           </h1>
@@ -382,7 +347,9 @@ VIM安装开发环境所需插件
       
 
       
-        <blockquote>
+        
+          
+            <blockquote>
 <p>本系列指导 主要是从无到有完整搭建windows下基于VIM的开发环境，主要分为以下几部分：</p>
 </blockquote>
 <ul>
@@ -422,66 +389,41 @@ VIM安装开发环境所需插件
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gcc.exe (Rev2, Built by MSYS2 project) 6.2.0</div><div class="line">Copyright (C) 2016 Free Software Foundation, Inc.</div><div class="line">This is free software; see the source for copying conditions.  There is NO</div><div class="line">warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</div></pre></td></tr></table></figure>
 <p>*注：可以将mingw64.exe锁定在任务栏</p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/vim/" rel="tag"># vim</a>
-          
-            <a href="/tags/windows/" rel="tag"># windows</a>
-          
-            <a href="/tags/x86-64/" rel="tag"># x86_64</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/04/windows7搭建基于VIM的开发环境（2）-编译64位且支持python的VIM版本并安装/" rel="prev" title="windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装">
-                windows7搭建基于VIM的开发环境（2）- 编译64位且支持python的VIM版本并安装 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -489,30 +431,6 @@ VIM安装开发环境所需插件
 
 
           
-  <!-- 多说评论框 start -->
-	<div class="dsi-thread" data-thread-key="<%- page.path %>" data-title="<%- page.title %>" data-url="<%- page.permalink %>"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"qz757"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/12/04/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/"
-           data-title="windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境" data-url="http://qz757.github.com/2016/12/04/windows7搭建基于VIM的开发环境（1）-搭建msys2下64位编译环境/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -532,17 +450,8 @@ var duoshuoQuery = {short_name:"qz757"};
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww4.sinaimg.cn/mw1024/006u2hUgjw1faez0nf9f9j30qo0k0myz.jpg"
@@ -595,22 +504,6 @@ var duoshuoQuery = {short_name:"qz757"};
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载并安装msys2"><span class="nav-number">1.</span> <span class="nav-text">下载并安装msys2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改msys2软件源"><span class="nav-number">2.</span> <span class="nav-text">修改msys2软件源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新软件源并安装编译环境所需包"><span class="nav-number">3.</span> <span class="nav-text">更新软件源并安装编译环境所需包</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
@@ -709,10 +602,6 @@ var duoshuoQuery = {short_name:"qz757"};
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 
