@@ -1,0 +1,40 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+
+#before_script:
+# - npm install -g gulp
+
+script:
+  - hexo g
+
+after_script:
+<<<<<<< HEAD
+  - cd ./public
+  - git init
+  - git config user.name "CI"
+  - git config user.email "qz757@sina.com"
+=======
+  - mkdir ../newpublic
+  - git config user.name "ci"
+  - git config user.email "qz757@sina.com"
+  - git clone -b master "https://${GH_TOKEN}@${GH_REF}" ../newpublic
+  - cp -rf ./public/* ../newpublic/qz757.github.com/
+  - cd ../newpublic/qz757.github.com
+>>>>>>> 22762438b16d8e0783af84f759da291b8caf50ca
+  - git add -A
+  - git commit -m "CI commit"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+# E: Build LifeCycle
+
+
+branches:
+  only:
+    - hexo
+env:
+ global:
+   - GH_REF: github.com/qz757/qz757.github.com.git
