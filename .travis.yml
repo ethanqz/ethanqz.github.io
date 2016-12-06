@@ -12,13 +12,16 @@ script:
   - hexo g
 
 after_script:
-  - cd ./public
-  - git init
+  - mkdir newpublic
   - git config user.name "ci"
   - git config user.email "qz757@sina.com"
-  - git add .
+  - cd newpublic
+  - git clone -b master "https://${GH_TOKEN}@${GH_REF}"
+  - cp -rf ../public/* ./
+  - git add -A
   - git commit -m "CI Update"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  #- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push origin master
 # E: Build LifeCycle
 
 branches:
