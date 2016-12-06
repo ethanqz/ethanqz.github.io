@@ -1,5 +1,6 @@
 ---
 title: windows7搭建基于VIM的开发环境（1）- 搭建msys2下64位编译环境
+date: 2016-12-06 17:43:00
 categories: 开发环境搭建
 tags: [vim,windows,x86_64]
 
