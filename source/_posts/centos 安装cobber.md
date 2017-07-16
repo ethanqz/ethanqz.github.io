@@ -7,14 +7,17 @@ tags: [centos,linux,cobbler]
 ---
 
 # 一、调整基本配置
-## 1.配置selinux
+## 1.安装centos7 minimal操作系统
+   - 安装操作系统
+   - yum install net-tools vim
+## 2.配置selinux
    关闭selinux或参照cobbler官方文档设置selinux，http://cobbler.github.io/manuals/2.6.0/4/2_-_SELinux.html
 ```
  sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 ```
    配置完成后要重启服务器。
-## 2.关闭iptables以及取消自启动。minimal未安装，不需要配置。
-## 3.关闭iptables以及取消自启动，或者放行80 67 68 69 443端口。
+## 3.关闭iptables以及取消自启动。minimal未安装，不需要配置。
+## 4.关闭iptables以及取消自启动，或者放行80 67 68 69 443端口。
 - 80 443是cobbler web管理界面端口
 - 67 68 是DHCP端口
 - 69是TFTP端口
@@ -22,6 +25,8 @@ tags: [centos,linux,cobbler]
 systemctl stop firewalld
 systemctl disable firewalld
 ```
+## 5.配置静态ip
+参照[ centos7 minimal网络配置 ](http://qz757.github.io/2017/07/16/centos%20minimal%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/)配置静态ip。
 
 # 二、安装软件包
 ## 1.安装epel包
@@ -44,7 +49,7 @@ sed -i 's/manage_dhcp: 0/manage_dhcp: 1/g' /etc/cobbler/settings
 sed -i 's/manage_rsync: 0/manage_rsync: 1/g' /etc/cobbler/settings
 sed -i 's/server: 127.0.0.1/server: {服务器ip}/g' /etc/cobbler/settings
 sed -i 's/pxe_just_once: 0/pxe_just_once: 1/g' /etc/cobbler/settings（避免重复安装）
-sed -i 's/next_server: 127.0.0.1/next_server: {tftp服务器ip}/g' /etc/cobbler/settings
+#sed -i 's/next_server: 127.0.0.1/next_server: {tftp服务器ip}/g' /etc/cobbler/settings本机不需要重复执行。
 ```
 
 ## 2.配置cobbler-web
@@ -67,16 +72,18 @@ openssl passwd -1 -salt "cobbler" "{password}"
 - CentOS7上安装cobbler对于rsync无需额外配置。
 
 # 五、配置dhcp服务
+`vim /etc/cobbler/dhcp.template`：
+
 ```
-subnet *192.168.11.0* netmask 255.255.255.0
+subnet 192.168.11.0 netmask 255.255.255.0
 
-option routers *192.168.11.252*;
+option routers 192.168.11.252;
 
-option domain-name-servers *192.168.11.252*;
+option domain-name-servers 192.168.11.252;
 
 option subnet-mask 255.255.255.0;
 
-range dynamic-bootp*192.168.11.100 192.168.11.200*;
+range dynamic-bootp 192.168.11.100 192.168.11.200;
 ```
 - 斜体ip地址根据需要配置
 
@@ -88,13 +95,26 @@ systemctl enable dhcpd
 systemctl enable cobblerd
 systemctl enable rsyncd
 ```
-## 2.加载配置文件生效
+## 2.启动服务
+```
+systemctl start httpd
+systemctl start dhcpd  
+systemctl start cobblerd
+systemctl start rsyncd
+```
+## 3.加载启动项
+执行：`cobbler get-loaders`
+## 4.加载配置文件生效
 ```
 cobbler sync
 ```
-## 3.检查cobbler配置
+## 5.检查cobbler配置
 ```
 cobbler check
+```
+## 6.重启
+```
+reboot
 ```
 
 ----------
