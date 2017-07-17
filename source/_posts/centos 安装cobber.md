@@ -10,23 +10,26 @@ tags: [centos,linux,cobbler]
 ## 1.安装centos7 minimal操作系统
    - 安装操作系统
    - yum install net-tools vim
+
 ## 2.配置selinux
+   查看/etc/selinux/config，如果已经是disable，则不需要修改。
    关闭selinux或参照cobbler官方文档设置selinux，http://cobbler.github.io/manuals/2.6.0/4/2_-_SELinux.html
 ```
  sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 ```
    配置完成后要重启服务器。
+
 ## 3.关闭iptables以及取消自启动。minimal未安装，不需要配置。
+
 ## 4.关闭iptables以及取消自启动，或者放行80 67 68 69 443端口。
 - 80 443是cobbler web管理界面端口
 - 67 68 是DHCP端口
 - 69是TFTP端口
+
 ```
 systemctl stop firewalld
 systemctl disable firewalld
 ```
-## 5.配置静态ip
-参照[ centos7 minimal网络配置 ](http://qz757.github.io/2017/07/16/centos%20minimal%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/)配置静态ip。
 
 # 二、安装软件包
 ## 1.安装epel包
@@ -97,13 +100,11 @@ systemctl enable rsyncd
 ```
 ## 2.启动服务
 ```
-systemctl start httpd
-systemctl start dhcpd  
-systemctl start cobblerd
-systemctl start rsyncd
+systemctl restart cobblerd
 ```
 ## 3.加载启动项
 执行：`cobbler get-loaders`
+- 注：如果当前ip和cobbler配置的ip不一致，则需要将cobbler的ip先修改为当前的ip，执行完该命令后再改回需要的ip，否则cobbler会启动失败。
 ## 4.加载配置文件生效
 ```
 cobbler sync
@@ -112,7 +113,10 @@ cobbler sync
 ```
 cobbler check
 ```
-## 6.重启
+## 6.配置静态ip
+参照[ centos7 minimal网络配置 ](http://qz757.github.io/2017/07/16/centos%20minimal%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/)配置静态ip。
+
+## 7.重启
 ```
 reboot
 ```

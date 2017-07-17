@@ -13,6 +13,7 @@ tags: [centos,linux]
   4.yum install net-tools使用ifconfig命令。
 
 # 配置静态ip
+  修改/etc/sysconfig/network-scripts/下对应网卡的配置。
   1.修改 BOOTPROTO=static
   2.增加配置
     ```
