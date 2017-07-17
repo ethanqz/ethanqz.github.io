@@ -156,4 +156,6 @@ http://rpmfind.net/linux/rpm2html/search.php?query=debmirror
 cobbler distro list
 cobbler profile report
 ```
+## 3.pxe配置
+配置文件：vim /etc/cobbler/pxe/pxedefault.template
 - 界面查看*https://192.168.2.185/cobbler_web/*
