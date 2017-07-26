@@ -26,7 +26,7 @@ index-url = http://pypi.douban.com/simple
 trusted-host = pypi.douban.com
 ```
 3. 安装pyflakes，`pip install pyflakes`,syntastic代码检查依赖。
-4. 安装jedi，`pip install jedi`，jedi-vim代码不全依赖。
+4. 安装jedi，`pip install jedi`，jedi-vim代码补全依赖。
 
 # 所有插件列表
 ```
