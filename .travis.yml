@@ -11,6 +11,7 @@ before_install:
     - export TZ='Asia/Shanghai' # 更改时区
 
 install:
+  - npm uninstall hexo-cli -g
   - npm uninstall hexo
   - npm install hexo --no-optional
   - npm install hexo-deployer-git --save
