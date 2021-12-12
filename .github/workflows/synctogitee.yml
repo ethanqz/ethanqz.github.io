@@ -48,7 +48,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
       with:
         # 来源仓库
-        source-repo: "git@github.com:qz757/qz757.github.com.git"
+        source-repo: "git@github.com:qz757/qz757.github.io.git"
         # 目标仓库
         destination-repo: "git@gitee.com:qz757/qz757.git"
         
