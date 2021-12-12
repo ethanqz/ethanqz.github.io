@@ -3,7 +3,7 @@ name: deploy blog to gitee
 on:
   push:
     branches:
-      - main    # master 分支 push 的时候触发
+      - master    # master 分支 push 的时候触发
       
 jobs:
 #   deploy: #执行部署Hugo生成静态代码，默认放在gh-pages分支
