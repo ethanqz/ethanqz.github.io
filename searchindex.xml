@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>Obsidian作为第二大脑工具的基本使用和配置</title><url>https://qz757.github.io/post/productivity/obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/</url><categories><category>Obsidian</category><category>生产力</category></categories><tags><tag>Obsidian</tag><tag>生产力</tag></tags><content type="html"> 背景和说明 作为第二大脑系统的笔记软件，本片我们来讲一下Obsidian的基本使用和配置。关于“第二大脑系统笔记方法选择和软件选型”我会单独写一篇Bolg进行说明。作为第二大脑系统的笔记，需要满足日常笔记的快速编写，并且能够支持PC、手机、Pad多平台同步，同时Obsidian支持通过插件进行扩展，因此我将分基本功能使用和配置、核心插件配置和使用、第三方插件配置和使用、工作区布局几个维度进行说明。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>关于我</title><url>https://qz757.github.io/about.html</url><categories/><tags/><content type="html"> 这是Ethan的博客空间，一个coder，一个技术Leader，同时也是一个希望生活更有趣，坚持思考的人。
+更多信息请访问GitHub.</content></entry><entry><title>Obsidian作为第二大脑工具的基本使用和配置</title><url>https://qz757.github.io/post/productivity/obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/</url><categories><category>Obsidian</category><category>生产力</category></categories><tags><tag>Obsidian</tag><tag>生产力</tag></tags><content type="html"> 背景和说明 作为第二大脑系统的笔记软件，本片我们来讲一下Obsidian的基本使用和配置。关于“第二大脑系统笔记方法选择和软件选型”我会单独写一篇Bolg进行说明。作为第二大脑系统的笔记，需要满足日常笔记的快速编写，并且能够支持PC、手机、Pad多平台同步，同时Obsidian支持通过插件进行扩展，因此我将分基本功能使用和配置、核心插件配置和使用、第三方插件配置和使用、工作区布局几个维度进行说明。
 正文 一、为什么选择Obsidian 关于我的第二大脑系统构筑的思路、方案以及选型，我会单独写一篇《第二大脑系统笔记方法选择和软件选型》进行说明，可以参考这边文章。
 二、Obsidian基本功能使用和配置 Ⅰ、下载安装 下载：Obsidian官网； 选择对应的版本下载安装； Ⅱ、打开工程 打开文件夹当做工程，如果是空文件夹，则会将文件夹名当做工程名； 也可以新建工程； 配置工程语言为中文； Ⅲ、创建新文件夹和文件 与其他编辑器类似，可以直接创建新文件夹和文件，创建的文件为md格式； Ⅳ、对Obsidian进行基本配置 1、文件与链接配置 修改文件链接的描述使用MarkDown标准语法，确保和Typora一致，同时配置附件拷贝目录为当前文件坐在resource目录，可以同Typora一致；
 2、外观配置 在外观配置页签可以选择黑暗或者明亮模式； 主题配置： 1、将下载好的Minimal.css文件放到.obsidian/themes，没有该文件夹则手动创建，修改后在外观标签页更改主题为minimal； 2、通过Minimal-theme-setting插件对主题进行调整，安装后默认配置即可，可参考 ：第三方插件配置和使用；
@@ -25,9 +26,4 @@ media-extended 在笔记中可以插入音频、视频等文件并在文件中�
 Ⅰ、主工作台 先看看布局：
 布局说明：
 1：文件列表； 2：最近打开的文件； 3：编辑区； 4：局部链接； 5：笔记的脑图显示； 6：预览区； 7：笔记大纲； 8：日历； Ⅱ、编辑工作台 编辑工作台关闭所有小窗口，只有左右一个编辑区，一个预览区；通过CTL+O快速切换文件进行编辑；
-Ⅲ、工作区保存和切换 通过左边工作区按钮进行保存和切换； 参考快捷键配置增加工作区切换快捷键，CTL+SHIFT+X：切换工作区； 结束 以上就是我使用Obsidian作为我的第二大脑系统的基本配置和使用，希望可以帮助大家了解Obsidian的使用；后边我会继续完善我的第二大脑系统的构建思路和方法。</content></entry><entry><title>关于我</title><url>https://qz757.github.io/about.html</url><categories/><tags/><content type="html"> Hugo是用Go编写的一个开放源代码静态站点生成器，可在Apache许可证2.0下使用。 Hugo支持TOML, YAML和JSON数据文件类型，Markdown和HTML内容文件，并使用短代码添加丰富的内容。其他值得注意的功能包括分类法、多语言模式、图像处理、自定义输出格式、HTML/CSS/JS缩小和对Sass SCSS工作流的支持。
-Hugo使用了多种开源项目，包括:
-https://github.com/yuin/goldmark https://github.com/alecthomas/chroma https://github.com/muesli/smartcrop https://github.com/spf13/cobra https://github.com/spf13/viper Hugo是博客、企业网站、创意作品集、在线杂志、单页应用程序甚至是数千页的网站的理想选择。
-Hugo适合那些想要手工编写自己的网站代码，而不用担心设置复杂的运行时、依赖关系和数据库的人。
-使用Hugo建立的网站非常快速、安全，可以部署在任何地方，包括AWS、GitHub Pages、Heroku、Netlify和任何其他托管提供商。
-更多信息请访问GitHub.</content></entry></search>
+Ⅲ、工作区保存和切换 通过左边工作区按钮进行保存和切换； 参考快捷键配置增加工作区切换快捷键，CTL+SHIFT+X：切换工作区； 结束 以上就是我使用Obsidian作为我的第二大脑系统的基本配置和使用，希望可以帮助大家了解Obsidian的使用；后边我会继续完善我的第二大脑系统的构建思路和方法。</content></entry></search>
