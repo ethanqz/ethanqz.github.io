@@ -1,0 +1,15 @@
+[[Main]]
+  Name = "Home"
+  Pre = "home"
+  URL = "/"
+  Weight = 1
+[[Main]]
+  Name = "Blog"
+  Pre = "archive"
+  URL = "post"
+  Weight = 2
+[[Main]]
+  Name = "About"
+  Pre = "user"
+  URL = "about.html"
+  Weight = 3

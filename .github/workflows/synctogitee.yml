@@ -6,36 +6,36 @@ on:
       - master    # master 分支 push 的时候触发
       
 jobs:
-#   deploy: #执行部署Hugo生成静态代码，默认放在gh-pages分支
-#     runs-on: ubuntu-18.04
-#     steps:
-#       - uses: actions/checkout@v2
-#         with:
-#           submodules: recursive  # Fetch Hugo themes (true OR recursive)
-#           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+  deploy: #执行部署Hugo生成静态代码，默认放在gh-pages分支
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-#       - name: Setup Hugo
-#         uses: peaceiris/actions-hugo@v2
-#         with:
-#           hugo-version: '0.81.0'
-#           extended: true #不需要extended版本就可以注释
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.90.1'
+          extended: true #不需要extended版本就可以注释
 
-#       - name: Build
-#         run: hugo --minify
+      - name: Build
+        run: hugo
 
-#       - name: Deploypage
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           personal_token: ${{ secrets.ACCESS_TOKEN }}
-#           external_repository: JohntunLiu/JohntunLiu.github.io
-#           publish_branch: gh-pages  # default: gh-pages
-#           publish_dir: ./public
+      - name: Deploypage
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          external_repository: qz757/qz757.github.io
+          publish_branch: gh-pages  # default: gh-pages
+          publish_dir: ./public
           
-#       - name: Deploygitee
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           personal_token: ${{ secrets.ACCESS_TOKEN }}
-#           publish_dir: ./public
+      - name: Deploygitee
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./public
                 
   
   sync: #同步到gitee仓库
