@@ -31,11 +31,11 @@ jobs:
           publish_branch: gh-pages  # default: gh-pages
           publish_dir: ./public
           
-      # - name: Deploygitee
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     personal_token: ${{ secrets.ACCESS_TOKEN }}
-      #     publish_dir: ./public
+      - name: Deploygitee
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./public
                 
   
   sync: #同步到gitee仓库
