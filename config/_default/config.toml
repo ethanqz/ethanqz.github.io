@@ -1,5 +1,5 @@
 Title =  "坚持做有趣的事，让生活简单快乐！"
-## BaseUrl = "https://qz757.github.io/"
+BaseUrl = "https://qz757.github.io/"
 
 DefaultContentLanguage = "zh-cn"
 LanguageCode = "zh-CN"

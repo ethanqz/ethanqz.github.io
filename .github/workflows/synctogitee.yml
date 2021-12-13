@@ -20,7 +20,7 @@ jobs:
           hugo-version: '0.90.1'
           extended: true #不需要extended版本就可以注释
 
-      - name: Build
+      - name: Build github
         run: hugo
 
       - name: Deploypage
@@ -30,11 +30,14 @@ jobs:
           external_repository: qz757/qz757.github.io
           publish_branch: gh-pages  # default: gh-pages
           publish_dir: ./public
+
+      - name: Build github
+        run: hugo -b https://qz757.gitee.io
           
       - name: Deploygitee
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.ACCESS_TOKEN }}
+        personal_token: ${{ secrets.ACCESS_TOKEN }}
+          external_repository: qz757/qz757.github.io
+          publish_branch: gh-pages-gitee  # default: gh-pages
           publish_dir: ./public
                 
   
