@@ -10,7 +10,6 @@ categories : [
     "生产力",
 ]
 toc : true
-typora-copy-images-to: upload
 ---
 ![Obsidian图标](https://gitee.com/qz757/picgo/raw/master/img/Obsidian图标.jpg)
 
@@ -87,7 +86,7 @@ typora-copy-images-to: upload
 
 ![置顶命令](https://gitee.com/qz757/picgo/raw/master/img/置顶命令.png)
 
-### Ⅴ、常用命令：
+### Ⅴ、常用命令
 
 - CTL + P：打开命令面板；
 - CTL + E：切换编辑和预览视图；
