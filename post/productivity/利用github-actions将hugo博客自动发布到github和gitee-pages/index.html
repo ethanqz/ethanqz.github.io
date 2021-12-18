@@ -1,0 +1,666 @@
+<!doctype html><html lang=zh-cn dir=content/zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests">
+<title> 利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages - Ethan的博客 </title>
+<meta name=keywords content="博客,程序员,思考,读书,笔记，管理">
+<meta property="og:title" content="利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages">
+<meta property="og:site_name" content="Ethan的博客">
+<meta property="og:image" content="/img/author.jpg">
+<meta name=title content="利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages - Ethan的博客">
+<meta name=description content="介绍如何利用GitHub Actions快速发布Blog到GitHub和Gitee Pages">
+<link rel="shortcut icon" href=/img/favicon.ico>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
+<link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+</head>
+<body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
+<div class="container one-collumn sidebar-position-left page-home">
+<div class=headband></div>
+<header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
+<div class=header-inner> <div class=site-brand-container>
+<div class=site-nav-toggle>
+<div class=toggle role=button style=opacity:1;top:0>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+</div>
+</div>
+<div class=site-meta>
+<div class=multi-lang-switch>
+<i class="fa fa-fw fa-language" style=margin-right:5px></i>
+<a class=lang-link id=zh-cn href=#>中文</a>
+</div>
+<div class=custom-logo-site-title>
+<a href=/ class=brand rel=start>
+<span class=logo-line-before><i></i></span>
+<span class=site-title>Ethan的博客</span>
+<span class=logo-line-after><i></i></span>
+</a>
+</div>
+<p class=site-subtitle>坚持做有趣的事，让生活简单快乐。</p>
+</div>
+<div class=site-nav-right>
+<div class="toggle popup-trigger" style=opacity:1;top:0>
+<i class="fa fa-search fa-fw fa-lg"></i>
+</div>
+</div>
+</div>
+<nav class=site-nav>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a href=/ rel=section>
+<i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页
+</a>
+</li>
+<li class=menu-item>
+<a href=/post rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>博客
+</a>
+</li>
+<li class=menu-item>
+<a href=/about.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我
+</a>
+</li>
+<li class="menu-item menu-item-search">
+<a href=javascript:; class=popup-trigger> <i class="menu-item-icon fa fa-search fa-fw"></i> <br> 搜索</a>
+</li>
+</ul>
+<div class=site-search>
+<div class="popup search-popup local-search-popup">
+<div class="local-search-header clearfix">
+<span class=search-icon><i class="fa fa-search"></i> </span>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span>
+<div class=local-search-input-wrapper>
+<input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off>
+</div>
+</div>
+<div id=local-search-result></div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main id=main class=main>
+<div class=main-inner>
+<div class=content-wrap>
+<div id=content class=content>
+<section id=posts class=posts-expand>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=https://qz757.gitee.io/post/productivity/%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages/ itemprop=url>
+利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages
+</a>
+</h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-18">
+2021-12-18
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>生产力</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>5335 字</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>11分钟</span>
+</span>
+<span id=/post/productivity/%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages/ class=leancloud_visitors data-flag-title="利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages">
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>阅读次数：</span>
+<span class=leancloud-visitors-count></span>
+</span>
+</div>
+</header>
+<div class=post-body itemprop=articleBody>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E5%B7%A5%E4%BD%9C%E5%8D%8F%E5%90%8C%E5%9B%BE%E7%89%87.jpg alt=工作协同图片></p>
+<h2 id=简介>简介</h2>
+<p>现在个人博客通常有比较多的选择，如果不想要自己购买服务器实现静态博客的发布，可以在简书、CSDN等平台建立自己的账号并发布，但是原始数据无法在本地管理；如果想要数据完全自己管理，可以使用GitHub或者Gitee Pages功能发布自己的博客，利用Hugo或Hexo等成熟的静态博客将md文件转换成静态网站文件进行快速发布。本文就用来记录如何快速将博客发布到简书、GitHub以及Gitee Pages三个平台。</p>
+<h2 id=一流程设计>一、流程设计</h2>
+<p>我希望的流程当然是主要精力用在写文章，发布的流程最好完全不需要手动处理，但实际情况下手动发布博客的流程大体是：</p>
+<blockquote>
+<p>编写->拷贝到简书->本地Hugo生成文件->提交到Github->提交到Gitee->Gitee页面刷新；
+流程相对比较多，希望能够编写完md后只需要把源文件提交到GitHub即可实现GitHub和Gitee Pages的自动化部署。</p>
+</blockquote>
+<p>之前有使用过Travis CI+GitHub+Hexo自动发布到GitHub Pages，但是GitHub的访问经常不那么靠谱，因此想着也能同步到Gitee，并且自动构建Hexo的速度受Nodejs环境部署影响，速度很慢，因此本次计划采用Hugo来构建网站文件，整体流程设计如下：</p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E6%B5%81%E7%A8%8B.png alt=博客自动发布流程></p>
+<h2 id=二环境准备>二、环境准备</h2>
+<p>为了满足博客自动发布流程，首先需要在本地准备好生产环境，以满足快速发布，以此的复杂是为了长期的简单，因此在环境准备阶段我会把所有涉及的工具都记录下来，以方便大家使用以及后边自己回顾，环境准备包含：</p>
+<ul>
+<li>Typora配置</li>
+<li>Git配置</li>
+<li>Hugo配置</li>
+<li>Obsidian配置</li>
+</ul>
+<h3 id=typora配置>Ⅰ、Typora配置</h3>
+<h4 id=1typora基本配置>1、Typora基本配置</h4>
+<p>Obsidian完成知识积累后，按照ZK->Project->Archive->Blog的流程发布Blog，但是Obsidian的文件相互关联，且附件如何快速复用，需要对Typora和Obsidian都进行简单的配置，确保后续Blog能够快速完成并发布，并且文件仍在Obsidian工程中正常显示；</p>
+<p>Typora非常的简洁，而且可以实时预览，在写博客的时候经常会插入一些图片，截图后可以直接粘贴进去，图片也会自动保存在本地，这里需要注意图片的保存路径，在偏好设置里，设置插入图片时复制到指定路径（./resource/），这样复制的图片就会自动保存在当前文件夹下的resource文件夹里，方便后续管理与转移。</p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/Typora%E5%9B%BE%E5%83%8F%E8%AE%BE%E7%BD%AE.png alt=Typora图像设置></p>
+<h4 id=2使用typorapicgo-coregitee实现图床功能>2、使用Typora+picgo-core+gitee实现图床功能</h4>
+<ol>
+<li>
+<p>安装Nodejs</p>
+<ul>
+<li>windows7安装</li>
+</ul>
+<blockquote>
+<ol>
+<li>从<a href=https://nodejs.org/en/download/>官网</a>下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start=2>
+<li>运行安装即可；</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<p>ubuntu 20.04安装</p>
+<p>ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>安装NodeSource：<code>curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -</code>，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如<code>12.x</code>，将<code>setup_14.x</code>修改为<code>setup_12.x</code>；</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>​ 在写作的时候，NodeSource 软件源提供了以下版本：</p>
+<ul>
+<li>v14.x - 最新稳定版</li>
+<li>v13.x</li>
+<li>v12.x - 最新长期版本</li>
+<li>v10.x - 前一个长期版本</li>
+</ul>
+</blockquote>
+<blockquote>
+<ol start=2>
+<li>安装Nodejs和npm：<code>sudo apt install nodejs</code>，安装的版本<code>node -v</code>可查看是<code>v14.18.2</code>；</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>配置npm</p>
+<p>配置npm源为淘宝源，命令如下：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm config <span style=color:#a2f>set</span> registry https://registry.npm.taobao.org
+npm config get registry
+</code></pre></div></li>
+<li>
+<p>安装picgo</p>
+<ul>
+<li>
+<p>方法一、在上传服务中点击PicGo-Core(command line)</p>
+<blockquote>
+<p>自动下载的目录为：%AppData%\Typora\picgo</p>
+</blockquote>
+</li>
+<li>
+<p>方法二：在上传服务中点击Custom Command，打开终端，输入以下命令：</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo npm install --no-optional --verbose picgo -g <span style=color:#080;font-style:italic>#跳过可选依赖</span>
+</code></pre></div><ol start=4>
+<li>
+<p>在Gitee创建图床仓库</p>
+<blockquote>
+<ol>
+<li>
+<p>注册一个码云（gitee）账号</p>
+</li>
+<li>
+<p>创建一个仓库（加号）</p>
+</li>
+<li>
+<p>仓库设定</p>
+</li>
+</ol>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/gitee%E5%88%9B%E5%BB%BA%E5%9B%BE%E5%BA%8A%E4%BB%93%E5%BA%93.jpg alt=gitee创建图床仓库></p>
+</blockquote>
+</li>
+<li>
+<p>创建gitee访问token</p>
+<blockquote>
+<p>新建token，点击头像</p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/gitee%E7%A7%81%E4%BA%BA%E4%BB%A4%E7%89%8C1.jpg alt=gitee私人令牌1></p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/gitee%E7%A7%81%E4%BA%BA%E4%BB%A4%E7%89%8C2.jpg alt=gitee私人令牌2></p>
+</blockquote>
+</li>
+<li>
+<p>配置picgo</p>
+<blockquote>
+<p>打开终端输入以下命令，如果是自动安装，需要将picgo目录加入path，或者在picgo目录执行命令：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>#安装gitee的插件    </span>
+picgo install gitee-uploader 
+<span style=color:#080;font-style:italic>#设置配置文件    </span>
+picgo <span style=color:#a2f>set</span> uploader  
+1.按上下键找到gitee，回车    
+2.repo：用户名/仓库名 （打开自己的仓库，浏览器里的网址username/reponame）    
+3.token：刚才生成的token    	
+4.path:路径，图片上传到仓库的目录，例如img，即上传到仓库的img目录    
+5.custompath:不用填，回车   
+6.customURL:不用填，回车    
+<span style=color:#080;font-style:italic>#使用配置好的文件（配置文件在~/.picgo/config.json）    </span>
+picgo use uploader
+</code></pre></div></blockquote>
+</li>
+<li>
+<p>测试上传功能</p>
+<ul>
+<li>打开你typora，验证图片上传，查看是否成功；</li>
+<li>成功设置好图床，将一张图片拖到typora中，试一下能否自动上传</li>
+<li>手动上传图片可参考：<a href=https://gitee.com/dengdg/PicGo-Core>picgo gitee仓库</a>；</li>
+</ul>
+</li>
+</ol>
+<h3 id=git配置>Ⅱ、Git配置</h3>
+<h4 id=1git下载安装>1、Git下载安装</h4>
+<ol>
+<li>去<a href=https://git-scm.com/>官网</a>下载git;</li>
+<li>运行安装，选择安装路径，其他默认即可；</li>
+</ol>
+<h4 id=2基本配置>2、基本配置</h4>
+<ul>
+<li>配置全局用户名和邮箱</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>git config --global user.name &#34;用户名&#34;
+git config --global user.email &#34;邮箱&#34;
+</code></pre></div><ul>
+<li>生成公钥</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>ssh-keygen -t rsa -C &#34;邮箱地址&#34;
+</code></pre></div><p>在.ssh文件生成id_rsa和id_rsa.pub两个文件；</p>
+<h4 id=3配置公钥到github>3、配置公钥到github</h4>
+<blockquote>
+<p>setting->SSH and GPG keys：new SSH Key；</p>
+</blockquote>
+<h4 id=4配置公钥到gitee>4、配置公钥到gitee；</h4>
+<blockquote>
+<p>设置->ssh公钥->添加公钥；</p>
+</blockquote>
+<h3 id=hugo安装配置>Ⅲ、Hugo安装配置</h3>
+<p>Hugo 是一个基于Go语言开发的静态博客框架，号称世界上最快的构建网站工具；</p>
+<h4 id=1安装>1、安装</h4>
+<ul>
+<li>Windows安装：在<a href=https://github.com/gohugoio/hugo/releases>hugo github</a>下载windows版本包，解压到目录，并添加到PATH即可；</li>
+<li>Ubuntu安装：<code>sudo apt-get install hugo</code></li>
+</ul>
+<h4 id=2生成博客>2、生成博客</h4>
+<p>命令为：<code>hugo new site myblog</code>
+myblog为博客的目录名，可以修改为你自己想取的名字，生成的目录如下：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/hugo%E7%94%9F%E6%88%90%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95.png alt></p>
+<h4 id=3主题下载>3、主题下载</h4>
+<ul>
+<li>在<a href=https://themes.gohugo.io>hugo主题网站</a>找到喜欢的主题，我选的是<a href=https://themes.gohugo.io/themes/hugo-theme-next/>hexo主题</a>，可以在next主题的github地址<a href=https://github.com/elkan1788/hugo-theme-next>hugo-theme-next</a>下载;</li>
+<li>可以下载主题压缩包，解压到themes文件夹下，也可以直接使用git clone到themes目录下；</li>
+</ul>
+<h4 id=4主题配置>4、主题配置</h4>
+<ul>
+<li>将【exampleSite\config】和【exampleSite\content】两个目录拷贝到站点根目录下；</li>
+<li>content目录下有en和zh_CN两个目录，分别放英文和中文两个页面的md文件，默认的md文件可以删除，将需要发布的文章放入这两个目录即可；</li>
+<li>config目录下_default目录对站点的侧栏等功能进行配置，可以根据自己需要进行配置；</li>
+</ul>
+<h4 id=5主题修改>5、主题修改</h4>
+<p>由于默认主题生成的文章页面有些功能是不需要的，因此需要对themes下文件进行修改：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/themes%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8.png alt></p>
+<ul>
+<li>single.html修改，删除文章页面不需要的几个信息；
+<img src=https://gitee.com/qz757/picgo/raw/master/img/single.html%E4%BF%AE%E6%94%B9.png alt></li>
+<li>rss.html，直接删除文件内容即可；</li>
+<li>comment.html修改为自己的评论功能代码，我使用的是utteranc，可以参考<a href=#5%E3%80%81%E9%85%8D%E7%BD%AE%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD>5、配置评论功能</a>]；
+<img src=https://gitee.com/qz757/picgo/raw/master/img/comment.html%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9.png alt></li>
+<li>foot.html，删除页脚不需要的信息
+<img src=https://gitee.com/qz757/picgo/raw/master/img/foot.html%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9.png alt></li>
+</ul>
+<h4 id=6快速复制当前配置>6、快速复制当前配置</h4>
+<p>将config、content和themes三个目录拷贝到新创建的站点目录，将content下替换为文章文件即可。</p>
+<h4 id=7配置评论功能>7、配置评论功能</h4>
+<p><code>utterances</code>是一款基于Github Issue的Github工具，优点主要是无广告、加载快、配置简单，轻量开源。
+由于<code>utterances</code>是一款Github App，因此<a href="https://link.zhihu.com/?target=https%3A//github.com/apps/utterances">安装utterances</a>非常简单，只需要授权特定repo权限给<code>utterances</code>就可以了,注意一个点：授权的这个repo必须是public的，可以选择多个repo，但是建议选择一个就可以了，也比较安全。</p>
+<ul>
+<li>给出我授权的repo作为参考，我是选择博客的repo作为<code>utterances</code>评论的存放点(在博客评论的内容都会以issue的形式发布在repo下).
+<img src=https://gitee.com/qz757/picgo/raw/master/img/utterances%20APP%E9%85%8D%E7%BD%AE.png alt="utterances APP配置"></li>
+<li>将插入评论代码加到主题模板中：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:green;font-weight:700>script</span> <span style=color:#b44>src</span><span style=color:#666>=</span><span style=color:#b44>&#34;https://utteranc.es/client.js&#34;</span>
+<span style=color:#b44>repo</span><span style=color:#666>=</span><span style=color:#b44>&#34;qz757/qz757.github.io&#34;</span>
+<span style=color:#b44>issue-term</span><span style=color:#666>=</span><span style=color:#b44>&#34;title&#34;</span>
+<span style=color:#b44>theme</span><span style=color:#666>=</span><span style=color:#b44>&#34;preferred-color-scheme&#34;</span>
+<span style=color:#b44>crossorigin</span><span style=color:#666>=</span><span style=color:#b44>&#34;anonymous&#34;</span>
+<span style=color:#b44>async</span>&gt;
+&lt;/<span style=color:green;font-weight:700>script</span>&gt;
+</code></pre></div><p>这是当前最简单的配置方法， 也可以在<a href="https://link.zhihu.com/?target=https%3A//utteranc.es/%3Finstallation_id%3D14775258%26setup_action%3Dinstall">utterances官方</a>查看其他配置方法，以及详细的配置参数说明。</p>
+<h4 id=8hugo常用命令>8、Hugo常用命令</h4>
+<ol>
+<li><code>hugo server</code>本地启动服务进行预览，<code>localhost:1313</code>访问；</li>
+<li><code>hugo</code>生态静态网页文件到public目录；</li>
+<li><code>hugo -b url</code>，制定baseurl生成网页文件，所有文章的链接前缀都是以此生成的；</li>
+<li><code>hugo new post/first.md</code>，用模板生成md文件</li>
+</ol>
+<h3 id=obsidian配置>Ⅳ、Obsidian配置</h3>
+<p>Obsidian的安装和使用可参考我的另一篇文章：<a href=Obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE.md>Obsidian作为第二大脑工具的基本使用和配置 </a></p>
+<h2 id=三实现方案>三、实现方案</h2>
+<p>所有环境准备好后，终于要开始启动我们的自动化流程的实现了；</p>
+<h3 id=github和gitee-pages配置>Ⅰ、GitHub和Gitee Pages配置</h3>
+<ol>
+<li>Gitee Pages配置：
+<ul>
+<li>创建与用户名同名仓库；</li>
+<li>仓库主页->服务->Gitee Pages，选择对应的分支并开启https；</li>
+</ul>
+</li>
+<li>GitHub Pages配置：
+<ul>
+<li>创建名称为【用户名.gthub.io】的仓库；</li>
+<li>仓库主页->setting->Pages，选择对应的分支；</li>
+</ul>
+</li>
+</ol>
+<h3 id=github同步到gitee鉴权私钥配置>Ⅱ、GitHub同步到Gitee鉴权私钥配置</h3>
+<ol>
+<li>参考<a href=#%E2%85%A1%E3%80%81Git%E9%85%8D%E7%BD%AE>git配置</a>生成公私钥，并将公钥配置到Gitee；</li>
+<li>将私钥配置到GitHub仓库，Pages仓库主页->Settings→Secret→New repository secre 用于GiuHub Action提交代码到Gitee的鉴权，命名为GITEE_RSA_PRIVATE_KEY，将私钥填入；
+<img src=https://gitee.com/qz757/picgo/raw/master/img/GitHub%E6%B7%BB%E5%8A%A0Gitee%E7%A7%81%E9%92%A5.jpg alt></li>
+</ol>
+<h3 id=github仓库代码更新token配置>Ⅲ、GitHub仓库代码更新Token配置</h3>
+<ol>
+<li>生成GitHub账号的 personal access token
+<img src=https://gitee.com/qz757/picgo/raw/master/img/GitHub%E7%94%9F%E6%88%90ACCESS%20TOKEN.jpg alt>
+<img src=resource/GitHub%20ACCESS%20TOKEN%E9%85%8D%E7%BD%AE.jpg alt></li>
+<li>将仓库权限选上就行了，然后将生成的token，配到私钥配置的地方 仓库→Settings→Secret→New repository secre，命名为ACCESS_TOKEN；</li>
+</ol>
+<h3 id=配置gitee密码到github用于自动部署gitee-pages工程>Ⅳ、配置Gitee密码到Github用于自动部署Gitee Pages工程</h3>
+<p>同之前步骤相同，将Gitee密码配置到GitHub Secrets，命名为：GITEE_PASSWORD，所有配置结果如下：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/GitHub%20Secrets%E6%89%80%E6%9C%89%E9%85%8D%E7%BD%AE.jpg alt></p>
+<h3 id=编写actions脚本>Ⅴ、编写Actions脚本</h3>
+<p><strong>synctogitee.yml</strong></p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>deploy blog to gitee<span style=color:#bbb>
+</span><span style=color:#bbb> 
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>on</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>push</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>branches</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- master   <span style=color:#bbb> </span><span style=color:#080;font-style:italic># master 分支 push 的时候触发</span><span style=color:#bbb>
+</span><span style=color:#bbb>      
+</span><span style=color:#bbb></span><span style=color:green;font-weight:700>jobs</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>deploy</span>:<span style=color:#bbb> </span><span style=color:#080;font-style:italic>#执行部署Hugo生成静态代码，默认放在gh-pages分支</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>runs-on</span>:<span style=color:#bbb> </span>ubuntu-18.04<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>steps</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>uses</span>:<span style=color:#bbb> </span>actions/checkout@v2<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>submodules</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb>  </span><span style=color:#080;font-style:italic># Fetch Hugo themes (true OR recursive)</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>fetch-depth</span>:<span style=color:#bbb> </span><span style=color:#666>0</span><span style=color:#bbb>    </span><span style=color:#080;font-style:italic># Fetch all history for .GitInfo and .Lastmod</span><span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Setup Hugo<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>uses</span>:<span style=color:#bbb> </span>peaceiris/actions-hugo@v2<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>hugo-version</span>:<span style=color:#bbb> </span><span style=color:#b44>&#39;0.90.1&#39;</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>extended</span>:<span style=color:#bbb> </span><span style=color:#a2f;font-weight:700>true</span><span style=color:#bbb> </span><span style=color:#080;font-style:italic>#不需要extended版本就可以注释</span><span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Build github<span style=color:#bbb> </span><span style=color:#080;font-style:italic># 我的Hugo配置baseurl为GitHub Pages路径，使用hugo命令默认为GitHub Pages生成静态网站</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>run</span>:<span style=color:#bbb> </span>hugo<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Deploypage<span style=color:#bbb> </span><span style=color:#080;font-style:italic># 部署到GitHub Pages分支</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>uses</span>:<span style=color:#bbb> </span>peaceiris/actions-gh-pages@v3<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>personal_token</span>:<span style=color:#bbb> </span>${{ secrets.ACCESS_TOKEN }}<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>external_repository</span>:<span style=color:#bbb> </span>qz757/qz757.github.io<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>publish_branch: gh-pages  # default</span>:<span style=color:#bbb> </span>gh-pages<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>publish_dir</span>:<span style=color:#bbb> </span>./public<span style=color:#bbb>
+</span><span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Build gitee<span style=color:#bbb> </span><span style=color:#080;font-style:italic># 指定baseurl为giee Pages的url生成Gitee网站静态文件；</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>run</span>:<span style=color:#bbb> </span>hugo -b https://qz757.gitee.io<span style=color:#bbb>
+</span><span style=color:#bbb>          
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Deploygitee<span style=color:#bbb> </span><span style=color:#080;font-style:italic># 部署到Gitee对应的分支，该步骤是部署到GitHub仓库的对应分支</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>uses</span>:<span style=color:#bbb> </span>peaceiris/actions-gh-pages@v3<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>personal_token</span>:<span style=color:#bbb> </span>${{ secrets.ACCESS_TOKEN }}<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>external_repository</span>:<span style=color:#bbb> </span>qz757/qz757.github.io<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>publish_branch: gh-pages-gitee  # default</span>:<span style=color:#bbb> </span>gh-pages<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>publish_dir</span>:<span style=color:#bbb> </span>./public<span style=color:#bbb>
+</span><span style=color:#bbb>                
+</span><span style=color:#bbb>  
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>sync</span>:<span style=color:#bbb> </span><span style=color:#080;font-style:italic>#同步到gitee仓库</span><span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>needs</span>:<span style=color:#bbb> </span>deploy<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>runs-on</span>:<span style=color:#bbb> </span>ubuntu-latest<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>steps</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Sync to Gitee<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>uses</span>:<span style=color:#bbb> </span>wearerequired/git-mirror-action@master<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>env</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>SSH_PRIVATE_KEY</span>:<span style=color:#bbb> </span>${{ secrets.GITEE_RSA_PRIVATE_KEY }}<span style=color:#bbb>
+</span><span style=color:#bbb>      </span><span style=color:green;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#080;font-style:italic># 来源仓库</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>source-repo</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;git@github.com:qz757/qz757.github.io.git&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:#080;font-style:italic># 目标仓库</span><span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>destination-repo</span>:<span style=color:#bbb> </span><span style=color:#b44>&#34;git@gitee.com:qz757/qz757.git&#34;</span><span style=color:#bbb>
+</span><span style=color:#bbb>        
+</span><span style=color:#bbb>  </span><span style=color:green;font-weight:700>reload-pages</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>needs</span>:<span style=color:#bbb> </span>sync<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>runs-on</span>:<span style=color:#bbb> </span>ubuntu-latest<span style=color:#bbb>
+</span><span style=color:#bbb>    </span><span style=color:green;font-weight:700>steps</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>      </span>- <span style=color:green;font-weight:700>name</span>:<span style=color:#bbb> </span>Build Gitee Pages<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>uses</span>:<span style=color:#bbb> </span>yanglbme/gitee-pages-action@main<span style=color:#bbb>
+</span><span style=color:#bbb>        </span><span style=color:green;font-weight:700>with</span>:<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#080;font-style:italic># 注意替换为你的 Gitee 用户名</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>gitee-username</span>:<span style=color:#bbb> </span>qz757<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#080;font-style:italic># 注意在 Settings-&gt;Secrets 配置 GITEE_PASSWORD</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>gitee-password</span>:<span style=color:#bbb> </span>${{ secrets.GITEE_PASSWORD }}<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#080;font-style:italic># 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>gitee-repo</span>:<span style=color:#bbb> </span>qz757/qz757<span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:#080;font-style:italic># 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）</span><span style=color:#bbb>
+</span><span style=color:#bbb>          </span><span style=color:green;font-weight:700>branch</span>:<span style=color:#bbb> </span>gh-pages-gitee<span style=color:#bbb>
+</span></code></pre></div><h3 id=绑定gitee账号到微信公众号>Ⅵ、绑定Gitee账号到微信公众号</h3>
+<p>需要绑定Gitee账号到微信公众号，否则最后一步reload pages自动部署Gitee Pages会登录失败，原因是需要短信验证；绑定公众号后则不需要短信验证；其他问题解决可以参考<a href=https://github.com/yanglbme/gitee-pages-action/blob/main/README.md>gitee-pages-action</a></p>
+<h3 id=自动发布>Ⅶ、自动发布</h3>
+<ol>
+<li>将Hugo生成的工程文件整体提交到GitHub Pages工程master分支；</li>
+<li>查看Actions执行结果完成后，GitHub和Gitee Pages已自动部署完成；
+<img src=https://gitee.com/qz757/picgo/raw/master/img/Actions%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C.png alt></li>
+</ol>
+<h2 id=四后续使用>四、后续使用</h2>
+<p>在Typora完成文章编写后，一键上传所有图片到Gitee图床，拷贝发布到简书，然后提交到GitHub repo master分支，即可自动部署到GitHub和Gitee Pages；</p>
+<h2 id=结束>结束</h2>
+<p>以上就是我利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages，希望可以帮助大家快速构建自己的个人网站；后边我会继续完善我的第二大脑系统的构建思路和方法。</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/%e7%94%9f%e4%ba%a7%e5%8a%9b rel=tag title=生产力>#生产力#</a>
+<a href=/tags/hugo rel=tag title=Hugo>#Hugo#</a>
+<a href=/tags/github-actions rel=tag title="GitHub Actions">#GitHub Actions#</a>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+</div>
+<div class="post-nav-prev post-nav-item">
+<a href=https://qz757.gitee.io/post/productivity/obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/ rel=prev title=Obsidian作为第二大脑工具的基本使用和配置>
+Obsidian作为第二大脑工具的基本使用和配置
+<i class="fa fa-chevron-right"></i>
+</a>
+</div>
+</div>
+<script src=https://utteranc.es/client.js repo=qz757/qz757.github.io issue-term=title theme=preferred-color-scheme crossorigin=anonymous async></script>
+</footer>
+</article>
+</section>
+</div>
+</div>
+<div class=sidebar-toggle>
+<div class=sidebar-toggle-line-wrap>
+<span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+</div>
+</div>
+<aside id=sidebar class=sidebar>
+<div class=sidebar-inner>
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+文章目录
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+站点概览
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
+<div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
+<img class=site-author-image itemprop=image src=/img/head.jpg alt>
+<p class=site-author-name itemprop=name></p>
+<p class="site-description motion-element" itemprop=description>
+坚持做有趣的事，让生活简单快乐。
+</p>
+</div>
+<nav class="site-state motion-element">
+<div class="site-state-item site-state-posts">
+<a href=/post/>
+<span class=site-state-item-count>2</span>
+<span class=site-state-item-name>日志</span>
+</a>
+</div>
+<div class="site-state-item site-state-categories">
+<a href=/categories/>
+<span class=site-state-item-count>1</span>
+<span class=site-state-item-name>分类</span>
+</a>
+</div>
+<div class="site-state-item site-state-tags">
+<a href=/tags/>
+<span class=site-state-item-count>4</span>
+<span class=site-state-item-name>标签</span>
+</a>
+</div>
+</nav>
+<div class="links-of-author motion-element">
+<span class=links-of-author-item>
+<a href=https://github.com/qz757/ target=_blank title=GitHub>
+<i class="fa fa-fw fa-github"></i>
+GitHub
+</a>
+</span>
+<span class=links-of-author-item>
+<a href=https://www.jianshu.com/u/e8ca66cdb1d7 target=_blank title=简书>
+<i class="fa fa-fw fa-globe"></i>
+简书
+</a>
+</span>
+</div>
+<div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline">
+<div class=tagcloud-of-blogroll-title>
+<i class="fa fa-fw fa-tags"></i>
+标签云
+</div>
+<ul class=tagcloud-of-blogroll-list>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/%E7%94%9F%E4%BA%A7%E5%8A%9B>生产力</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/github-actions>Github actions</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/hugo>Hugo</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/obsidian>Obsidian</a>
+</li>
+</ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#简介>简介</a></li>
+<li><a href=#一流程设计>一、流程设计</a></li>
+<li><a href=#二环境准备>二、环境准备</a>
+<ul>
+<li><a href=#typora配置>Ⅰ、Typora配置</a></li>
+<li><a href=#git配置>Ⅱ、Git配置</a></li>
+<li><a href=#hugo安装配置>Ⅲ、Hugo安装配置</a></li>
+<li><a href=#obsidian配置>Ⅳ、Obsidian配置</a></li>
+</ul>
+</li>
+<li><a href=#三实现方案>三、实现方案</a>
+<ul>
+<li><a href=#github和gitee-pages配置>Ⅰ、GitHub和Gitee Pages配置</a></li>
+<li><a href=#github同步到gitee鉴权私钥配置>Ⅱ、GitHub同步到Gitee鉴权私钥配置</a></li>
+<li><a href=#github仓库代码更新token配置>Ⅲ、GitHub仓库代码更新Token配置</a></li>
+<li><a href=#配置gitee密码到github用于自动部署gitee-pages工程>Ⅳ、配置Gitee密码到Github用于自动部署Gitee Pages工程</a></li>
+<li><a href=#编写actions脚本>Ⅴ、编写Actions脚本</a></li>
+<li><a href=#绑定gitee账号到微信公众号>Ⅵ、绑定Gitee账号到微信公众号</a></li>
+<li><a href=#自动发布>Ⅶ、自动发布</a></li>
+</ul>
+</li>
+<li><a href=#四后续使用>四、后续使用</a></li>
+<li><a href=#结束>结束</a></li>
+</ul>
+</nav></div>
+</div>
+</section>
+</div>
+</aside>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=footer-inner>
+<div class=copyright>
+<span class=copyright-year>
+&copy; 2010 - 2021
+</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=copyright-author>Ethan的博客</span>
+</div>
+<div class=powered-info>
+<span class=powered-by>
+Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.90.1</a>
+</span>
+<span class=separator-line>/</span>
+<span class=theme-info>
+Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank> NexT
+</a>
+</span>
+</div>
+</div>
+</footer>
+<div class=back-to-top>
+<i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span>
+</div>
+</div>
+<script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
+<script type=text/javascript src=/js/search.js></script>
+<script type=text/javascript src=/js/affix.js></script>
+<script type=text/javascript src=/js/scrollspy.js></script>
+<script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ',requiredFields:['nick','mail'],serverURL:"Your WalineSerURL",lang:"zh-cn"})}):$('#wcomments').html('抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
+<script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>

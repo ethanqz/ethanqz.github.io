@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>关于我</title><url>https://qz757.gitee.io/about.html</url><categories/><tags/><content type="html"> 这是Ethan的博客空间，一个coder，一个技术Leader，同时也是一个希望生活更有趣，坚持思考的人。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages</title><url>https://qz757.gitee.io/post/productivity/%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages/</url><categories><category>生产力</category></categories><tags><tag>生产力</tag><tag>Hugo</tag><tag>GitHub Actions</tag></tags><content type="html"> 简介 现在个人博客通常有比较多的选择，如果不想要自己购买服务器实现静态博客的发布，可以在简书、CSDN等平台建立自己的账号并发布，但是原始数据无法在本地管理；如果想要数据完全自己管理，可以使用GitHub或者Gitee Pages功能发布自己的博客，利用Hugo或Hexo等成熟的静态博客将md文件转换成静态网站文件进行快速发布。本文就用来记录如何快速将博客发布到简书、GitHub以及Gitee Pages三个平台。
+一、流程设计 我希望的流程当然是主要精力用在写文章，发布的流程最好完全不需要手动处理，但实际情况下手动发布博客的流程大体是：
+编写->拷贝到简书->本地Hugo生成文件->提交到Github->提交到Gitee->Gitee页面刷新； 流程相对比较多，希望能够编写完md后只需要把源文件提交到GitHub即可实现GitHub和Gitee Pages的自动化部署。
+之前有使用过Travis CI+GitHub+Hexo自动发布到GitHub Pages，但是GitHub的访问经常不那么靠谱，因此想着也能同步到Gitee，并且自动构建Hexo的速度受Nodejs环境部署影响，速度很慢，因此本次计划采用Hugo来构建网站文件，整体流程设计如下：
+二、环境准备 为了满足博客自动发布流程，首先需要在本地准备好生产环境，以满足快速发布，以此的复杂是为了长期的简单，因此在环境准备阶段我会把所有涉及的工具都记录下来，以方便大家使用以及后边自己回顾，环境准备包含：
+Typora配置 Git配置 Hugo配置 Obsidian配置 Ⅰ、Typora配置 1、Typora基本配置 Obsidian完成知识积累后，按照ZK->Project->Archive->Blog的流程发布Blog，但是Obsidian的文件相互关联，且附件如何快速复用，需要对Typora和Obsidian都进行简单的配置，确保后续Blog能够快速完成并发布，并且文件仍在Obsidian工程中正常显示；
+Typora非常的简洁，而且可以实时预览，在写博客的时候经常会插入一些图片，截图后可以直接粘贴进去，图片也会自动保存在本地，这里需要注意图片的保存路径，在偏好设置里，设置插入图片时复制到指定路径（./resource/），这样复制的图片就会自动保存在当前文件夹下的resource文件夹里，方便后续管理与转移。
+2、使用Typora+picgo-core+gitee实现图床功能 安装Nodejs
+windows7安装 从官网下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本； 运行安装即可； ubuntu 20.04安装
+ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
+安装NodeSource：curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如12.x，将setup_14.x修改为setup_12.x； ​ 在写作的时候，NodeSource 软件源提供了以下版本：
+v14.x - 最新稳定版 v13.x v12.x - 最新长期版本 v10.x - 前一个长期版本 安装Nodejs和npm：sudo apt install nodejs，安装的版本node -v可查看是v14.18.2； 配置npm
+配置npm源为淘宝源，命令如下：
+npm config set registry https://registry.npm.taobao.org npm config get registry 安装picgo
+方法一、在上传服务中点击PicGo-Core(command line)
+自动下载的目录为：%AppData%\Typora\picgo
+方法二：在上传服务中点击Custom Command，打开终端，输入以下命令：
+sudo npm install --no-optional --verbose picgo -g #跳过可选依赖 在Gitee创建图床仓库
+注册一个码云（gitee）账号
+创建一个仓库（加号）
+仓库设定
+创建gitee访问token
+新建token，点击头像
+配置picgo
+打开终端输入以下命令，如果是自动安装，需要将picgo目录加入path，或者在picgo目录执行命令：
+#安装gitee的插件 picgo install gitee-uploader #设置配置文件 picgo set uploader 1.按上下键找到gitee，回车 2.repo：用户名/仓库名 （打开自己的仓库，浏览器里的网址username/reponame） 3.token：刚才生成的token 4.path:路径，图片上传到仓库的目录，例如img，即上传到仓库的img目录 5.custompath:不用填，回车 6.customURL:不用填，回车 #使用配置好的文件（配置文件在~/.picgo/config.json） picgo use uploader 测试上传功能
+打开你typora，验证图片上传，查看是否成功； 成功设置好图床，将一张图片拖到typora中，试一下能否自动上传 手动上传图片可参考：picgo gitee仓库； Ⅱ、Git配置 1、Git下载安装 去官网下载git; 运行安装，选择安装路径，其他默认即可； 2、基本配置 配置全局用户名和邮箱 git config --global user.name "用户名" git config --global user.email "邮箱" 生成公钥 ssh-keygen -t rsa -C "邮箱地址" 在.ssh文件生成id_rsa和id_rsa.pub两个文件；
+3、配置公钥到github setting->SSH and GPG keys：new SSH Key；
+4、配置公钥到gitee； 设置->ssh公钥->添加公钥；
+Ⅲ、Hugo安装配置 Hugo 是一个基于Go语言开发的静态博客框架，号称世界上最快的构建网站工具；
+1、安装 Windows安装：在hugo github下载windows版本包，解压到目录，并添加到PATH即可； Ubuntu安装：sudo apt-get install hugo 2、生成博客 命令为：hugo new site myblog myblog为博客的目录名，可以修改为你自己想取的名字，生成的目录如下： 3、主题下载 在hugo主题网站找到喜欢的主题，我选的是hexo主题，可以在next主题的github地址hugo-theme-next下载; 可以下载主题压缩包，解压到themes文件夹下，也可以直接使用git clone到themes目录下； 4、主题配置 将【exampleSite\config】和【exampleSite\content】两个目录拷贝到站点根目录下； content目录下有en和zh_CN两个目录，分别放英文和中文两个页面的md文件，默认的md文件可以删除，将需要发布的文章放入这两个目录即可； config目录下_default目录对站点的侧栏等功能进行配置，可以根据自己需要进行配置； 5、主题修改 由于默认主题生成的文章页面有些功能是不需要的，因此需要对themes下文件进行修改： single.html修改，删除文章页面不需要的几个信息； rss.html，直接删除文件内容即可； comment.html修改为自己的评论功能代码，我使用的是utteranc，可以参考5、配置评论功能]； foot.html，删除页脚不需要的信息 6、快速复制当前配置 将config、content和themes三个目录拷贝到新创建的站点目录，将content下替换为文章文件即可。
+7、配置评论功能 utterances是一款基于Github Issue的Github工具，优点主要是无广告、加载快、配置简单，轻量开源。 由于utterances是一款Github App，因此安装utterances非常简单，只需要授权特定repo权限给utterances就可以了,注意一个点：授权的这个repo必须是public的，可以选择多个repo，但是建议选择一个就可以了，也比较安全。
+给出我授权的repo作为参考，我是选择博客的repo作为utterances评论的存放点(在博客评论的内容都会以issue的形式发布在repo下). 将插入评论代码加到主题模板中： &lt;script src="https://utteranc.es/client.js" repo="qz757/qz757.github.io" issue-term="title" theme="preferred-color-scheme" crossorigin="anonymous" async> &lt;/script> 这是当前最简单的配置方法， 也可以在utterances官方查看其他配置方法，以及详细的配置参数说明。
+8、Hugo常用命令 hugo server本地启动服务进行预览，localhost:1313访问； hugo生态静态网页文件到public目录； hugo -b url，制定baseurl生成网页文件，所有文章的链接前缀都是以此生成的； hugo new post/first.md，用模板生成md文件 Ⅳ、Obsidian配置 Obsidian的安装和使用可参考我的另一篇文章：Obsidian作为第二大脑工具的基本使用和配置
+三、实现方案 所有环境准备好后，终于要开始启动我们的自动化流程的实现了；
+Ⅰ、GitHub和Gitee Pages配置 Gitee Pages配置： 创建与用户名同名仓库； 仓库主页->服务->Gitee Pages，选择对应的分支并开启https； GitHub Pages配置： 创建名称为【用户名.gthub.io】的仓库； 仓库主页->setting->Pages，选择对应的分支； Ⅱ、GitHub同步到Gitee鉴权私钥配置 参考git配置生成公私钥，并将公钥配置到Gitee； 将私钥配置到GitHub仓库，Pages仓库主页->Settings→Secret→New repository secre 用于GiuHub Action提交代码到Gitee的鉴权，命名为GITEE_RSA_PRIVATE_KEY，将私钥填入； Ⅲ、GitHub仓库代码更新Token配置 生成GitHub账号的 personal access token 将仓库权限选上就行了，然后将生成的token，配到私钥配置的地方 仓库→Settings→Secret→New repository secre，命名为ACCESS_TOKEN； Ⅳ、配置Gitee密码到Github用于自动部署Gitee Pages工程 同之前步骤相同，将Gitee密码配置到GitHub Secrets，命名为：GITEE_PASSWORD，所有配置结果如下： Ⅴ、编写Actions脚本 synctogitee.yml
+name:deploy blog to giteeon:push:branches:- master # master 分支 push 的时候触发jobs:deploy:#执行部署Hugo生成静态代码，默认放在gh-pages分支runs-on:ubuntu-18.04steps:- uses:actions/checkout@v2with:submodules:true# Fetch Hugo themes (true OR recursive)fetch-depth:0# Fetch all history for .GitInfo and .Lastmod- name:Setup Hugouses:peaceiris/actions-hugo@v2with:hugo-version:'0.90.1'extended:true#不需要extended版本就可以注释- name:Build github# 我的Hugo配置baseurl为GitHub Pages路径，使用hugo命令默认为GitHub Pages生成静态网站run:hugo- name:Deploypage# 部署到GitHub Pages分支uses:peaceiris/actions-gh-pages@v3with:personal_token:${{ secrets.ACCESS_TOKEN }}external_repository:qz757/qz757.github.iopublish_branch: gh-pages # default:gh-pagespublish_dir:./public- name:Build gitee# 指定baseurl为giee Pages的url生成Gitee网站静态文件；run:hugo -b https://qz757.gitee.io- name:Deploygitee# 部署到Gitee对应的分支，该步骤是部署到GitHub仓库的对应分支uses:peaceiris/actions-gh-pages@v3with:personal_token:${{ secrets.ACCESS_TOKEN }}external_repository:qz757/qz757.github.iopublish_branch: gh-pages-gitee # default:gh-pagespublish_dir:./publicsync:#同步到gitee仓库needs:deployruns-on:ubuntu-lateststeps:- name:Sync to Giteeuses:wearerequired/git-mirror-action@masterenv:SSH_PRIVATE_KEY:${{ secrets.GITEE_RSA_PRIVATE_KEY }}with:# 来源仓库source-repo:"git@github.com:qz757/qz757.github.io.git"# 目标仓库destination-repo:"git@gitee.com:qz757/qz757.git"reload-pages:needs:syncruns-on:ubuntu-lateststeps:- name:Build Gitee Pagesuses:yanglbme/gitee-pages-action@mainwith:# 注意替换为你的 Gitee 用户名gitee-username:qz757# 注意在 Settings->Secrets 配置 GITEE_PASSWORDgitee-password:${{ secrets.GITEE_PASSWORD }}# 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错gitee-repo:qz757/qz757# 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）branch:gh-pages-giteeⅥ、绑定Gitee账号到微信公众号 需要绑定Gitee账号到微信公众号，否则最后一步reload pages自动部署Gitee Pages会登录失败，原因是需要短信验证；绑定公众号后则不需要短信验证；其他问题解决可以参考gitee-pages-action
+Ⅶ、自动发布 将Hugo生成的工程文件整体提交到GitHub Pages工程master分支； 查看Actions执行结果完成后，GitHub和Gitee Pages已自动部署完成； 四、后续使用 在Typora完成文章编写后，一键上传所有图片到Gitee图床，拷贝发布到简书，然后提交到GitHub repo master分支，即可自动部署到GitHub和Gitee Pages；
+结束 以上就是我利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages，希望可以帮助大家快速构建自己的个人网站；后边我会继续完善我的第二大脑系统的构建思路和方法。</content></entry><entry><title>关于我</title><url>https://qz757.gitee.io/about.html</url><categories/><tags/><content type="html"> 这是Ethan的博客空间，一个coder，一个技术Leader，同时也是一个希望生活更有趣，坚持思考的人。
 更多信息请访问GitHub.</content></entry><entry><title>Obsidian作为第二大脑工具的基本使用和配置</title><url>https://qz757.gitee.io/post/productivity/obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE/</url><categories><category>生产力</category></categories><tags><tag>Obsidian</tag><tag>生产力</tag></tags><content type="html"> 简介 作为第二大脑系统的笔记软件，本片我们来讲一下Obsidian的基本使用和配置。关于“第二大脑系统笔记方法选择和软件选型”我会单独写一篇Bolg进行说明。作为第二大脑系统的笔记，需要满足日常笔记的快速编写，并且能够支持PC、手机、Pad多平台同步，同时Obsidian支持通过插件进行扩展，因此我将分基本功能使用和配置、核心插件配置和使用、第三方插件配置和使用、工作区布局几个维度进行说明。
 一、为什么选择Obsidian 关于我的第二大脑系统构筑的思路、方案以及选型，我会单独写一篇《第二大脑系统笔记方法选择和软件选型》进行说明，可以参考这边文章。
 二、Obsidian基本功能使用和配置 Ⅰ、下载安装 下载：Obsidian官网； 选择对应的版本下载安装； Ⅱ、打开工程 打开文件夹当做工程，如果是空文件夹，则会将文件夹名当做工程名； 也可以新建工程； 配置工程语言为中文； Ⅲ、创建新文件夹和文件 与其他编辑器类似，可以直接创建新文件夹和文件，创建的文件为md格式； Ⅳ、对Obsidian进行基本配置 1、文件与链接配置 修改文件链接的描述使用MarkDown标准语法，确保和Typora一致，同时配置附件拷贝目录为当前文件坐在resource目录，可以同Typora一致；
