@@ -228,7 +228,7 @@ async>
 
 ### Ⅳ、Obsidian配置
 
-Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](Obsidian作为第二大脑工具的基本使用和配置.md )
+Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](../obsidian作为第二大脑工具的基本使用和配置 )
 
 ## 三、实现方案
 
