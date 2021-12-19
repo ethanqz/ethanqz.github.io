@@ -63,7 +63,7 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
 
       ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
 
-    	 a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
+    	a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
 	 
     	NodeSource 软件源提供了以下版本：
       -   v14.x - 最新稳定版
@@ -246,7 +246,7 @@ Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二
  ### Ⅲ、GitHub仓库代码更新Token配置
  1. 生成GitHub账号的 personal access token
 ![](https://gitee.com/qz757/picgo/raw/master/img/GitHub生成ACCESS%20TOKEN.jpg)
-![](resource/GitHub%20ACCESS%20TOKEN配置.jpg)
+![](006-Blog-博客/resource/GitHub%20ACCESS%20TOKEN配置.jpg)
 2. 将仓库权限选上就行了，然后将生成的token，配到私钥配置的地方 仓库→Settings→Secret→New repository secre，命名为ACCESS_TOKEN；
 ### Ⅳ、配置Gitee密码到Github用于自动部署Gitee Pages工程
 
