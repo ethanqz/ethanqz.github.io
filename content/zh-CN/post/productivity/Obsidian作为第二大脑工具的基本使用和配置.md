@@ -10,6 +10,7 @@ categories : [
     "生产力",
 ]
 toc : true
+typora-copy-images-to: upload
 ---
 ![Obsidian图标](https://gitee.com/qz757/picgo/raw/master/img/Obsidian图标.jpg)
 

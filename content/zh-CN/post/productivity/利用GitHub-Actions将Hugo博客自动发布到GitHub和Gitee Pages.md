@@ -11,6 +11,7 @@ categories : [
     "生产力",
 ]
 toc : true
+typora-copy-images-to: upload
 ---
 ![工作协同图片](https://gitee.com/qz757/picgo/raw/master/img/工作协同图片.jpg)
 
@@ -54,23 +55,23 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
 
    - windows7安装
 
-   > 1. 从[官网](https://nodejs.org/en/download/)下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
+    1. 从[官网](https://nodejs.org/en/download/)下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
 
-   > 2. 运行安装即可；
+    2. 运行安装即可；
 
    - ubuntu 20.04安装
 
       ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
 
-    > 1. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
+     1. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
 
-      > ​      在写作的时候，NodeSource 软件源提供了以下版本：
+      > NodeSource 软件源提供了以下版本：
       > -   v14.x - 最新稳定版
       > -   v13.x
       > -   v12.x - 最新长期版本
       > -   v10.x - 前一个长期版本
 
-   > 2. 安装Nodejs和npm：`sudo apt install nodejs`，安装的版本`node -v`可查看是`v14.18.2`；
+    2. 安装Nodejs和npm：`sudo apt install nodejs`，安装的版本`node -v`可查看是`v14.18.2`；
 
 2. 配置npm
 
@@ -85,7 +86,7 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
 
    - 方法一、在上传服务中点击PicGo-Core(command line)
 
-     > 自动下载的目录为：%AppData%\Typora\picgo
+     `自动下载的目录为：%AppData%\Typora\picgo`
 
    - 方法二：在上传服务中点击Custom Command，打开终端，输入以下命令：
 
@@ -95,39 +96,34 @@ sudo npm install --no-optional --verbose picgo -g #跳过可选依赖
 
 4. 在Gitee创建图床仓库
 
-   > 1. 注册一个码云（gitee）账号
-   > 2. 创建一个仓库（加号）
-   >
-   > 3. 仓库设定
-   >
-   > ![gitee创建图床仓库](https://gitee.com/qz757/picgo/raw/master/img/gitee创建图床仓库.jpg)
+    a. 注册一个码云（gitee）账号
+    b. 创建一个仓库（加号）
+    c. 仓库设定
+    ![gitee创建图床仓库](https://gitee.com/qz757/picgo/raw/master/img/gitee创建图床仓库.jpg)
 
-5. 创建gitee访问token
+    d. 创建gitee访问token
 
-   > 新建token，点击头像
-   >
-   > ![gitee私人令牌1](https://gitee.com/qz757/picgo/raw/master/img/gitee私人令牌1.jpg)
-   >
-   > ![gitee私人令牌2](https://gitee.com/qz757/picgo/raw/master/img/gitee私人令牌2.jpg)
+    -  新建token，点击头像
+    ![gitee私人令牌1](https://gitee.com/qz757/picgo/raw/master/img/gitee私人令牌1.jpg)
+    ![gitee私人令牌2](https://gitee.com/qz757/picgo/raw/master/img/gitee私人令牌2.jpg)
 
-6. 配置picgo
+    e. 配置picgo
 
-   > 打开终端输入以下命令，如果是自动安装，需要将picgo目录加入path，或者在picgo目录执行命令：
-   >
-   > ```shell
-   > #安装gitee的插件    
-   > picgo install gitee-uploader 
-   > #设置配置文件    
-   > picgo set uploader  
-   > 1.按上下键找到gitee，回车    
-   > 2.repo：用户名/仓库名 （打开自己的仓库，浏览器里的网址username/reponame）    
-   > 3.token：刚才生成的token    	
-   > 4.path:路径，图片上传到仓库的目录，例如img，即上传到仓库的img目录    
-   > 5.custompath:不用填，回车   
-   > 6.customURL:不用填，回车    
-   > #使用配置好的文件（配置文件在~/.picgo/config.json）    
-   > picgo use uploader
-   > ```
+    打开终端输入以下命令，如果是自动安装，需要将picgo目录加入path，或者在picgo目录执行命令：
+    ```shell
+    #安装gitee的插件    
+    picgo install gitee-uploader 
+    #设置配置文件    
+    picgo set uploader  
+    1.按上下键找到gitee，回车    
+    2.repo：用户名/仓库名 （打开自己的仓库，浏览器里的网址username/reponame）    
+    3.token：刚才生成的token    	
+    4.path:路径，图片上传到仓库的目录，例如img，即上传到仓库的img目录    
+    5.custompath:不用填，回车   
+    6.customURL:不用填，回车    
+    #使用配置好的文件（配置文件在~/.picgo/config.json）    
+    picgo use uploader
+    ```
 
    
 
@@ -228,7 +224,7 @@ async>
 
 ### Ⅳ、Obsidian配置
 
-Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](../obsidian作为第二大脑工具的基本使用和配置 )
+Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](obsidian作为第二大脑工具的基本使用和配置 )
 
 ## 三、实现方案
 
