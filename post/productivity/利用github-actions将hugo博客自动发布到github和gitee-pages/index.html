@@ -122,7 +122,7 @@
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>5335 字</span>
+<span class=leancloud-world-count>5327 字</span>
 </span>
 <span>
 |
@@ -176,8 +176,7 @@
 <li>
 <p>ubuntu 20.04安装</p>
 <p>ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；</p>
-<pre><code>a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
-</code></pre>
+<p>a. 安装NodeSource：<code>curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -</code>，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如<code>12.x</code>，将<code>setup_14.x</code>修改为<code>setup_12.x</code>；</p>
 <p>NodeSource 软件源提供了以下版本：</p>
 <ul>
 <li>v14.x - 最新稳定版</li>
@@ -359,7 +358,7 @@ myblog为博客的目录名，可以修改为你自己想取的名字，生成�
 <ol>
 <li>生成GitHub账号的 personal access token
 <img src=https://gitee.com/qz757/picgo/raw/master/img/GitHub%E7%94%9F%E6%88%90ACCESS%20TOKEN.jpg alt>
-<img src=resource/GitHub%20ACCESS%20TOKEN%E9%85%8D%E7%BD%AE.jpg alt></li>
+<img src=006-Blog-%E5%8D%9A%E5%AE%A2/resource/GitHub%20ACCESS%20TOKEN%E9%85%8D%E7%BD%AE.jpg alt></li>
 <li>将仓库权限选上就行了，然后将生成的token，配到私钥配置的地方 仓库→Settings→Secret→New repository secre，命名为ACCESS_TOKEN；</li>
 </ol>
 <h3 id=配置gitee密码到github用于自动部署gitee-pages工程>Ⅳ、配置Gitee密码到Github用于自动部署Gitee Pages工程</h3>
