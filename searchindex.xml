@@ -6,12 +6,14 @@
 Typora配置 Git配置 Hugo配置 Obsidian配置 Ⅰ、Typora配置 1、Typora基本配置 Obsidian完成知识积累后，按照ZK->Project->Archive->Blog的流程发布Blog，但是Obsidian的文件相互关联，且附件如何快速复用，需要对Typora和Obsidian都进行简单的配置，确保后续Blog能够快速完成并发布，并且文件仍在Obsidian工程中正常显示；
 Typora非常的简洁，而且可以实时预览，在写博客的时候经常会插入一些图片，截图后可以直接粘贴进去，图片也会自动保存在本地，这里需要注意图片的保存路径，在偏好设置里，设置插入图片时复制到指定路径（./resource/），这样复制的图片就会自动保存在当前文件夹下的resource文件夹里，方便后续管理与转移。
 2、使用Typora+picgo-core+gitee实现图床功能 安装Nodejs
-windows7安装 从官网下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
-运行安装即可；
+windows7安装
+a. 从官网下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
+b. 运行安装即可；
 ubuntu 20.04安装
 ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
-安装NodeSource：curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如12.x，将setup_14.x修改为setup_12.x； NodeSource 软件源提供了以下版本：
-v14.x - 最新稳定版 v13.x v12.x - 最新长期版本 v10.x - 前一个长期版本 安装Nodejs和npm：sudo apt install nodejs，安装的版本node -v可查看是v14.18.2； 配置npm
+a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`； NodeSource 软件源提供了以下版本：
+v14.x - 最新稳定版 v13.x v12.x - 最新长期版本 v10.x - 前一个长期版本 b. 安装Nodejs和npm：sudo apt install nodejs，安装的版本node -v可查看是v14.18.2；
+配置npm
 配置npm源为淘宝源，命令如下：
 npm config set registry https://registry.npm.taobao.org npm config get registry 安装picgo
 方法一、在上传服务中点击PicGo-Core(command line)
