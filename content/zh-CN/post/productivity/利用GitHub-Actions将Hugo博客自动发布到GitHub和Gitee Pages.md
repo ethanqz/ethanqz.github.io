@@ -55,23 +55,23 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
 
    - windows7安装
 
-    1. 从[官网](https://nodejs.org/en/download/)下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
+    	a. 从[官网](https://nodejs.org/en/download/)下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
 
-    2. 运行安装即可；
+    	b. 运行安装即可；
 
    - ubuntu 20.04安装
 
       ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
 
-     1. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
+    	 a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
+	 
+    	NodeSource 软件源提供了以下版本：
+      -   v14.x - 最新稳定版
+      -   v13.x
+      -   v12.x - 最新长期版本
+      -   v10.x - 前一个长期版本
 
-      > NodeSource 软件源提供了以下版本：
-      > -   v14.x - 最新稳定版
-      > -   v13.x
-      > -   v12.x - 最新长期版本
-      > -   v10.x - 前一个长期版本
-
-    2. 安装Nodejs和npm：`sudo apt install nodejs`，安装的版本`node -v`可查看是`v14.18.2`；
+    	b. 安装Nodejs和npm：`sudo apt install nodejs`，安装的版本`node -v`可查看是`v14.18.2`；
 
 2. 配置npm
 
@@ -224,7 +224,7 @@ async>
 
 ### Ⅳ、Obsidian配置
 
-Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](obsidian作为第二大脑工具的基本使用和配置 )
+Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](../obsidian作为第二大脑工具的基本使用和配置 )
 
 ## 三、实现方案
 
