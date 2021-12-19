@@ -122,7 +122,7 @@
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>5323 字</span>
+<span class=leancloud-world-count>5335 字</span>
 </span>
 <span>
 |
@@ -168,24 +168,16 @@
 <li>
 <p>安装Nodejs</p>
 <ul>
-<li>windows7安装</li>
-</ul>
-<ol>
 <li>
-<p>从<a href=https://nodejs.org/en/download/>官网</a>下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；</p>
+<p>windows7安装</p>
+<p>a. 从<a href=https://nodejs.org/en/download/>官网</a>下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；</p>
+<p>b. 运行安装即可；</p>
 </li>
-<li>
-<p>运行安装即可；</p>
-</li>
-</ol>
-<ul>
 <li>
 <p>ubuntu 20.04安装</p>
 <p>ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；</p>
-<ol>
-<li>安装NodeSource：<code>curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -</code>，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如<code>12.x</code>，将<code>setup_14.x</code>修改为<code>setup_12.x</code>；</li>
-</ol>
-<blockquote>
+<pre><code>a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
+</code></pre>
 <p>NodeSource 软件源提供了以下版本：</p>
 <ul>
 <li>v14.x - 最新稳定版</li>
@@ -193,12 +185,9 @@
 <li>v12.x - 最新长期版本</li>
 <li>v10.x - 前一个长期版本</li>
 </ul>
-</blockquote>
+<p>b. 安装Nodejs和npm：<code>sudo apt install nodejs</code>，安装的版本<code>node -v</code>可查看是<code>v14.18.2</code>；</p>
 </li>
 </ul>
-<ol start=2>
-<li>安装Nodejs和npm：<code>sudo apt install nodejs</code>，安装的版本<code>node -v</code>可查看是<code>v14.18.2</code>；</li>
-</ol>
 </li>
 <li>
 <p>配置npm</p>
@@ -342,7 +331,7 @@ myblog为博客的目录名，可以修改为你自己想取的名字，生成�
 <li><code>hugo new post/first.md</code>，用模板生成md文件</li>
 </ol>
 <h3 id=obsidian配置>Ⅳ、Obsidian配置</h3>
-<p>Obsidian的安装和使用可参考我的另一篇文章：<a href=obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE>Obsidian作为第二大脑工具的基本使用和配置 </a></p>
+<p>Obsidian的安装和使用可参考我的另一篇文章：<a href=../obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE>Obsidian作为第二大脑工具的基本使用和配置 </a></p>
 <h2 id=三实现方案>三、实现方案</h2>
 <p>所有环境准备好后，终于要开始启动我们的自动化流程的实现了；</p>
 <h3 id=github和gitee-pages配置>Ⅰ、GitHub和Gitee Pages配置</h3>
