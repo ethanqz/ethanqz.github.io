@@ -1,0 +1,529 @@
+<!doctype html><html lang=zh-cn dir=content/zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests">
+<title> 以Obsidian为核心构筑第二大脑 - Ethan的博客 </title>
+<meta name=keywords content="博客,程序员,思考,读书,笔记，管理">
+<meta property="og:title" content="以Obsidian为核心构筑第二大脑">
+<meta property="og:site_name" content="Ethan的博客">
+<meta property="og:image" content="/img/author.jpg">
+<meta name=title content="以Obsidian为核心构筑第二大脑 - Ethan的博客">
+<meta name=description content="介绍介绍我的第二大脑构建流程方法和具体实现">
+<link rel="shortcut icon" href=/img/favicon.ico>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
+<link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+</head>
+<body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
+<div class="container one-collumn sidebar-position-left page-home">
+<div class=headband></div>
+<header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
+<div class=header-inner> <div class=site-brand-container>
+<div class=site-nav-toggle>
+<div class=toggle role=button style=opacity:1;top:0>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+</div>
+</div>
+<div class=site-meta>
+<div class=multi-lang-switch>
+<i class="fa fa-fw fa-language" style=margin-right:5px></i>
+<a class=lang-link id=zh-cn href=#>中文</a>
+</div>
+<div class=custom-logo-site-title>
+<a href=/ class=brand rel=start>
+<span class=logo-line-before><i></i></span>
+<span class=site-title>Ethan的博客</span>
+<span class=logo-line-after><i></i></span>
+</a>
+</div>
+<p class=site-subtitle>坚持做有趣的事，让生活简单快乐。</p>
+</div>
+<div class=site-nav-right>
+<div class="toggle popup-trigger" style=opacity:1;top:0>
+<i class="fa fa-search fa-fw fa-lg"></i>
+</div>
+</div>
+</div>
+<nav class=site-nav>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a href=/ rel=section>
+<i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页
+</a>
+</li>
+<li class=menu-item>
+<a href=/post rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>博客
+</a>
+</li>
+<li class=menu-item>
+<a href=/about.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我
+</a>
+</li>
+<li class="menu-item menu-item-search">
+<a href=javascript:; class=popup-trigger> <i class="menu-item-icon fa fa-search fa-fw"></i> <br> 搜索</a>
+</li>
+</ul>
+<div class=site-search>
+<div class="popup search-popup local-search-popup">
+<div class="local-search-header clearfix">
+<span class=search-icon><i class="fa fa-search"></i> </span>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span>
+<div class=local-search-input-wrapper>
+<input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off>
+</div>
+</div>
+<div id=local-search-result></div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main id=main class=main>
+<div class=main-inner>
+<div class=content-wrap>
+<div id=content class=content>
+<section id=posts class=posts-expand>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=https://qz757.github.io/post/productivity/%E4%BB%A5obsidian%E4%B8%BA%E6%A0%B8%E5%BF%83%E6%9E%84%E7%AD%91%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91/ itemprop=url>
+以Obsidian为核心构筑第二大脑
+</a>
+</h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-20">
+2021-12-20
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>生产力</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>5608 字</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>12分钟</span>
+</span>
+<span id=/post/productivity/%E4%BB%A5obsidian%E4%B8%BA%E6%A0%B8%E5%BF%83%E6%9E%84%E7%AD%91%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91/ class=leancloud_visitors data-flag-title=以Obsidian为核心构筑第二大脑>
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>阅读次数：</span>
+<span class=leancloud-visitors-count></span>
+</span>
+</div>
+</header>
+<div class=post-body itemprop=articleBody>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91.jpg alt=第二大脑></p>
+<h2 id=简介>简介</h2>
+<p>第二大脑就像我们个人为自己构建的个人图书馆，并且我们有个人独特的关联、索引系统，在我们需要时，可以快速从中提取中我们需要的信息，完成我们的内容获取和输出。
+因此，为了满足我的第二大脑知识体系构筑，我了解了多种笔记方法进行试用，最终选择了适合自己学习状态的笔记方法，并进行组合，最终形成自己的方法和工具流。以下，我将对笔记方法的选择、匹配以及实现进行说明。</p>
+<h2 id=一目的>一、目的</h2>
+<p>首先要搞清楚为什么需要个人第二大脑系统，因为我们的大脑产生的想法，会远大于能够精准存储的数量，例如平时在工作、生活中，总是会在看到某个电影、某个景色或者读到某一本书的某一段话时，产生各种各样的灵感，但是无法成系统，或者是看过一本书、一篇文章后，想要用的时候发现找不到，当时做的读书笔记等信息也散落各处，无法快速使用，因此需要在大脑之外构建第二大脑，将散落各处的灵感、笔记等知识汇总到一起，需要使用时便能快速从第二大脑加载到”第一大脑中“；</p>
+<h2 id=二第二大脑工作流>二、第二大脑工作流</h2>
+<p>构筑第二大脑，不只是需要选择一个笔记系统，然后实时记录下笔记这么简单，而是需要对我们平时的工作、学习、读书流程做一个整体的规划，因为我的工作内容的原因，我这里不做工作类第二大脑的构建，只做生活中学习、随想、知识拓展类的流程设计。首先来看下整体思路：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E4%BD%9C%E6%B5%81.png alt=第二大脑工作流>
+这个流程有参考老石在b站的视频，需要可以看看：
+<div style=position:relative;padding-bottom:75%;width:100%;height:0>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1db4y1b7w5&page=" scrolling=no border=0 frameborder=no framespacing=0 allowfullscreen style=position:absolute;height:100%;width:100%></iframe>
+</div></p>
+<p>我会从内容积累、重点提取和信息整合三个阶段来介绍第二大脑是如何工作的；在此之前，先介绍下在重点提取阶段需要用到的笔记法的选择；</p>
+<h2 id=三笔记方法选择>三、笔记方法选择</h2>
+<p>第二大脑的基础是有合理的笔记方法进行支撑，因此需要选择适合自己的笔记方法，因此通过对不同笔记方法的了解，最终选用了PARA笔记法和卢曼卡片盒笔记法结合作为自己的第二大脑基本的笔记方法，同时也使用子弹笔记或者只是使用flomo对平时的事物和灵感进行记录。</p>
+<h3 id=para笔记法>Ⅰ、P.A.R.A.笔记法</h3>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/PARA%E5%9B%BE%E6%A0%87.jpg alt=PARA图标></p>
+<h4 id=1什么是para笔记法>1、什么是P.A.R.A.笔记法</h4>
+<p>P.A.R.A 的作者是 <a href=https://fortelabs.co/about-forte-labs>Tiago Forte</a>，是世界上最著名的生产力专家之一。他通过自己的项目在全世界教育了 2 万多人，并撰写和演讲技术如何帮助知识工作者彻底改变他们的个人效率。Tiago 的在线课程《<a href=https://www.buildingasecondbrain.com/>打造第二大脑（Building a Second Brain）</a>》已经有来自 70 多个国家的 1000 多名学生参加了该课程。</p>
+<h4 id=2para笔记法的定义>2、P.A.R.A.笔记法的定义</h4>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/PARA%E7%9A%84%E5%90%AB%E4%B9%89%E5%92%8C%E5%AE%9A%E4%B9%89.jpg alt=PARA的含义和定义>
+P.A.R.A. 是 <strong>项目（Project）、领域（Area）、资源（Resource）、 档案（Archive)的简称。</strong>
+这四个一级分类涵盖了你在工作和生活中可能遇到的所有类型的信息。下面是每个模块的定义，也是这套方法论的核心。</p>
+<ul>
+<li><strong>项目：</strong> 具有明确的目标以及时间范围，是最小执行单位</li>
+<li><strong>领域：</strong> 你日常需要精进的领域（所以你需要为此负责）</li>
+<li><strong>资源：</strong> 你感兴趣的事情，也是支撑现在 Area 和将来 Area 的外部知识储备</li>
+<li><strong>归档：</strong> 沉寂的内容，但也许对未来有用</li>
+</ul>
+<p>**围绕 Area 的精进，我们需要不断吸收外部的有效信息和进行阶段性的「创作」，**而阶段性的创作需要的主题，可以是 Area 的拆分，也可以是基于 Project 的抽象和总结，但来源主要是通过实践（Project）和理论来进行的（即 Resource——外部参考、经验、方法论）。</p>
+<h4 id=3para的工作流程>3、P.A.R.A.的工作流程</h4>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/PARA%E6%B5%81%E7%A8%8B.jpg alt=PARA流程>
+P.A.R.A.是一个动态系统，是需要知识在四个类别之间不断流动，通过一个个项目充实我们的领域，在此过程我们会积累很多的resource，以此来充实我们的领域，同时也会完善我们的项目，归档的知识可以供以后不断使用。</p>
+<h4 id=4参考>4、参考</h4>
+<p>本章节很多地方参考了<a href=https://pmthinking.com/>产品沉思录</a>的<a href=https://index.pmthinking.com/P-A-R-A-Notion-19909e5aac3049d887197dcfb1e97fd5>P.A.R.A. 的 Notion 实践</a>，对P.A.R.A.和Notion有兴趣的可以看下原文。</p>
+<h3 id=卢曼卡片盒笔记法the-zettelkasten-method>Ⅱ、卢曼卡片盒笔记法(the Zettelkasten Method)</h3>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E5%8D%A2%E6%9B%BC%E5%8D%A1%E7%89%87%E7%9B%92%E7%AC%94%E8%AE%B0%E6%B3%95%E6%8A%BD%E5%B1%89.jpg alt=卢曼卡片盒笔记法抽屉></p>
+<h4 id=1什么是卡片盒笔记法>1、什么是卡片盒笔记法</h4>
+<p>卡片盒笔记系统是一款个性化的，用于思考和写作的工具。它具有超文本(hypertext)的特点，让你的所思所想互相连接形成网络。与其他系统不同的是，你<strong>创造的是一张由你的想法、看法、灵感、或者遇到的具体的知识组成的思想之网(web of thoughts)，而不是孤立的笔记</strong>。它强调笔记之间的连接关系，而非把所有笔记堆在一起。
+<strong>原子化的笔记就是一条想法(One thought)</strong>，而卡片盒笔记系统就是由想法组成的想法之网(web of thought)；因此我们要给每条笔记设置唯一的编号，并且将相关的笔记链接起来，就形成了我们的笔记网。
+卡片盒笔记系统是个性化的思考和写作的工具，他不是目的，二十手段：</p>
+<ol>
+<li>它是如同网页一般的超文本；</li>
+<li>它坚持笔记原子化的原则(Atomicity)；</li>
+<li>它是个性化的；</li>
+</ol>
+<h4 id=2一个卡片笔记的内容>2、一个卡片笔记的内容</h4>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E4%B8%80%E7%AF%87%E5%8D%A1%E7%89%87%E7%AC%94%E8%AE%B0%E7%9A%84%E6%9E%84%E6%88%90.jpg alt=一篇卡片笔记的构成>
+单个笔记或者说 Zettel 是什么样的呢？每条笔记由三部分组成：</p>
+<ol>
+<li><strong>唯一标识符</strong>：它为你的笔记提供一个明确的地址；</li>
+<li><strong>笔记的正文</strong>：这是你记录的笔记内容，一般为一段简短的原子化的信息，必须是自己的语言写下的，不要是招录或者直接拷贝；</li>
+<li><strong>参考文献</strong>：如果你的内容来源于外部，你可以在每条笔记的底部写上信息来源，如果你记录的是你自己的想法，则留空。
+一个完整的卡片笔记是这样的：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84%E5%8D%A1%E7%89%87%E7%AC%94%E8%AE%B0.jpg alt=一个完整的卡片笔记></li>
+</ol>
+<h4 id=3哪些笔记应该进入卡片盒>3、哪些笔记应该进入卡片盒</h4>
+<p>虽然你可以在笔记里写任何东西，但是我建议<strong>输入知识而非信息</strong>(Knowledge instead of information)。
+在完成一个项目的过程中，我们会产生很多与项目相关但是必须要在本次项目中体现的副产品，那这些想法建议也放入卡片盒中，除非你知道这个想法以后永远不会用到，如果不确定，就记录下来，因为这些想法很可能会让你产生更丰富的想法，有一天如果用到可以通过卡片盒迅速找到。
+<img src=https://gitee.com/qz757/picgo/raw/master/img/%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BA%A7%E7%94%9F%E5%89%AF%E4%BA%A7%E5%93%81.jpg alt=项目过程中产生副产品>
+但是还是建议在一个项目过程中不要偏离主线太多，当然集中精力或者允许一些偏离，这与 卡片盒笔记系统Method 无关，更多的取决于你个人的情况。</p>
+<h4 id=4卡片盒笔记的实践>4、卡片盒笔记的实践</h4>
+<ol>
+<li>
+<p>软件选择：Obsidian</p>
+<ul>
+<li>能够创建超文本</li>
+<li>全文搜索和跟随链接</li>
+<li>沙盒功能</li>
+<li>网状图</li>
+</ul>
+</li>
+<li>
+<p>实现</p>
+<ul>
+<li>使用Obsidian的zk卡片功能，创建和管理卡片盒笔记；</li>
+<li>通过将相关的卡片链接，形成网状图；</li>
+<li>通过标签构建索引；</li>
+</ul>
+</li>
+</ol>
+<h4 id=5参考>5、参考</h4>
+<p>卡片笔记思路主要参考了：<a href=https://zettelkasten.de/introduction/zh/>卢曼卡片盒笔记法介绍</a>，更详细的信息可以参见原文。</p>
+<h3 id=子弹笔记>Ⅲ、子弹笔记</h3>
+<h4 id=1什么是子弹笔记>1、什么是子弹笔记</h4>
+<p>作为前手账er，子弹笔记（bujo）久仰大名，去掉锦上添花的排版装饰，bujo的核心其实是一种“快速记录”的方式，bullet，像子弹一样快。
+<strong>只需要掌握3种符号就够了：</strong></p>
+<ol>
+<li>●点：任务（task）</li>
+<li>○圆圈：事件（event）</li>
+<li>-横线：笔记短句（note）
+至于如何标记任务的完成、推移、删除等，都可以按自己的喜好（这3个符号也可以替换）。</li>
+</ol>
+<h4 id=2使用方法>2、使用方法</h4>
+<p><strong>子弹笔记结构主要包括3个部分：</strong></p>
+<ol>
+<li>目录（index）</li>
+<li>每日记录（daily log）</li>
+<li>个性化集子（collection）</li>
+</ol>
+<p>虽然通常来讲还有月度记录（monthly log）和未来记录（future log），不过这些我通常都一并算在个性化集子里。
+虽然网上介绍bujo的视频文章很多，但还是推荐阅读子弹笔记创始人赖得·卡罗尔的《子弹笔记》，关于为什么他选择用这些符号而不是其他，有很详细的介绍。里面提到的丰田“五问法”用来拆解问题也非常好用。</p>
+<blockquote>
+<p>五问法：写下你的问题，然后问自己5个相关的why，然后得到5个小问题。可无限下分。</p>
+</blockquote>
+<p>子弹笔记主要协助于我的日常手记，尤其是在脱离了电脑的时候，一部分需要画图的笔记手写也更方便，一周内反复横跳，纸质比电子来得更简易，需要留存的部分进入笔记系统，剩下的部分可以直接丢弃。
+集子既可以看成是一条笔记，可以直接整理进resource，也可以看成是一个Area，链接更多已有笔记，灵活方便。</p>
+<h4 id=3参考>3、参考</h4>
+<p>子弹笔记现在还用的比较少，思路主要参考了：<a href="https://zhuanlan.zhihu.com/p/295282811?utm_oi=634652405703380992">PAPR，Slip-box，Bullet Journey：个人笔记管理系统探索 vol.1</a>，更详细的信息可以参见原文。</p>
+<h3 id=总结>Ⅳ、总结</h3>
+<p>以上是我第二大脑的笔记方法设计会用到的几种笔记方法，我的笔记方法会在后边章节（ <a href=#%E4%BA%94%E3%80%81%E9%87%8D%E7%82%B9%E6%8F%90%E5%8F%96>五、重点提取</a> ）中详细讲解。</p>
+<h2 id=四内容积累>四、内容积累</h2>
+<p>所有知识的积累肯定是从内容获取和积累开始的，不论是看书、看视频、看文章/博客，还是在不经意的环境下产生的灵感，都是需要能够快速将这些信息记录下来，方便以后整理归纳。
+以前的做法是在浏览器、不同的APP、笔记、便签等不用的地方收藏、零散记录，结果就是微信收藏夹、浏览器书签、各类APP收藏了大量网页和信息，但是想要用的时候还是找不到，也没有积累出自己的知识，因此我对内容积累类的工具和使用也做了精简和筛选，固定了固定了个人的内容积累途径以及方法。分为读书、灵感记录、稍后阅读三类，以下是我针对自己的使用情况选择的具体APP和流程。</p>
+<h3 id=阅读>Ⅰ、阅读</h3>
+<p>阅读：Kindle，使用Kindle进行阅读和读书笔记的初始记录，主要在手机使用，Kindle的读书笔记可以直接导出，方便后边整理；</p>
+<h3 id=手写笔记>Ⅱ、手写笔记</h3>
+<p>手写笔记：享做，主要在Pad使用，现在用的比较少；</p>
+<h3 id=稍后阅读>Ⅲ、稍后阅读</h3>
+<p>Pocket，遇到好的文章，或者来不及读的文章，微信、知乎、CSDN、简书等，都能快速保存到Pocket；
+只保存单篇阅读类文章，如果是类别、功能类网站，请参考<a href=#%E5%85%AD%E3%80%81%E7%BD%91%E9%A1%B5%E6%94%B6%E8%97%8F%E5%A4%B9>六、网页收藏夹</a></p>
+<h3 id=rssnewsletter>Ⅳ、RSS/NewsLetter</h3>
+<p>Feeder+kill the newsletter，feeder用来订阅RSS，kill the newsletter（<a href=https://kill-the-newsletter.com/>地址</a>）将newsletter转为RSS，在feeder统一订阅查看；
+我的订阅地址：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>xxx kill-the-newsletter Sign up for the newsletter with xxx@kill-the-newsletter.com
+
+Subscribe to the Atom feed at https://kill-the-newsletter.com/feeds/p45zjdkox5ouu351.xml
+</code></pre></div><h3 id=灵感记录>Ⅴ、灵感记录</h3>
+<p>flomo，使用flomo快速记录实时产生的想法，可以通过微信、APP、网页等各种途径快速记录；</p>
+<h3 id=网页收藏夹>Ⅵ、网页收藏夹</h3>
+<ul>
+<li>pinbox：使用pinbox收藏功能、网站类地址，空闲时间可以在这里看收藏的网站；</li>
+<li>iTab，Chrome插件，<a href=https://go.itab.link/>web地址</a>，方便收藏的地址快速查看；</li>
+</ul>
+<h3 id=其他资讯类>Ⅶ、其他资讯类</h3>
+<ul>
+<li>bilibili：学习类资源很多；</li>
+<li>CSDN、知乎、少数派、简书等；</li>
+<li>中国大学MOOC、网易云课堂、网易公开课；</li>
+</ul>
+<h3 id=辅助工具>Ⅷ、辅助工具</h3>
+<ul>
+<li>Clash：外网访问</li>
+</ul>
+<h2 id=五重点提取>五、重点提取</h2>
+<p>重点提取是第二大脑构建最关键的一步，通过内容积累，我们已经获取到大量的资讯、内容等信息，但是并未转化成自己的系统信息，因此要定期对自己积累到的内容进行整理，提取重点，提取后，用自己的语言记录下来的内容才是知识，而不是资讯或者内容。这一步可以认为是卡片笔记法中生成了大量单点知识的卡片。将读书笔记（Kindle导出）、灵感记录（flomo）以及Pocket高亮记录到Obsidian卡片中，纪录时用自己的语言来写，不止是放入原文的内容，这样就会生成一个个知识点，并通过Obsidian的链接功能，将相关的文章关联起来，方便以后学习、查找，这个阶段，我是使用Obsidian来完成的，软件具体的使用可以参考的另外一篇文章<a href=../obsidian%E4%BD%9C%E4%B8%BA%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E9%85%8D%E7%BD%AE>Obsidian作为第二大脑工具的基本使用和配置</a>;</p>
+<p>以下是我针对个人的习惯采用的满足自己要求的笔记方法。</p>
+<h3 id=总体思路>Ⅰ、总体思路</h3>
+<p>**个人笔记管理系统 = PARA + 卡片盒 + Bujo/flomo **
+PARA作为总体方法，卡片盒作为其中的Resource提供资源，Project作为当前正在进行的项目，Area是需要持续积累的领域，Archives是已完成的项目，需要输出的整理成Blog输出。</p>
+<p><strong>笔记总原则：</strong></p>
+<ol>
+<li>以1张卡片为单位</li>
+<li>1张卡片=1个内容=1个Resource</li>
+<li>Projects是进行中的项目，内容来源于多个resource</li>
+<li>Areas的内容是用标签生成的Archives、Projects、ZK卡片列表，标签与Area对应；</li>
+<li>Archives的内容必须来源于Projects，一个Project完成后归档到Archives；</li>
+<li>Archives归档至Blog；</li>
+<li>Resources的内容来自bujo、flomo、Kindle读书笔记等</li>
+<li>每张Resources卡片必须有至少一个反向链接</li>
+<li>未进入PARA的内容都需要被删除（所以纸质笔记记完可扔，当然也可以留作纪念）</li>
+</ol>
+<p><strong>标签总原则：</strong></p>
+<ol>
+<li>索引类标签：用来生成索引，与Area对应，每篇文章至少有一个索引类标签；但是也不能有超过三个索引类标签，否则是Area划分有问题；命名规则：生产力-Index；</li>
+<li>搜索类标签：详细的、每篇文章可根据情况增加的标签，方便后边搜索某一个小分类的文章，无命名规则；</li>
+</ol>
+<h3 id=具体实现和目录结构>Ⅱ、具体实现和目录结构</h3>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E7%AC%94%E8%AE%B0%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png alt=笔记目录结构></p>
+<ol>
+<li>首先是ZK卡片的<strong>001-SlipBox-滑箱盒子</strong>，分为：</li>
+</ol>
+<ul>
+<li>**FleetingBox-灵感盒子：**随时产生的想法，但是未形成完整内容的卡片，也可以认为是未完成的卡片；</li>
+<li>**LiteratureBox-文献盒子：**一个完成的Resource卡片，但是并未用到具体的项目或归档的项目；</li>
+<li>**PermanentBox-永久盒子：**已完成，且被至少一个项目使用了的卡片；</li>
+</ul>
+<ol start=2>
+<li>**002-Area-领域：**也可以认为是Goal，提升个人某个领域能力，或者在某个领域做持续积累和总结，通过标签生成列表；具体生成方法请参考：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/Project%E5%92%8CArea%E3%80%81Goal%E7%9A%84%E5%85%B3%E7%B3%BB.jpg alt=Project和Area、Goal的关系></li>
+<li>**003-Project-项目：**是正在进行的项目，内容主要来源于盒子卡片；</li>
+<li>**004-Archive-归档：**已完成的项目会整理到归档中，供后续查阅。</li>
+</ol>
+<h3 id=使用流程>Ⅲ、使用流程</h3>
+<p>整体使用流程如下：
+<img src=https://gitee.com/qz757/picgo/raw/master/img/%E7%AC%94%E8%AE%B0%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B.png alt=笔记使用流程>
+并且在Obsidian关系图谱中根据习惯按照将不同的目录设置成不同的颜色，这样就能快速区分出进行中和已完成的项目、卡片等；</p>
+<h3 id=参考>Ⅳ、参考</h3>
+<p>目录结构的设计参考了：<a href=https://zhuanlan.zhihu.com/p/360599265>用Obsidian实现Zettelkasten看这一篇就够了</a>，更详细的信息可以参见原文。</p>
+<h2 id=六信息整合>六、信息整合</h2>
+<p>在重点提取后，我们在知识管理系统中生成了大量单点知识的卡片，但是并未形成完整的体系或者可以直接当做完整的知识输出，因此需要对信息进行整合，输出完整的文章，并将文章、卡片归档到对应的领域，方便以后使用时快速找到。
+文章输出我使用Typora写博客，快速发布到简书，并且通过GitHub Actions快速发布到GitHub和Gitee Pages，具体流程可以参考<a href=../%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages>GitHub和Gitee博客自动发布流程</a></p>
+<h2 id=标签>标签</h2>
+<p>Index： #生产力-Index</p>
+<p>Info： #第二大脑</p>
+<h2 id=参考文献>参考文献</h2>
+<ol>
+<li><a href=https://pmthinking.com/>产品沉思录</a>的<a href=https://index.pmthinking.com/P-A-R-A-Notion-19909e5aac3049d887197dcfb1e97fd5>P.A.R.A. 的 Notion 实践</a></li>
+<li><a href=https://zettelkasten.de/introduction/zh/>卢曼卡片盒笔记法介绍</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/295282811?utm_oi=634652405703380992">PAPR，Slip-box，Bullet Journey：个人笔记管理系统探索 vol.1</a></li>
+<li><a href=https://zhuanlan.zhihu.com/p/360599265>用Obsidian实现Zettelkasten看这一篇就够了</a></li>
+</ol>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/%e7%ac%ac%e4%ba%8c%e5%a4%a7%e8%84%91 rel=tag title=第二大脑>#第二大脑#</a>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+</div>
+<div class="post-nav-prev post-nav-item">
+<a href=https://qz757.github.io/post/productivity/%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages/ rel=prev title="利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages">
+利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages
+<i class="fa fa-chevron-right"></i>
+</a>
+</div>
+</div>
+<script src=https://utteranc.es/client.js repo=qz757/qz757.github.io issue-term=title theme=preferred-color-scheme crossorigin=anonymous async></script>
+</footer>
+</article>
+</section>
+</div>
+</div>
+<div class=sidebar-toggle>
+<div class=sidebar-toggle-line-wrap>
+<span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+</div>
+</div>
+<aside id=sidebar class=sidebar>
+<div class=sidebar-inner>
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+文章目录
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+站点概览
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
+<div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
+<img class=site-author-image itemprop=image src=/img/head.jpg alt>
+<p class=site-author-name itemprop=name></p>
+<p class="site-description motion-element" itemprop=description>
+坚持做有趣的事，让生活简单快乐。
+</p>
+</div>
+<nav class="site-state motion-element">
+<div class="site-state-item site-state-posts">
+<a href=/post/>
+<span class=site-state-item-count>3</span>
+<span class=site-state-item-name>日志</span>
+</a>
+</div>
+<div class="site-state-item site-state-categories">
+<a href=/categories/>
+<span class=site-state-item-count>1</span>
+<span class=site-state-item-name>分类</span>
+</a>
+</div>
+<div class="site-state-item site-state-tags">
+<a href=/tags/>
+<span class=site-state-item-count>4</span>
+<span class=site-state-item-name>标签</span>
+</a>
+</div>
+</nav>
+<div class="links-of-author motion-element">
+<span class=links-of-author-item>
+<a href=https://github.com/qz757/ target=_blank title=GitHub>
+<i class="fa fa-fw fa-github"></i>
+GitHub
+</a>
+</span>
+<span class=links-of-author-item>
+<a href=https://www.jianshu.com/u/e8ca66cdb1d7 target=_blank title=简书>
+<i class="fa fa-fw fa-globe"></i>
+简书
+</a>
+</span>
+</div>
+<div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline">
+<div class=tagcloud-of-blogroll-title>
+<i class="fa fa-fw fa-tags"></i>
+标签云
+</div>
+<ul class=tagcloud-of-blogroll-list>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/github>Github</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/hugo>Hugo</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/obsidian>Obsidian</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91>第二大脑</a>
+</li>
+</ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#简介>简介</a></li>
+<li><a href=#一目的>一、目的</a></li>
+<li><a href=#二第二大脑工作流>二、第二大脑工作流</a></li>
+<li><a href=#三笔记方法选择>三、笔记方法选择</a>
+<ul>
+<li><a href=#para笔记法>Ⅰ、P.A.R.A.笔记法</a></li>
+<li><a href=#卢曼卡片盒笔记法the-zettelkasten-method>Ⅱ、卢曼卡片盒笔记法(the Zettelkasten Method)</a></li>
+<li><a href=#子弹笔记>Ⅲ、子弹笔记</a></li>
+<li><a href=#总结>Ⅳ、总结</a></li>
+</ul>
+</li>
+<li><a href=#四内容积累>四、内容积累</a>
+<ul>
+<li><a href=#阅读>Ⅰ、阅读</a></li>
+<li><a href=#手写笔记>Ⅱ、手写笔记</a></li>
+<li><a href=#稍后阅读>Ⅲ、稍后阅读</a></li>
+<li><a href=#rssnewsletter>Ⅳ、RSS/NewsLetter</a></li>
+<li><a href=#灵感记录>Ⅴ、灵感记录</a></li>
+<li><a href=#网页收藏夹>Ⅵ、网页收藏夹</a></li>
+<li><a href=#其他资讯类>Ⅶ、其他资讯类</a></li>
+<li><a href=#辅助工具>Ⅷ、辅助工具</a></li>
+</ul>
+</li>
+<li><a href=#五重点提取>五、重点提取</a>
+<ul>
+<li><a href=#总体思路>Ⅰ、总体思路</a></li>
+<li><a href=#具体实现和目录结构>Ⅱ、具体实现和目录结构</a></li>
+<li><a href=#使用流程>Ⅲ、使用流程</a></li>
+<li><a href=#参考>Ⅳ、参考</a></li>
+</ul>
+</li>
+<li><a href=#六信息整合>六、信息整合</a></li>
+<li><a href=#标签>标签</a></li>
+<li><a href=#参考文献>参考文献</a></li>
+</ul>
+</nav></div>
+</div>
+</section>
+</div>
+</aside>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=footer-inner>
+<div class=copyright>
+<span class=copyright-year>
+&copy; 2010 - 2021
+</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=copyright-author>Ethan的博客</span>
+</div>
+<div class=powered-info>
+<span class=powered-by>
+Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.90.1</a>
+</span>
+<span class=separator-line>/</span>
+<span class=theme-info>
+Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank> NexT
+</a>
+</span>
+</div>
+</div>
+</footer>
+<div class=back-to-top>
+<i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span>
+</div>
+</div>
+<script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
+<script type=text/javascript src=/js/search.js></script>
+<script type=text/javascript src=/js/affix.js></script>
+<script type=text/javascript src=/js/scrollspy.js></script>
+<script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ',requiredFields:['nick','mail'],serverURL:"Your WalineSerURL",lang:"zh-cn"})}):$('#wcomments').html('抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
+<script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>
