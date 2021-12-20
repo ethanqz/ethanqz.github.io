@@ -3,9 +3,8 @@ title: 利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages
 date: 2021-12-18
 description: 介绍如何利用GitHub Actions快速发布Blog到GitHub和Gitee Pages
 tags : [
-    "生产力",
     "Hugo",
-    "GitHub Actions"
+    "GitHub"
 ]
 categories : [
     "生产力",
@@ -56,7 +55,7 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
    - windows7安装
 
     	a. 从[官网](https://nodejs.org/en/download/)下载对应版本，win7可用最新版本为：v13.14.0；win10/win11可下载最新版本；
-
+ 	
     	b. 运行安装即可；
 
    - ubuntu 20.04安装
@@ -64,7 +63,7 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
       ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
 
     	a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
-	 
+	 	 
     	NodeSource 软件源提供了以下版本：
       -   v14.x - 最新稳定版
       -   v13.x
@@ -124,8 +123,6 @@ sudo npm install --no-optional --verbose picgo -g #跳过可选依赖
     #使用配置好的文件（配置文件在~/.picgo/config.json）    
     picgo use uploader
     ```
-
-   
 
 7. 测试上传功能
 
@@ -224,7 +221,7 @@ async>
 
 ### Ⅳ、Obsidian配置
 
-Obsidian的安装和使用可参考我的另一篇文章：[Obsidian作为第二大脑工具的基本使用和配置 ](../obsidian作为第二大脑工具的基本使用和配置 )
+Obsidian的安装和使用可参考我的另一篇文章：**[Obsidian作为第二大脑工具的基本使用和配置 ](../Obsidian作为第二大脑工具的基本使用和配置.md )**
 
 ## 三、实现方案
 
@@ -346,3 +343,9 @@ jobs:
 ## 结束
 
 以上就是我利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages，希望可以帮助大家快速构建自己的个人网站；后边我会继续完善我的第二大脑系统的构建思路和方法。
+
+## 标签
+
+Index： #生产力-Index
+
+Info： #Obsidian

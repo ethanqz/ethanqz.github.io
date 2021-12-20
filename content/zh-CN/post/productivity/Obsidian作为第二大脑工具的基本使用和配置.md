@@ -4,7 +4,6 @@ date: 2021-12-11
 description: 本文用来说明Obsidian作为第二大脑工具的基本使用和配置 
 tags : [
     "Obsidian",
-    "生产力",
 ]
 categories : [
     "生产力",
@@ -247,3 +246,9 @@ Obsidian的开放性吸引了大量开发人员开发了很多实用的第三方
 ## 结束
 
 以上就是我使用Obsidian作为我的第二大脑系统的基本配置和使用，希望可以帮助大家了解Obsidian的使用；后边我会继续完善我的第二大脑系统的构建思路和方法。
+
+## 标签
+
+Index： #生产力-Index
+
+Info： #Obsidian
