@@ -137,7 +137,7 @@
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>5351 字</span>
+<span class=leancloud-world-count>5349 字</span>
 </span>
 <span>
 |
@@ -154,9 +154,8 @@
 </div>
 </header>
 <div class=post-body itemprop=articleBody>
-<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E5%B7%A5%E4%BD%9C%E5%8D%8F%E5%90%8C%E5%9B%BE%E7%89%87.jpg alt=工作协同图片></p>
-<h2 id=简介>简介</h2>
 <p>现在个人博客通常有比较多的选择，如果不想要自己购买服务器实现静态博客的发布，可以在简书、CSDN等平台建立自己的账号并发布，但是原始数据无法在本地管理；如果想要数据完全自己管理，可以使用GitHub或者Gitee Pages功能发布自己的博客，利用Hugo或Hexo等成熟的静态博客将md文件转换成静态网站文件进行快速发布。本文就用来记录如何快速将博客发布到简书、GitHub以及Gitee Pages三个平台。</p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/%E5%B7%A5%E4%BD%9C%E5%8D%8F%E5%90%8C%E5%9B%BE%E7%89%87.jpg alt=工作协同图片></p>
 <h2 id=一流程设计>一、流程设计</h2>
 <p>我希望的流程当然是主要精力用在写文章，发布的流程最好完全不需要手动处理，但实际情况下手动发布博客的流程大体是：</p>
 <blockquote>
@@ -350,13 +349,15 @@ myblog为博客的目录名，可以修改为你自己想取的名字，生成�
 <p>所有环境准备好后，终于要开始启动我们的自动化流程的实现了；</p>
 <h3 id=github和gitee-pages配置>Ⅰ、GitHub和Gitee Pages配置</h3>
 <ol>
-<li>Gitee Pages配置：
+<li>
+<p>Gitee Pages配置：</p>
 <ul>
 <li>创建与用户名同名仓库；</li>
 <li>仓库主页->服务->Gitee Pages，选择对应的分支并开启https；</li>
 </ul>
 </li>
-<li>GitHub Pages配置：
+<li>
+<p>GitHub Pages配置：</p>
 <ul>
 <li>创建名称为【用户名.gthub.io】的仓库；</li>
 <li>仓库主页->setting->Pages，选择对应的分支；</li>
@@ -579,7 +580,6 @@ GitHub
 <div class=post-toc>
 <div class=post-toc-content><nav id=TableOfContents>
 <ul>
-<li><a href=#简介>简介</a></li>
 <li><a href=#一流程设计>一、流程设计</a></li>
 <li><a href=#二环境准备>二、环境准备</a>
 <ul>
