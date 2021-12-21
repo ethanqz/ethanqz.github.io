@@ -4,12 +4,22 @@
   URL = "/"
   Weight = 1
 [[Main]]
-  Name = "Blog"
+  Name = "Archive"
   Pre = "archive"
   URL = "post"
   Weight = 2
 [[Main]]
+  Name = "Categories"
+  Pre = "archive"
+  URL = "categories"
+  Weight = 3
+[[Main]]
+  Name = "Tags"
+  Pre = "tags"
+  URL = "tags"
+  Weight = 4
+[[Main]]
   Name = "About"
   Pre = "user"
   URL = "about.html"
-  Weight = 3
+  Weight = 6

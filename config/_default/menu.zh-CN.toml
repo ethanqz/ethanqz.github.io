@@ -4,12 +4,27 @@
   URL = "/"
   Weight = 1
 [[Main]]
-  Name = "博客"
+  Name = "文章"
   Pre = "archive"
   URL = "post"
   Weight = 2
 [[Main]]
-  Name = "关于我"
+  Name = "分类"
+  Pre = "archive"
+  URL = "categories"
+  Weight = 3
+[[Main]]
+  Name = "标签"
+  Pre = "tags"
+  URL = "tags"
+  Weight = 4
+[[Main]]
+  Name = "生产力领域"
+  Pre = "archive"
+  URL = "categories/生产力"
+  Weight = 5
+[[Main]]
+  Name = "关于"
   Pre = "user"
   URL = "about.html"
-  Weight = 4
+  Weight = 6

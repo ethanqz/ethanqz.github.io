@@ -1,7 +1,7 @@
 Description = "Ethan的博客"
 Keywords =  "博客, 程序员, 思考, 读书, 笔记，管理"
 Subtitle = "坚持做有趣的事，让生活简单快乐。"
-AuthorImg = "/img/head.jpg"
+AuthorImg = "/img/head.jpeg"
 AuthorName = ""
 Introduce = "坚持做有趣的事，让生活简单快乐。"
 DateFormat = "2006-01-02"
