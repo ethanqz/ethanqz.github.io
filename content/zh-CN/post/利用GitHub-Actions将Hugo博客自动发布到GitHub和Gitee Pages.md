@@ -12,11 +12,13 @@ categories : [
 toc : true
 typora-copy-images-to: upload
 ---
-![工作协同图片](https://gitee.com/qz757/picgo/raw/master/img/工作协同图片.jpg)
 
-## 简介
 
 现在个人博客通常有比较多的选择，如果不想要自己购买服务器实现静态博客的发布，可以在简书、CSDN等平台建立自己的账号并发布，但是原始数据无法在本地管理；如果想要数据完全自己管理，可以使用GitHub或者Gitee Pages功能发布自己的博客，利用Hugo或Hexo等成熟的静态博客将md文件转换成静态网站文件进行快速发布。本文就用来记录如何快速将博客发布到简书、GitHub以及Gitee Pages三个平台。
+
+<!--more--> 
+
+![工作协同图片](https://gitee.com/qz757/picgo/raw/master/img/工作协同图片.jpg)
 
 ## 一、流程设计
 
@@ -63,7 +65,7 @@ Typora非常的简洁，而且可以实时预览，在写博客的时候经常�
       ubunut仓库中默认的Nodejs版本是v10.19.0，不是最新的版本，因为我用到的其他包需要依赖高级版本，因此安装v14版本；
 
     	a. 安装NodeSource：`curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`，这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存；如果你需要另外的 Node.js 版本，例如`12.x`，将`setup_14.x`修改为`setup_12.x`；
-	 	 
+	 	 	 	 
     	NodeSource 软件源提供了以下版本：
       -   v14.x - 最新稳定版
       -   v13.x
@@ -230,9 +232,11 @@ Obsidian的安装和使用可参考我的另一篇文章：**[Obsidian作为第�
 ### Ⅰ、GitHub和Gitee Pages配置
 
 1. Gitee Pages配置：
+
 	- 创建与用户名同名仓库；
 	- 仓库主页->服务->Gitee Pages，选择对应的分支并开启https；
 2. GitHub Pages配置：
+
 	-  创建名称为【用户名.gthub.io】的仓库；
 	-  仓库主页->setting->Pages，选择对应的分支；
 

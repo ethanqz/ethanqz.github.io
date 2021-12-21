@@ -11,11 +11,13 @@ categories : [
 toc : true
 typora-copy-images-to: upload
 ---
-![Obsidian图标](https://gitee.com/qz757/picgo/raw/master/img/Obsidian图标.jpg)
 
-## 简介
 
 作为第二大脑系统的笔记软件，本片我们来讲一下Obsidian的基本使用和配置。关于“第二大脑系统笔记方法选择和软件选型”我会单独写一篇Bolg进行说明。作为第二大脑系统的笔记，需要满足日常笔记的快速编写，并且能够支持PC、手机、Pad多平台同步，同时Obsidian支持通过插件进行扩展，因此我将分基本功能使用和配置、核心插件配置和使用、第三方插件配置和使用、工作区布局几个维度进行说明。
+
+<!--more--> 
+
+![Obsidian图标](https://gitee.com/qz757/picgo/raw/master/img/Obsidian图标.jpg)
 
 ## 一、为什么选择Obsidian
 
