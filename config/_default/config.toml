@@ -34,7 +34,7 @@ ignoreErrors = ["error-remote-getjson"]
     notAlternative = true
 
 [outputs]
-  home = ["HTML", "SearchIndex"]
+  home = ["HTML", "RSS", "SearchIndex"]
 
 [minify]
   disableCSS = false
