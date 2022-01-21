@@ -1,0 +1,701 @@
+<!doctype html><html lang=zh-cn dir=content/zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=content-security-policy content="upgrade-insecure-requests">
+<title> 基于Ubuntu部署Docker环境 - Ethan的博客 </title>
+<meta name=keywords content="博客,程序员,思考,读书,笔记，管理">
+<meta property="og:title" content="基于Ubuntu部署Docker环境">
+<meta property="og:site_name" content="Ethan的博客">
+<meta property="og:image" content="/img/author.jpg">
+<meta name=title content="基于Ubuntu部署Docker环境 - Ethan的博客">
+<meta name=description content="使用Docker配置Docker环境">
+<link rel="shortcut icon" href=/img/favicon.ico>
+<link rel=apple-touch-icon href=/img/apple-touch-icon.png>
+<link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
+<link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
+<link href=/css/main.css rel=stylesheet type=text/css>
+<link href=/css/syntax.css rel=stylesheet type=text/css>
+</head>
+<body itemscope itemtype=http://schema.org/WebPage lang=zh-hans>
+<div class="container one-collumn sidebar-position-left page-home">
+<div class=headband></div>
+<header id=header class=header itemscope itemtype=http://schema.org/WPHeader>
+<div class=header-inner> <div class=site-brand-container>
+<div class=site-nav-toggle>
+<div class=toggle role=button style=opacity:1;top:0>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span>
+</div>
+</div>
+<div class=site-meta>
+<div class=multi-lang-switch>
+<i class="fa fa-fw fa-language" style=margin-right:5px></i>
+<a class=lang-link id=zh-cn href=#>中文</a>
+</div>
+<div class=custom-logo-site-title>
+<a href=/ class=brand rel=start>
+<span class=logo-line-before><i></i></span>
+<span class=site-title>Ethan的博客</span>
+<span class=logo-line-after><i></i></span>
+</a>
+</div>
+<p class=site-subtitle>坚持做有趣的事，让生活简单快乐。</p>
+</div>
+<div class=site-nav-right>
+<div class="toggle popup-trigger" style=opacity:1;top:0>
+<i class="fa fa-search fa-fw fa-lg"></i>
+</div>
+</div>
+</div>
+<nav class=site-nav>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a href=/ rel=section>
+<i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页
+</a>
+</li>
+<li class=menu-item>
+<a href=/post rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>文章
+</a>
+</li>
+<li class=menu-item>
+<a href=/categories rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>分类
+</a>
+</li>
+<li class=menu-item>
+<a href=/tags rel=section>
+<i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签
+</a>
+</li>
+<li class=menu-item>
+<a href=/categories/%e7%94%9f%e4%ba%a7%e5%8a%9b rel=section>
+<i class="menu-item-icon fa fa-fw fa-archive"></i> <br>生产力领域
+</a>
+</li>
+<li class=menu-item>
+<a href=/about.html rel=section>
+<i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于
+</a>
+</li>
+<li class="menu-item menu-item-search">
+<a href=javascript:; class=popup-trigger> <i class="menu-item-icon fa fa-search fa-fw"></i> <br> 搜索</a>
+</li>
+</ul>
+<div class=site-search>
+<div class="popup search-popup local-search-popup">
+<div class="local-search-header clearfix">
+<span class=search-icon><i class="fa fa-search"></i> </span>
+<span class=popup-btn-close><i class="fa fa-times-circle"></i></span>
+<div class=local-search-input-wrapper>
+<input autocomplete=off placeholder=搜索关键字... spellcheck=false type=text id=local-search-input autocapitalize=none autocorrect=off>
+</div>
+</div>
+<div id=local-search-result></div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main id=main class=main>
+<div class=main-inner>
+<div class=content-wrap>
+<div id=content class=content>
+<section id=posts class=posts-expand>
+<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">
+<a class=post-title-link href=https://qz757.github.io/post/%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83/ itemprop=url>
+基于Ubuntu部署Docker环境
+</a>
+</h1>
+<div class=post-meta>
+<span class=post-time>
+<i class="fa fa-calendar-o fa-fw"></i>
+<span class=post-meta-item-text>时间：</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2022-01-21">
+2022-01-21
+</time>
+</span>
+<span class=post-category>
+&nbsp; | &nbsp;
+<i class="fa fa-folder-o fa-fw"></i>
+<span class=post-meta-item-text>分类：</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing>
+<a href=/categories/linux itemprop=url rel=index style=text-decoration:underline>
+<span itemprop=name>Linux</span>
+</a>
+&nbsp;
+</span>
+</span>
+<span>
+|
+<i class="fa fa-file-word-o fa-fw"></i>
+<span class=post-meta-item-text>字数：</span>
+<span class=leancloud-world-count>3919 字</span>
+</span>
+<span>
+|
+<i class="fa fa-eye fa-fw"></i>
+<span class=post-meta-item-text>阅读：</span>
+<span class=leancloud-view-count>8分钟</span>
+</span>
+<span id=/post/%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83/ class=leancloud_visitors data-flag-title=基于Ubuntu部署Docker环境>
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>阅读次数：</span>
+<span class=leancloud-visitors-count></span>
+</span>
+</div>
+</header>
+<div class=post-body itemprop=articleBody>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/Docker%E5%9B%BE%E6%A0%871.jpg alt=Docker图标1></p>
+<h2 id=简介>简介</h2>
+<p>在看了<a href=https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things> Dock Life: Using Docker for All The Things!</a>这篇文章后，解决了我一直以来使用Linux的一个担忧，由于对Linux运维并没有非常熟悉，因此有时候安装了软件失败或者卸载后，有文件残留，因此希望能与host进行隔离，Docker便成了最好的解决方案。如果使用的镜像多，建议将<code>/var</code>目录独立分区，相关信息可以参考：<a href=Linux%E6%A0%B9%E5%88%86%E5%8C%BA%E5%8D%A0%E6%BB%A1%E7%AD%89%E7%A3%81%E7%9B%98%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E5%92%8C%E8%A7%A3%E5%86%B3-202201131313.md>Linux根分区占满等磁盘相关问题排查和解决</a>。</p>
+<h2 id=一网络配置>一、网络配置</h2>
+<p>未进行特殊配置，直接在路由器手动绑定mac和ip，系统内部仍然使用dhcp；</p>
+<h2 id=二修改阿里源>二、修改阿里源</h2>
+<h3 id=1通过命令行修改>1、通过命令行修改：</h3>
+<p>执行以下<code>sed</code>命令替换<code>/etc/apt/sources.list</code>中的所有地址：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+</code></pre></div><h3 id=2通过文件修改>2、通过文件修改：</h3>
+<p>这是<a href=https://developer.aliyun.com/mirror/>阿里的镜像地址</a>，可以查看各种系统的镜像源，ubuntu修改<code>/etc/apt/sources.list</code>文件如下：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+</code></pre></div><h2 id=三系统更新>三、系统更新</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo apt-get -y update
+sudo apt-get -y upgrade
+</code></pre></div><h2 id=四安装docker>四、安装docker</h2>
+<h3 id=1安装docker并配置镜像加速器>1、安装docker并配置镜像加速器</h3>
+<p>在<a href=https://cr.console.aliyun.com/>阿里容器镜像服务</a>注册开发者账号，我的账号是<code>qz757</code>邮箱是<code>qz757@sina.com</code>，登录后，在<a href=https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors>阿里加速器</a>获取专属加速器地址，类似这样<code>https://xxxxxx.mirror.aliyuncs.com</code>，然后按照<a href=https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors>指导</a>进行配置；</p>
+<ul>
+<li>安装docker</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic># step 1: 安装必要的一些系统工具</span>
+sudo apt-get update
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+<span style=color:#080;font-style:italic># step 2: 安装GPG证书</span>
+curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+<span style=color:#080;font-style:italic># Step 3: 写入软件源信息</span>
+sudo add-apt-repository <span style=color:#b44>&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span style=color:#a2f;font-weight:700>$(</span>lsb_release -cs<span style=color:#a2f;font-weight:700>)</span><span style=color:#b44> stable&#34;</span>
+<span style=color:#080;font-style:italic># Step 4: 更新并安装 Docker-CE</span>
+sudo apt-get -y update
+sudo apt-get -y install docker-ce
+</code></pre></div><ul>
+<li>配置镜像加速器</li>
+</ul>
+<p>针对Docker客户端版本大于 1.10.0 的用户，可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <span style=color:#b44>&lt;&lt;-&#39;EOF&#39;
+</span><span style=color:#b44>{
+</span><span style=color:#b44>  &#34;registry-mirrors&#34;: [&#34;https://xxxxx.mirror.aliyuncs.com&#34;]
+</span><span style=color:#b44>}
+</span><span style=color:#b44>EOF</span>
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre></div><h3 id=2配置当前用户权限>2、配置当前用户权限</h3>
+<p>如果希望当前用户可运行docker，则将当前用户加到docker组：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo groupadd docker <span style=color:#080;font-style:italic># 安装完docker应该默认存在了，提示已存在说明已默认创建好</span>
+sudo gpasswd -a <span style=color:#b8860b>$USER</span> docker
+newgrp docker
+</code></pre></div><h3 id=3docker命令>3、docker命令</h3>
+<p>docker命令可以参考：<a href=https://www.runoob.com/docker/docker-tutorial.html>docker教程</a></p>
+<h2 id=五docker常用命令>五、Docker常用命令</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker ps // 查看所有正在运行容器
+$ docker stop containerId // containerId 是容器的ID
+
+$ docker ps -a // 查看所有容器
+$ docker ps -a -q // 查看所有容器ID
+
+$ docker rm <span style=color:#666>[</span>container id<span style=color:#666>]</span> //删除容器
+
+$ docker images //查看所有镜像
+
+$ docker rmi <span style=color:#666>[</span>image id<span style=color:#666>]</span> //删除镜像
+
+$ docker stop <span style=color:#a2f;font-weight:700>$(</span>docker ps -a -q<span style=color:#a2f;font-weight:700>)</span> //  stop停止所有容器
+$ docker  rm <span style=color:#a2f;font-weight:700>$(</span>docker ps -a -q<span style=color:#a2f;font-weight:700>)</span> //   remove删除所有容器
+$ docker rm <span style=color:#b44>`</span>docker ps -a|grep Exited|awk <span style=color:#b44>&#39;{print $1}&#39;</span><span style=color:#b44>`</span> //删除所有Exited状态的容器
+
+$ docker logs -tf --tail<span style=color:#666>=</span><span style=color:#b44>&#34;50&#34;</span> container_name //查看已启动容器日志
+$ docker <span style=color:#a2f>exec</span> -it container_name bash/sh //进入已启动容器shell
+$ docker run -ti --rm -v ~/tmp:/tmpdata qz757/ubuntu-python:1.0.0 bash //以bash方式启动容器并挂载临时目录给容器
+
+$ docker commit <span style=color:#666>[</span>container id<span style=color:#666>]</span> <span style=color:#666>[</span>image name<span style=color:#666>]</span>
+</code></pre></div><h2 id=六使用makefiledockerfile制作docker镜像>六、使用Makefile+Dockerfile制作Docker镜像</h2>
+<p>以基于ubuntu镜像构建包含python、git包的调测镜像为例：</p>
+<h3 id=1安装make和make-doc>1、安装make和make-doc</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo apt-get install make-doc make -y
+</code></pre></div><p>2、修改Dockerfile</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Dockerfile data-lang=Dockerfile><span style=color:#a2f;font-weight:700>FROM</span><span style=color:#b44> ubuntu</span><span>
+</span><span></span><span style=color:#a2f;font-weight:700>RUN</span> sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get clean <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get update <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get install --assume-yes apt-utils sudo dialog <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> <span style=color:#a2f>echo</span> <span style=color:#b44>&#39;debconf debconf/frontend select Noninteractive&#39;</span> | debconf-set-selections <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get upgrade -y <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get install python3 python3-pip python-is-python3 vim wget curl git -y <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get upgrade -y <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> pip install pip -U <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> pip config <span style=color:#a2f>set</span> global.index-url https://mirrors.aliyun.com/pypi/simple/<span>
+</span></code></pre></div><p>制作镜像时给容器内部配置代理：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>ENV http_proxy http://192.168.2.169:7890
+
+ENV https_proxy http://192.168.2.169:7890
+</code></pre></div><h3 id=3修改makefile>3、修改Makefile</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#b8860b>NAME</span> <span style=color:#666>=</span> username/image name
+<span style=color:#b8860b>VERSION</span> <span style=color:#666>=</span> 1.0.0
+
+.PHONY: build start push
+
+build:  build-version
+
+build-version:
+        docker build -t <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span>  .
+
+tag-latest:
+        docker tag <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:latest
+
+start:
+        docker run -it --rm <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span> /bin/bash
+
+push:   build-version tag-latest
+        docker push <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span>; docker push <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:latest
+</code></pre></div><h3 id=4制作并上传镜像>4、制作并上传镜像</h3>
+<ul>
+<li>首先通过<code>docker login</code>命令登录到docker hub；</li>
+<li>修改Makefile名称和版本号，username是账号，必须和登录的账号一致，否则无法提交；</li>
+<li><code>make build</code>构建容器；</li>
+<li><code>make start</code>调测镜像，完成后容器会删除；</li>
+<li><code>make push</code>给镜像打lastest标签，然后提交到docker hub；</li>
+</ul>
+<h2 id=七安装docker-compose>七、安装docker-compose</h2>
+<ul>
+<li>从github下载docker-compose文件下载到<code>/usr/local/bin/</code>下（当前该目录下为空，未安装任何其他可执行文件）：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo curl -L <span style=color:#b44>&#34;https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-</span><span style=color:#a2f;font-weight:700>$(</span>uname -s<span style=color:#a2f;font-weight:700>)</span><span style=color:#b44>-</span><span style=color:#a2f;font-weight:700>$(</span>uname -m<span style=color:#a2f;font-weight:700>)</span><span style=color:#b44>&#34;</span> -o /usr/local/bin/docker-compose
+<span style=color:#080;font-style:italic># 要安装其他版本的 Compose，请替换 v2.2.2</span>
+</code></pre></div><ul>
+<li>将可执行权限应用于二进制文件：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre></div><ul>
+<li><del>创建软链（可选，ubuntu可执行/usr/local/bin文件）：</del></li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre></div><ul>
+<li>测试是否安装成功：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker-compose --version
+Docker Compose version v2.2.2
+</code></pre></div><blockquote>
+<p><strong>注意</strong>： 对于 alpine，需要以下依赖包： py-pip，python-dev，libffi-dev，openssl-dev，gcc，libc-dev，和 make。</p>
+</blockquote>
+<h2 id=八docker--compose常用命令>八、Docker Compose常用命令</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker-compose -f xx.yml up -d // 后台启动容器
+$ docker-compose -f xx.yml down // 停止并删除容器
+$ docker-compose -f xx.yml stop // 停止容器
+$ docker-compose -f xx.yml start // 启动容器
+</code></pre></div><h2 id=标签和链接>标签和链接</h2>
+<p>Index： #家庭私有云-Index
+Info： #Docker
+links:
+<a href=Ubuntu%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE-202112131648.md>ubuntu系统常用配置</a>
+resources:
+<a href=Docker%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg>Docker示意图</a>
+<a href=seafile%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E9%85%8D%E7%BD%AE.png>seafile上传下载配置</a></p>
+<h2 id=参考文献>参考文献</h2>
+<p><a href=https://blog.csdn.net/u010164190/article/details/80065555>Docker容器中运行ubuntu系统</a>
+<a href=https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things>Dock Life: Using Docker for All The Things!</a>
+<a href=https://www.cnblogs.com/woshimrf/p/make-docker.html>使用Makefile构建Docker</a>
+<a href=https://www.coder.work/article/6878420>docker - 将docker run命令转换为docker-compose</a></p>
+<h2 id=简介-1>简介</h2>
+<p>在看了<a href=https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things> Dock Life: Using Docker for All The Things!</a>这篇文章后，解决了我一直以来使用Linux的一个担忧，由于对Linux运维并没有非常熟悉，因此有时候安装了软件失败或者卸载后，有文件残留，因此希望能与host进行隔离，Docker便成了最好的解决方案。如果使用的镜像多，建议将<code>/var</code>目录独立分区，相关信息可以参考：<a href=Linux%E6%A0%B9%E5%88%86%E5%8C%BA%E5%8D%A0%E6%BB%A1%E7%AD%89%E7%A3%81%E7%9B%98%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E5%92%8C%E8%A7%A3%E5%86%B3-202201131313.md>Linux根分区占满等磁盘相关问题排查和解决</a>。</p>
+<h2 id=一网络配置-1>一、网络配置</h2>
+<p>未进行特殊配置，直接在路由器手动绑定mac和ip，系统内部仍然使用dhcp；</p>
+<h2 id=二修改阿里源-1>二、修改阿里源</h2>
+<h3 id=1通过命令行修改-1>1、通过命令行修改：</h3>
+<p>执行以下<code>sed</code>命令替换<code>/etc/apt/sources.list</code>中的所有地址：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+</code></pre></div><h3 id=2通过文件修改-1>2、通过文件修改：</h3>
+<p>这是<a href=https://developer.aliyun.com/mirror/>阿里的镜像地址</a>，可以查看各种系统的镜像源，ubuntu修改<code>/etc/apt/sources.list</code>文件如下：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+</code></pre></div><h2 id=三系统更新-1>三、系统更新</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo apt-get -y update
+sudo apt-get -y upgrade
+</code></pre></div><h2 id=四安装docker-1>四、安装docker</h2>
+<h3 id=1安装docker并配置镜像加速器-1>1、安装docker并配置镜像加速器</h3>
+<p>在<a href=https://cr.console.aliyun.com/>阿里容器镜像服务</a>注册开发者账号，我的账号是<code>qz757</code>邮箱是<code>qz757@sina.com</code>，登录后，在<a href=https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors>阿里加速器</a>获取专属加速器地址，类似这样<code>https://xxxxxx.mirror.aliyuncs.com</code>，然后按照<a href=https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors>指导</a>进行配置；</p>
+<ul>
+<li>安装docker</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic># step 1: 安装必要的一些系统工具</span>
+sudo apt-get update
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+<span style=color:#080;font-style:italic># step 2: 安装GPG证书</span>
+curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+<span style=color:#080;font-style:italic># Step 3: 写入软件源信息</span>
+sudo add-apt-repository <span style=color:#b44>&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span style=color:#a2f;font-weight:700>$(</span>lsb_release -cs<span style=color:#a2f;font-weight:700>)</span><span style=color:#b44> stable&#34;</span>
+<span style=color:#080;font-style:italic># Step 4: 更新并安装 Docker-CE</span>
+sudo apt-get -y update
+sudo apt-get -y install docker-ce
+</code></pre></div><ul>
+<li>配置镜像加速器</li>
+</ul>
+<p>针对Docker客户端版本大于 1.10.0 的用户，可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <span style=color:#b44>&lt;&lt;-&#39;EOF&#39;
+</span><span style=color:#b44>{
+</span><span style=color:#b44>  &#34;registry-mirrors&#34;: [&#34;https://xxxxx.mirror.aliyuncs.com&#34;]
+</span><span style=color:#b44>}
+</span><span style=color:#b44>EOF</span>
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre></div><h3 id=2配置当前用户权限-1>2、配置当前用户权限</h3>
+<p>如果希望当前用户可运行docker，则将当前用户加到docker组：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo groupadd docker <span style=color:#080;font-style:italic># 安装完docker应该默认存在了，提示已存在说明已默认创建好</span>
+sudo gpasswd -a <span style=color:#b8860b>$USER</span> docker
+newgrp docker
+</code></pre></div><h3 id=3docker命令-1>3、docker命令</h3>
+<p>docker命令可以参考：<a href=https://www.runoob.com/docker/docker-tutorial.html>docker教程</a></p>
+<h2 id=五docker常用命令-1>五、Docker常用命令</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker ps // 查看所有正在运行容器
+$ docker stop containerId // containerId 是容器的ID
+
+$ docker ps -a // 查看所有容器
+$ docker ps -a -q // 查看所有容器ID
+
+$ docker rm <span style=color:#666>[</span>container id<span style=color:#666>]</span> //删除容器
+
+$ docker images //查看所有镜像
+
+$ docker rmi <span style=color:#666>[</span>image id<span style=color:#666>]</span> //删除镜像
+
+$ docker stop <span style=color:#a2f;font-weight:700>$(</span>docker ps -a -q<span style=color:#a2f;font-weight:700>)</span> //  stop停止所有容器
+$ docker  rm <span style=color:#a2f;font-weight:700>$(</span>docker ps -a -q<span style=color:#a2f;font-weight:700>)</span> //   remove删除所有容器
+$ docker rm <span style=color:#b44>`</span>docker ps -a|grep Exited|awk <span style=color:#b44>&#39;{print $1}&#39;</span><span style=color:#b44>`</span> //删除所有Exited状态的容器
+
+$ docker logs -tf --tail<span style=color:#666>=</span><span style=color:#b44>&#34;50&#34;</span> container_name //查看已启动容器日志
+$ docker <span style=color:#a2f>exec</span> -it container_name bash/sh //进入已启动容器shell
+$ docker run -ti --rm -v ~/tmp:/tmpdata qz757/ubuntu-python:1.0.0 bash //以bash方式启动容器并挂载临时目录给容器
+
+$ docker commit <span style=color:#666>[</span>container id<span style=color:#666>]</span> <span style=color:#666>[</span>image name<span style=color:#666>]</span>
+</code></pre></div><h2 id=六使用makefiledockerfile制作docker镜像-1>六、使用Makefile+Dockerfile制作Docker镜像</h2>
+<p>以基于ubuntu镜像构建包含python、git包的调测镜像为例：</p>
+<h3 id=1安装make和make-doc-1>1、安装make和make-doc</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo apt-get install make-doc make -y
+</code></pre></div><p>2、修改Dockerfile</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Dockerfile data-lang=Dockerfile><span style=color:#a2f;font-weight:700>FROM</span><span style=color:#b44> ubuntu</span><span>
+</span><span></span><span style=color:#a2f;font-weight:700>RUN</span> sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get clean <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get update <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get install --assume-yes apt-utils sudo dialog <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> <span style=color:#a2f>echo</span> <span style=color:#b44>&#39;debconf debconf/frontend select Noninteractive&#39;</span> | debconf-set-selections <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get upgrade -y <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get install python3 python3-pip python-is-python3 vim wget curl git -y <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> apt-get upgrade -y <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> pip install pip -U <span style=color:#b62;font-weight:700>\
+</span><span style=color:#b62;font-weight:700></span>    <span style=color:#666>&amp;&amp;</span> pip config <span style=color:#a2f>set</span> global.index-url https://mirrors.aliyun.com/pypi/simple/<span>
+</span></code></pre></div><p>制作镜像时给容器内部配置代理：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>ENV http_proxy http://192.168.2.169:7890
+
+ENV https_proxy http://192.168.2.169:7890
+</code></pre></div><h3 id=3修改makefile-1>3、修改Makefile</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#b8860b>NAME</span> <span style=color:#666>=</span> qz757/ubuntu-python
+<span style=color:#b8860b>VERSION</span> <span style=color:#666>=</span> 1.0.0
+
+.PHONY: build start push
+
+build:  build-version
+
+build-version:
+        docker build -t <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span>  .
+
+tag-latest:
+        docker tag <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span> <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:latest
+
+start:
+        docker run -it --rm <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span> /bin/bash
+
+push:   build-version tag-latest
+        docker push <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:<span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>VERSION</span><span style=color:#b68;font-weight:700>}</span>; docker push <span style=color:#b68;font-weight:700>${</span><span style=color:#b8860b>NAME</span><span style=color:#b68;font-weight:700>}</span>:latest
+</code></pre></div><h3 id=4制作并上传镜像-1>4、制作并上传镜像</h3>
+<ul>
+<li>首先通过<code>docker login</code>命令登录到docker hub；</li>
+<li>修改Makefile名称和版本号，qz757是账号，必须和登录的账号一致，否则无法提交；</li>
+<li><code>make build</code>构建容器；</li>
+<li><code>make start</code>调测镜像，完成后容器会删除；</li>
+<li><code>make push</code>给镜像打lastest标签，然后提交到docker hub；</li>
+</ul>
+<h2 id=七安装docker-compose-1>七、安装docker-compose</h2>
+<ul>
+<li>从github下载docker-compose文件下载到<code>/usr/local/bin/</code>下（当前该目录下为空，未安装任何其他可执行文件）：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo curl -L <span style=color:#b44>&#34;https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-</span><span style=color:#a2f;font-weight:700>$(</span>uname -s<span style=color:#a2f;font-weight:700>)</span><span style=color:#b44>-</span><span style=color:#a2f;font-weight:700>$(</span>uname -m<span style=color:#a2f;font-weight:700>)</span><span style=color:#b44>&#34;</span> -o /usr/local/bin/docker-compose
+<span style=color:#080;font-style:italic># 要安装其他版本的 Compose，请替换 v2.2.2</span>
+</code></pre></div><ul>
+<li>将可执行权限应用于二进制文件：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre></div><ul>
+<li><del>创建软链（可选，ubuntu可执行/usr/local/bin文件）：</del></li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre></div><ul>
+<li>测试是否安装成功：</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker-compose --version
+Docker Compose version v2.2.2
+</code></pre></div><blockquote>
+<p><strong>注意</strong>： 对于 alpine，需要以下依赖包： py-pip，python-dev，libffi-dev，openssl-dev，gcc，libc-dev，和 make。</p>
+</blockquote>
+<h2 id=八docker--compose常用命令-1>八、Docker Compose常用命令</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ docker-compose -f xx.yml up -d // 后台启动容器
+$ docker-compose -f xx.yml down // 停止并删除容器
+$ docker-compose -f xx.yml stop // 停止容器
+$ docker-compose -f xx.yml start // 启动容器
+</code></pre></div><h2 id=标签和链接-1>标签和链接</h2>
+<p>Index： #Linux-Index
+Info： #Docker</p>
+<h2 id=参考文献-1>参考文献</h2>
+<p><a href=https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things>Dock Life: Using Docker for All The Things!</a></p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/docker rel=tag title=Docker>#Docker#</a>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+</div>
+<div class="post-nav-prev post-nav-item">
+<a href=https://qz757.github.io/post/%E4%BB%A5obsidian%E4%B8%BA%E6%A0%B8%E5%BF%83%E6%9E%84%E7%AD%91%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91/ rel=prev title=以Obsidian为核心构筑第二大脑>
+以Obsidian为核心构筑第二大脑
+<i class="fa fa-chevron-right"></i>
+</a>
+</div>
+</div>
+<script src=https://utteranc.es/client.js repo=qz757/qz757.github.io issue-term=title theme=preferred-color-scheme crossorigin=anonymous async></script>
+</footer>
+</article>
+</section>
+</div>
+</div>
+<div class=sidebar-toggle>
+<div class=sidebar-toggle-line-wrap>
+<span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+</div>
+</div>
+<aside id=sidebar class=sidebar>
+<div class=sidebar-inner>
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+文章目录
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+站点概览
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
+<div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
+<img class=site-author-image itemprop=image src=/img/head.jpeg alt>
+<p class=site-author-name itemprop=name></p>
+<p class="site-description motion-element" itemprop=description>
+坚持做有趣的事，让生活简单快乐。
+</p>
+</div>
+<nav class="site-state motion-element">
+<div class="site-state-item site-state-posts">
+<a href=/post/>
+<span class=site-state-item-count>4</span>
+<span class=site-state-item-name>文章</span>
+</a>
+</div>
+<div class="site-state-item site-state-categories">
+<a href=/categories/>
+<span class=site-state-item-count>2</span>
+<span class=site-state-item-name>分类</span>
+</a>
+</div>
+<div class="site-state-item site-state-tags">
+<a href=/tags/>
+<span class=site-state-item-count>5</span>
+<span class=site-state-item-name>标签</span>
+</a>
+</div>
+</nav>
+<div class="links-of-author motion-element">
+<span class=links-of-author-item>
+<a href=https://github.com/qz757/ target=_blank title=GitHub>
+<i class="fa fa-fw fa-github"></i>
+GitHub
+</a>
+</span>
+<span class=links-of-author-item>
+<a href=https://www.jianshu.com/u/e8ca66cdb1d7 target=_blank title=简书>
+<i class="fa fa-fw fa-globe"></i>
+简书
+</a>
+</span>
+</div>
+<div class="tagcloud-of-blogroll motion-element tagcloud-of-blogroll-inline">
+<div class=tagcloud-of-blogroll-title>
+<i class="fa fa-fw fa-tags"></i>
+标签云
+</div>
+<ul class=tagcloud-of-blogroll-list>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/docker>Docker</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/github>Github</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/hugo>Hugo</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/obsidian>Obsidian</a>
+</li>
+<li class=tagcloud-of-blogroll-item>
+<a href=/tags/%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91>第二大脑</a>
+</li>
+</ul>
+</div>
+</section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#简介>简介</a></li>
+<li><a href=#一网络配置>一、网络配置</a></li>
+<li><a href=#二修改阿里源>二、修改阿里源</a>
+<ul>
+<li><a href=#1通过命令行修改>1、通过命令行修改：</a></li>
+<li><a href=#2通过文件修改>2、通过文件修改：</a></li>
+</ul>
+</li>
+<li><a href=#三系统更新>三、系统更新</a></li>
+<li><a href=#四安装docker>四、安装docker</a>
+<ul>
+<li><a href=#1安装docker并配置镜像加速器>1、安装docker并配置镜像加速器</a></li>
+<li><a href=#2配置当前用户权限>2、配置当前用户权限</a></li>
+<li><a href=#3docker命令>3、docker命令</a></li>
+</ul>
+</li>
+<li><a href=#五docker常用命令>五、Docker常用命令</a></li>
+<li><a href=#六使用makefiledockerfile制作docker镜像>六、使用Makefile+Dockerfile制作Docker镜像</a>
+<ul>
+<li><a href=#1安装make和make-doc>1、安装make和make-doc</a></li>
+<li><a href=#3修改makefile>3、修改Makefile</a></li>
+<li><a href=#4制作并上传镜像>4、制作并上传镜像</a></li>
+</ul>
+</li>
+<li><a href=#七安装docker-compose>七、安装docker-compose</a></li>
+<li><a href=#八docker--compose常用命令>八、Docker Compose常用命令</a></li>
+<li><a href=#标签和链接>标签和链接</a></li>
+<li><a href=#参考文献>参考文献</a></li>
+<li><a href=#简介-1>简介</a></li>
+<li><a href=#一网络配置-1>一、网络配置</a></li>
+<li><a href=#二修改阿里源-1>二、修改阿里源</a>
+<ul>
+<li><a href=#1通过命令行修改-1>1、通过命令行修改：</a></li>
+<li><a href=#2通过文件修改-1>2、通过文件修改：</a></li>
+</ul>
+</li>
+<li><a href=#三系统更新-1>三、系统更新</a></li>
+<li><a href=#四安装docker-1>四、安装docker</a>
+<ul>
+<li><a href=#1安装docker并配置镜像加速器-1>1、安装docker并配置镜像加速器</a></li>
+<li><a href=#2配置当前用户权限-1>2、配置当前用户权限</a></li>
+<li><a href=#3docker命令-1>3、docker命令</a></li>
+</ul>
+</li>
+<li><a href=#五docker常用命令-1>五、Docker常用命令</a></li>
+<li><a href=#六使用makefiledockerfile制作docker镜像-1>六、使用Makefile+Dockerfile制作Docker镜像</a>
+<ul>
+<li><a href=#1安装make和make-doc-1>1、安装make和make-doc</a></li>
+<li><a href=#3修改makefile-1>3、修改Makefile</a></li>
+<li><a href=#4制作并上传镜像-1>4、制作并上传镜像</a></li>
+</ul>
+</li>
+<li><a href=#七安装docker-compose-1>七、安装docker-compose</a></li>
+<li><a href=#八docker--compose常用命令-1>八、Docker Compose常用命令</a></li>
+<li><a href=#标签和链接-1>标签和链接</a></li>
+<li><a href=#参考文献-1>参考文献</a></li>
+</ul>
+</nav></div>
+</div>
+</section>
+</div>
+</aside>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=footer-inner>
+<div class=copyright>
+<span class=copyright-year>
+&copy; 2010 - 2022
+</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=copyright-author>Ethan的博客</span>
+</div>
+<div class=powered-info>
+<span class=powered-by>
+Powered by - <a class=powered-link href=//gohugo.io target=_blank title=hugo>Hugo v0.90.1</a>
+</span>
+<span class=separator-line>/</span>
+<span class=theme-info>
+Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next target=_blank> NexT
+</a>
+</span>
+</div>
+</div>
+</footer>
+<div class=back-to-top>
+<i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span>
+</div>
+</div>
+<script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js></script>
+<script type=text/javascript src=/js/search.js></script>
+<script type=text/javascript src=/js/affix.js></script>
+<script type=text/javascript src=/js/scrollspy.js></script>
+<script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ',requiredFields:['nick','mail'],serverURL:"Your WalineSerURL",lang:"zh-cn"})}):$('#wcomments').html('抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
+<script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>
