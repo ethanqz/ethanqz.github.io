@@ -1,7 +1,7 @@
 ---
-title: 
+title: Ubuntu20.04根目录占满处理方法
 date: 2022-01-22
-description: 
+description: Ubuntu20.04根目录占满后问题排查和处理方法
 tags : [
     "Ubuntu",
 ]
