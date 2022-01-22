@@ -1,21 +1,21 @@
 <!doctype html><html lang=zh-cn dir=content/zh-cn>
 <head>
-<meta name=generator content="Hugo 0.90.1">
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> Ethan的博客 </title>
+<title> 使用Docker部署Scratch3.0 - Ethan的博客 </title>
 <meta name=keywords content="博客,程序员,思考,读书,笔记，管理">
-<meta property="og:title" content="Home">
+<meta property="og:title" content="使用Docker部署Scratch3.0">
 <meta property="og:site_name" content="Ethan的博客">
 <meta property="og:image" content="/img/author.jpg">
-<meta name=title content="Home - Ethan的博客">
-<meta name=description content="Ethan的博客">
+<meta name=title content="使用Docker部署Scratch3.0 - Ethan的博客">
+<meta name=description content="使用Docker部署Scratch3.0">
 <link rel="shortcut icon" href=/img/favicon.ico>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
 <link href=//cdn.bootcdn.net/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css rel=stylesheet type=text/css>
+<link href=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.css rel=stylesheet>
 <link href=/css/main.css rel=stylesheet type=text/css>
 <link href=/css/syntax.css rel=stylesheet type=text/css>
 </head>
@@ -35,8 +35,6 @@
 <div class=multi-lang-switch>
 <i class="fa fa-fw fa-language" style=margin-right:5px></i>
 <a class=lang-link id=zh-cn href=#>中文</a>
-<span class=lang-line> / </span>
-<a class=lang-link id=en href=https://qz757.gitee.io/en/>English</a>
 </div>
 <div class=custom-logo-site-title>
 <a href=/ class=brand rel=start>
@@ -112,56 +110,6 @@
 <article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
 <header class=post-header>
 <h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=https://qz757.gitee.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/ itemprop=url>
-Ubuntu20.04根目录占满处理方法
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2022-01-22">
-2022-01-22
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/linux itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>Linux</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>1517 字</span>
-</span>
-<span>
-|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>4分钟</span>
-</span>
-</div>
-</header>
-<div class=post-body itemprop=articleBody>
-<p>在使用Ubuntu Server20.04作为家用服务器时，由于磁盘未提前规划好，<code>/var</code>和<code>/home</code>目录未单独分空间，这两个目录增长过快导致根目录磁盘空间100%，系统无法正常运行，因此需要将这两个目录切换到增加的硬盘，保证系统正常运行。</p>
-</div>
-<div class="post-more-link text-center">
-<a class=btn href=https://qz757.gitee.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/ rel=contents>
-阅读全文 &#187;
-</a>
-</div>
-<footer class=post-footer><div class=post-eof></div></footer>
-</article>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
 <a class=post-title-link href=https://qz757.gitee.io/post/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2scratch3.0/ itemprop=url>
 使用Docker部署Scratch3.0
 </a>
@@ -197,175 +145,101 @@ Ubuntu20.04根目录占满处理方法
 <span class=post-meta-item-text>阅读：</span>
 <span class=leancloud-view-count>3分钟</span>
 </span>
+<span id=/post/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2scratch3.0/ class=leancloud_visitors data-flag-title=使用Docker部署Scratch3.0>
+|
+<i class="fa fa-binoculars fa-fw"></i>
+<span class=post-meta-item-text>阅读次数：</span>
+<span class=leancloud-visitors-count></span>
+</span>
 </div>
 </header>
 <div class=post-body itemprop=articleBody>
 <p>Scratch是由MIT（麻省理工学院）米切尔·瑞斯尼克(Mitch Resnick)教授带领的“终身幼儿园团队”(Lifelong Kindergarten Group)开发的一款积木式少儿编程软件。</p>
 <p>通过类似拖动积木块的方式和使用软件中的素材，可以很容易地创造有趣的动画、游戏，以及控制机器人和电子设备等，在创作的过程中不仅习得了Science（科学）, Technology（技术）, Engineering（工程）, Arts（艺术）, Maths（数学）等多个领域的知识，而且可以培养逻辑思维能力、观察能力、创新能力和想象力。</p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/scratch3.0%E5%9B%BE%E6%A0%87.jpeg alt=scratch3.0图标></p>
+<h2 id=简介>简介</h2>
+<p>想在家里的服务器部署Scratch3.0环境给小朋友学编程，但是pad安装安卓版本后现实很小，就想部署服务器版本通过浏览器操作，因此在ubuntu使用docker部署容器，基于Ubuntu部署Docker环境可参考<a href=../%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83>基于Ubuntu部署Docker环境</a>。</p>
+<p>整体流程如下：本地下载Scratch3.0源码->使用node:12.16镜像进行npm编译->使用apache镜像发布；</p>
+<h2 id=一scratch30源码下载>一、Scratch3.0源码下载</h2>
+<p>下载scratch-gui、scratch-blocks、scratch-www、scratch-vm四个仓库的代码到本地，命令如下：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>git clone git@github.com:LLK/scratch-gui.git
+git clone git@github.com:LLK/scratch-blocks.git
+git clone git@github.com:LLK/scratch-www.git
+git clone git@github.com:LLK/scratch-vm.git
+</code></pre></div><h2 id=二使用node1216镜像进行编译>二、使用node:12.16镜像进行编译</h2>
+<h3 id=1启动容器>1、启动容器</h3>
+<p>使用以下命令进入容器shell，node镜像接近1G，如果下载慢，可以参考<a href=ubuntu%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1-202201081127.md>ubuntu环境使用Docker部署服务</a>配置镜像加速器，也可以使用node:12.16-alpine3.11镜像，这个小一些，按时alpine不熟悉，因此我还是使用基于debian的node镜像，同时将代码目录挂载到容器中：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run -ti -v ~/work/data/scratch:/scratch node:12.16 bash
+</code></pre></div><h3 id=2配置编译环境>2、配置编译环境</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 修改镜像源为阿里云</span>
+sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list 
+sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+<span style=color:#080;font-style:italic>## 更新</span>
+apt update 
+apt upgrade -y
+<span style=color:#080;font-style:italic>## 安装vim</span>
+apt install vim 
+vim /etc/apt/sources.list
+</code></pre></div><p>将整个软件源替换为阿里源(debian11.x)：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>deb http://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb http://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb-src http://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+</code></pre></div><p>然后再更新一次，并安装必要的依赖包：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 更新</span>
+apt update 
+apt upgrade -y
+<span style=color:#080;font-style:italic>## 安装依赖包</span>
+apt install git  python2 curl openssh-server openssh-client
+</code></pre></div><h3 id=3安装npm依赖包>3、安装npm依赖包</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 配置阿里源并查看</span>
+npm config <span style=color:#a2f>set</span> registry https://registry.npm.taobao.org/
+npm config get registry
+
+npm i -g webpack webpack-cli webpack-dev-server
+<span style=color:#a2f>cd</span> /scratch/scratch-gui/
+npm install
+<span style=color:#b8860b>BUILD_MODE</span><span style=color:#666>=</span>dist npm run build
+</code></pre></div><p>在build目录下会生成编译好的网站文件；</p>
+<h2 id=三使用apache镜像发布>三、使用apache镜像发布</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 将编译生成的buid目录挂载到apache2的默认网站路径</span>
+docker run -d --name apache2-container -e <span style=color:#b8860b>TZ</span><span style=color:#666>=</span>UTC -p 8181:80 -v ~/work/data/scratch/scratch-gui/build:/var/www/html ubuntu/apache2
+</code></pre></div><h2 id=四使用已有scratch30镜像直接发布>四、使用已有Scratch3.0镜像直接发布</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run -d -p 7777:80 xaviblanes/scratch3.0 /bin/bash -c <span style=color:#b44>&#34;nohup ping -i 1000 www.baidu.com&#34;</span>
+docker <span style=color:#a2f>exec</span> -it <span style=color:#b44>&#39;container id&#39;</span>
+service apache2 start
+</code></pre></div><h2 id=标签和链接>标签和链接</h2>
+<p>Index： #Linux-Index</p>
+<p>Info： #Scratch</p>
+<h2 id=参考文献>参考文献</h2>
+<p><a href=https://qiita.com/ken992/items/d515cad8f3f5ce206d01>使用 Docker 轻松构建 Scratch 3.0</a>
+<a href=https://blog.csdn.net/baidu_32523857/article/details/105104009>CentOS(宝塔)部署安装发布Scratch3.0</a></p>
 </div>
-<div class="post-more-link text-center">
-<a class=btn href=https://qz757.gitee.io/post/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2scratch3.0/ rel=contents>
-阅读全文 &#187;
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/scratch rel=tag title=Scratch>#Scratch#</a>
+</div>
+<div class=post-nav>
+<div class="post-nav-next post-nav-item">
+<a href=https://qz757.gitee.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/ rel=next title=Ubuntu20.04根目录占满处理方法>
+<i class="fa fa-chevron-left"></i> Ubuntu20.04根目录占满处理方法
 </a>
 </div>
-<footer class=post-footer><div class=post-eof></div></footer>
-</article>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=https://qz757.gitee.io/post/%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83/ itemprop=url>
+<div class="post-nav-prev post-nav-item">
+<a href=https://qz757.gitee.io/post/%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83/ rel=prev title=基于Ubuntu部署Docker环境>
 基于Ubuntu部署Docker环境
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2022-01-21">
-2022-01-21
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/linux itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>Linux</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>1924 字</span>
-</span>
-<span>
-|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>4分钟</span>
-</span>
-</div>
-</header>
-<div class=post-body itemprop=articleBody>
-<p>在看了<a href=https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things> Dock Life: Using Docker for All The Things!</a>这篇文章后，解决了我一直以来使用Linux的一个担忧，由于对Linux运维并没有非常熟悉，因此有时候安装了软件失败或者卸载后，有文件残留，因此希望能与host进行隔离，Docker便成了最好的解决方案。如果使用的镜像多，建议将<code>/var</code>目录独立分区，镜像下载到/var目录下，避免过度导致根目录被占满，如果有类似问题可参考：<a href=../ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95>Ubuntu20.04根目录占满处理方法</a>。</p>
-</div>
-<div class="post-more-link text-center">
-<a class=btn href=https://qz757.gitee.io/post/%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83/ rel=contents>
-阅读全文 &#187;
+<i class="fa fa-chevron-right"></i>
 </a>
 </div>
-<footer class=post-footer><div class=post-eof></div></footer>
-</article>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=https://qz757.gitee.io/post/%E4%BB%A5obsidian%E4%B8%BA%E6%A0%B8%E5%BF%83%E6%9E%84%E7%AD%91%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91/ itemprop=url>
-以Obsidian为核心构筑第二大脑
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-20">
-2021-12-20
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>生产力</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>5603 字</span>
-</span>
-<span>
-|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>12分钟</span>
-</span>
 </div>
-</header>
-<div class=post-body itemprop=articleBody>
-<p>第二大脑就像我们个人为自己构建的个人图书馆，并且我们有自己独特的关联、索引系统，在我们需要时，可以快速从中提取中我们需要的信息，完成我们的内容获取和输出，为了满足我的第二大脑知识体系构筑，我了解了多种笔记方法进行试用，最终选择了适合自己学习状态的笔记方法，并进行组合，最终形成自己的方法和工具流。以下，我将对笔记方法的选择、匹配以及实现进行说明。</p>
-</div>
-<div class="post-more-link text-center">
-<a class=btn href=https://qz757.gitee.io/post/%E4%BB%A5obsidian%E4%B8%BA%E6%A0%B8%E5%BF%83%E6%9E%84%E7%AD%91%E7%AC%AC%E4%BA%8C%E5%A4%A7%E8%84%91/ rel=contents>
-阅读全文 &#187;
-</a>
-</div>
-<footer class=post-footer><div class=post-eof></div></footer>
-</article>
-<article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
-<header class=post-header>
-<h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=https://qz757.gitee.io/post/%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages/ itemprop=url>
-利用GitHub-Actions将Hugo博客自动发布到GitHub和Gitee Pages
-</a>
-</h1>
-<div class=post-meta>
-<span class=post-time>
-<i class="fa fa-calendar-o fa-fw"></i>
-<span class=post-meta-item-text>时间：</span>
-<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2021-12-18">
-2021-12-18
-</time>
-</span>
-<span class=post-category>
-&nbsp; | &nbsp;
-<i class="fa fa-folder-o fa-fw"></i>
-<span class=post-meta-item-text>分类：</span>
-<span itemprop=about itemscope itemtype=https://schema.org/Thing>
-<a href=/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B itemprop=url rel=index style=text-decoration:underline>
-<span itemprop=name>生产力</span>
-</a>
-&nbsp;
-</span>
-</span>
-<span>
-|
-<i class="fa fa-file-word-o fa-fw"></i>
-<span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>5349 字</span>
-</span>
-<span>
-|
-<i class="fa fa-eye fa-fw"></i>
-<span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>11分钟</span>
-</span>
-</div>
-</header>
-<div class=post-body itemprop=articleBody>
-<p>现在个人博客通常有比较多的选择，如果不想要自己购买服务器实现静态博客的发布，可以在简书、CSDN等平台建立自己的账号并发布，但是原始数据无法在本地管理；如果想要数据完全自己管理，可以使用GitHub或者Gitee Pages功能发布自己的博客，利用Hugo或Hexo等成熟的静态博客将md文件转换成静态网站文件进行快速发布。本文就用来记录如何快速将博客发布到简书、GitHub以及Gitee Pages三个平台。</p>
-</div>
-<div class="post-more-link text-center">
-<a class=btn href=https://qz757.gitee.io/post/%E5%88%A9%E7%94%A8github-actions%E5%B0%86hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%88%B0github%E5%92%8Cgitee-pages/ rel=contents>
-阅读全文 &#187;
-</a>
-</div>
-<footer class=post-footer><div class=post-eof></div></footer>
+<script src=https://utteranc.es/client.js repo=qz757/qz757.github.io issue-term=title theme=preferred-color-scheme crossorigin=anonymous async></script>
+</footer>
 </article>
 </section>
-<nav class=pagination>
-<span class="page-number current">1</span>
-<a class=page-number href=/p/2/>2</a>
-<a class="extend next" rel=next href=/p/2/><i class="fa fa-angle-right"></i></a>
-</nav>
 </div>
 </div>
 <div class=sidebar-toggle>
@@ -377,7 +251,15 @@ Ubuntu20.04根目录占满处理方法
 </div>
 <aside id=sidebar class=sidebar>
 <div class=sidebar-inner>
-<section class="site-overview sidebar-panel sidebar-panel-active">
+<ul class="sidebar-nav motion-element">
+<li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap>
+文章目录
+</li>
+<li class=sidebar-nav-overview data-target=site-overview>
+站点概览
+</li>
+</ul>
+<section class="site-overview sidebar-panel">
 <div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person>
 <img class=site-author-image itemprop=image src=/img/head.jpeg alt>
 <p class=site-author-name itemprop=name></p>
@@ -405,12 +287,6 @@ Ubuntu20.04根目录占满处理方法
 </a>
 </div>
 </nav>
-<div class="feed-link motion-element">
-<a href=/index.xml rel=alternate type=application/rss+xml target=_blank>
-<i class="fa fa-rss"></i>
-RSS 订阅
-</a>
-</div>
 <div class="links-of-author motion-element">
 <span class=links-of-author-item>
 <a href=https://github.com/qz757/ target=_blank title=GitHub>
@@ -455,6 +331,27 @@ GitHub
 </ul>
 </div>
 </section>
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+<div class=post-toc>
+<div class=post-toc-content><nav id=TableOfContents>
+<ul>
+<li><a href=#简介>简介</a></li>
+<li><a href=#一scratch30源码下载>一、Scratch3.0源码下载</a></li>
+<li><a href=#二使用node1216镜像进行编译>二、使用node:12.16镜像进行编译</a>
+<ul>
+<li><a href=#1启动容器>1、启动容器</a></li>
+<li><a href=#2配置编译环境>2、配置编译环境</a></li>
+<li><a href=#3安装npm依赖包>3、安装npm依赖包</a></li>
+</ul>
+</li>
+<li><a href=#三使用apache镜像发布>三、使用apache镜像发布</a></li>
+<li><a href=#四使用已有scratch30镜像直接发布>四、使用已有Scratch3.0镜像直接发布</a></li>
+<li><a href=#标签和链接>标签和链接</a></li>
+<li><a href=#参考文献>参考文献</a></li>
+</ul>
+</nav></div>
+</div>
+</section>
 </div>
 </aside>
 </div>
@@ -490,6 +387,10 @@ Theme by - <a class=powered-link href=//github.com/elkan1788/hugo-theme-next tar
 <script type=text/javascript src=/js/affix.js></script>
 <script type=text/javascript src=/js/scrollspy.js></script>
 <script type=text/javascript>function detectIE(){var a=window.navigator.userAgent,b=a.indexOf('MSIE '),c=a.indexOf('Trident/'),d=a.indexOf('Edge/');return b>0||c>0||d>0?-1:1}function getCntViewHeight(){var b=$('#content').height(),a=$(window).height(),c=b>a?b-a:$(document).height()-a;return c}function getScrollbarWidth(){var a=$('<div />').addClass('scrollbar-measure').prependTo('body'),b=a[0],c=b.offsetWidth-b.clientWidth;return a.remove(),c}function registerBackTop(){var b=50,a=$('.back-to-top');$(window).on('scroll',function(){var d,e,f,c,g;a.toggleClass('back-to-top-on',window.pageYOffset>b),d=$(window).scrollTop(),e=getCntViewHeight(),f=d/e,c=Math.round(f*100),g=c>100?100:c,$('#scrollpercent>span').html(g)}),a.on('click',function(){$("html,body").animate({scrollTop:0,screenLeft:0},800)})}function initScrollSpy(){var a='.post-toc',d=$(a),b='.active-current';d.on('activate.bs.scrollspy',function(){var b=$(a+' .active').last();c(),b.addClass('active-current')}).on('clear.bs.scrollspy',c),$('body').scrollspy({target:a});function c(){$(a+' '+b).removeClass(b.substring(1))}}function initAffix(){var a=$('.header-inner').height(),b=parseInt($('.main').css('padding-bottom'),10),c=a+10;$('.sidebar-inner').affix({offset:{top:c,bottom:b}}),$(document).on('affixed.bs.affix',function(){updateTOCHeight(document.body.clientHeight-100)})}function initTOCDimension(){var a,b;$(window).on('resize',function(){a&&clearTimeout(a),a=setTimeout(function(){var a=document.body.clientHeight-100;updateTOCHeight(a)},0)}),updateTOCHeight(document.body.clientHeight-100),b=getScrollbarWidth(),$('.post-toc').css('width','calc(100% + '+b+'px)')}function updateTOCHeight(a){a=a||'auto',$('.post-toc').css('max-height',a)}$(function(){var b=$('.header-inner').height()+10,c,d,a,e;$('#sidebar').css({'margin-top':b}).show(),c=parseInt($('#sidebar').css('margin-top')),d=parseInt($('.sidebar-inner').css('height')),a=c+d,e=$('.content-wrap').height(),e<a&&$('.content-wrap').css('min-height',a),$('.site-nav-toggle').on('click',function(){var a=$('.site-nav'),e=$('.toggle'),b='site-nav-on',f='toggle-close',c=a.hasClass(b),g=c?'slideUp':'slideDown',d=c?'removeClass':'addClass';a.stop()[g]('normal',function(){a[d](b),e[d](f)})}),registerBackTop(),initScrollSpy(),initAffix(),initTOCDimension(),$('.sidebar-nav-toc').click(function(){$(this).addClass('sidebar-nav-active'),$(this).next().removeClass('sidebar-nav-active'),$('.'+$(this).next().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)}),$('.sidebar-nav-overview').click(function(){$(this).addClass('sidebar-nav-active'),$(this).prev().removeClass('sidebar-nav-active'),$('.'+$(this).prev().attr('data-target')).toggle(500),$('.'+$(this).attr('data-target')).toggle(500)})})</script>
+<script src=//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js></script>
+<script type=text/javascript>$(function(){$('.post-body').viewer()})</script>
+<script type=text/javascript>$(function(){detectIE()>0?$.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js',function(){new Waline({el:'#wcomments',visitor:!0,avatar:'wavatar',avatarCDN:'https://sdn.geekzu.org/avatar/',avatarForce:!1,wordLimit:'200',placeholder:' 欢迎留下您的宝贵建议，请填写您的昵称和邮箱便于后续交流. ^_^ ',requiredFields:['nick','mail'],serverURL:"Your WalineSerURL",lang:"zh-cn"})}):$('#wcomments').html('抱歉，Waline插件不支持IE或Edge，建议使用Chrome浏览器。')})</script>
+<script type=text/javascript src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Your%20AddthisId"></script>
 <script>(function(){var a=document.createElement('script'),c=window.location.protocol.split(':')[0],b;c==='https'?a.src='https://zz.bdstatic.com/linksubmit/push.js':a.src='http://push.zhanzhang.baidu.com/push.js',b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
 </body>
 </html>
