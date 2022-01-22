@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title/><url>https://qz757.gitee.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/</url><categories><category>Linux</category></categories><tags><tag>Ubuntu</tag></tags><content type="html"> 在使用Ubuntu Server20.04作为家用服务器时，由于磁盘未提前规划好，/var和/home目录未单独分空间，这两个目录增长过快导致根目录磁盘空间100%，系统无法正常运行，因此需要将这两个目录切换到增加的硬盘，保证系统正常运行。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>Ubuntu20.04根目录占满处理方法</title><url>https://qz757.gitee.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/</url><categories><category>Linux</category></categories><tags><tag>Ubuntu</tag></tags><content type="html"> 在使用Ubuntu Server20.04作为家用服务器时，由于磁盘未提前规划好，/var和/home目录未单独分空间，这两个目录增长过快导致根目录磁盘空间100%，系统无法正常运行，因此需要将这两个目录切换到增加的硬盘，保证系统正常运行。
 一、问题排查 1、排查整体目录和磁盘使用情况 首先通过df -h命令查看各目录使用情况，这里发现3个问题
 ubuntu&ndash;vg-ubuntu&ndash;lv挂载到根目录未占满使用的硬盘； 根目录使用率100%； 很多/dev/loop目录使用率100%； 下图为查看示例，问题排查时未保留截图 2、查找具体问题目录 在根目录通过以下命令查找具体哪个目录过大导致根分区占满：
 sudo du --max-depth=1 -h 依次在有问题的目录通过该命令，最终定位到具体异常的目录，如果是需要删除的文件占用过大， 可直接删除解决，我当时排查到的两个问题：
