@@ -4,13 +4,13 @@
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=content-security-policy content="upgrade-insecure-requests">
-<title> Ubuntu20.04根目录占满处理方法 - Ethan的博客 </title>
+<title> 使用Docker部署Scratch3.0 - Ethan的博客 </title>
 <meta name=keywords content="博客,程序员,思考,读书,笔记，管理">
-<meta property="og:title" content="Ubuntu20.04根目录占满处理方法">
+<meta property="og:title" content="使用Docker部署Scratch3.0">
 <meta property="og:site_name" content="Ethan的博客">
 <meta property="og:image" content="/img/author.jpg">
-<meta name=title content="Ubuntu20.04根目录占满处理方法 - Ethan的博客">
-<meta name=description content="Ubuntu20.04根目录占满后问题排查和处理方法">
+<meta name=title content="使用Docker部署Scratch3.0 - Ethan的博客">
+<meta name=description content="使用Docker部署Scratch3.0">
 <link rel="shortcut icon" href=/img/favicon.ico>
 <link rel=apple-touch-icon href=/img/apple-touch-icon.png>
 <link rel=apple-touch-icon-precomposed href=/img/apple-touch-icon.png>
@@ -110,8 +110,8 @@
 <article class="post post-type-normal" itemscope itemtype=http://schema.org/Article>
 <header class=post-header>
 <h1 class=post-title itemprop="name headline">
-<a class=post-title-link href=https://qz757.github.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/ itemprop=url>
-Ubuntu20.04根目录占满处理方法
+<a class=post-title-link href=https://qz757.github.io/post/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2scratch3.0/ itemprop=url>
+使用Docker部署Scratch3.0
 </a>
 </h1>
 <div class=post-meta>
@@ -137,15 +137,15 @@ Ubuntu20.04根目录占满处理方法
 |
 <i class="fa fa-file-word-o fa-fw"></i>
 <span class=post-meta-item-text>字数：</span>
-<span class=leancloud-world-count>1517 字</span>
+<span class=leancloud-world-count>1093 字</span>
 </span>
 <span>
 |
 <i class="fa fa-eye fa-fw"></i>
 <span class=post-meta-item-text>阅读：</span>
-<span class=leancloud-view-count>4分钟</span>
+<span class=leancloud-view-count>3分钟</span>
 </span>
-<span id=/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/ class=leancloud_visitors data-flag-title=Ubuntu20.04根目录占满处理方法>
+<span id=/post/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2scratch3.0/ class=leancloud_visitors data-flag-title=使用Docker部署Scratch3.0>
 |
 <i class="fa fa-binoculars fa-fw"></i>
 <span class=post-meta-item-text>阅读次数：</span>
@@ -154,121 +154,84 @@ Ubuntu20.04根目录占满处理方法
 </div>
 </header>
 <div class=post-body itemprop=articleBody>
-<p>在使用Ubuntu Server20.04作为家用服务器时，由于磁盘未提前规划好，<code>/var</code>和<code>/home</code>目录未单独分空间，这两个目录增长过快导致根目录磁盘空间100%，系统无法正常运行，因此需要将这两个目录切换到增加的硬盘，保证系统正常运行。</p>
-<p><img src=https://gitee.com/qz757/picgo/raw/master/img/ubuntu%E5%9B%BE%E6%A0%87.jpg alt=ubuntu图标></p>
-<h2 id=一问题排查>一、问题排查</h2>
-<h3 id=1排查整体目录和磁盘使用情况>1、排查整体目录和磁盘使用情况</h3>
-<p>首先通过<code>df -h</code>命令查看各目录使用情况，这里发现3个问题</p>
-<ul>
-<li>ubuntu&ndash;vg-ubuntu&ndash;lv挂载到根目录未占满使用的硬盘；</li>
-<li>根目录使用率100%；</li>
-<li>很多<code>/dev/loop</code>目录使用率100%；
-<em>下图为查看示例，问题排查时未保留截图</em>
-<img src=%E7%9B%AE%E5%BD%95%E5%8D%A0%E7%94%A8%E7%8E%87%E6%9F%A5%E7%9C%8B.jpg alt></li>
-</ul>
-<h3 id=2查找具体问题目录>2、查找具体问题目录</h3>
-<p>在根目录通过以下命令查找具体哪个目录过大导致根分区占满：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>sudo du --max-depth=1 -h
-</code></pre></div><p><img src=https://gitee.com/qz757/picgo/raw/master/img/du%E6%9F%A5%E7%9C%8B%E6%AF%8F%E4%B8%AA%E7%9B%AE%E5%BD%95%E5%8D%A0%E7%94%A8.png alt=du查看每个目录占用>
-依次在有问题的目录通过该命令，最终定位到具体异常的目录，如果是需要删除的文件占用过大， 可直接删除解决，我当时排查到的两个问题：</p>
-<ul>
-<li>docker镜像占用的空间过大，导致<code>/var</code>目录增长过快，占满整个根分区；</li>
-<li><code>/home</code>目录可用空间有限；</li>
-</ul>
-<h3 id=3问题汇总>3、问题汇总</h3>
-<p>经过排查，需要解决的问题汇总如下：</p>
-<ul>
-<li>ubuntu&ndash;vg-ubuntu&ndash;lv挂载到根目录未占满使用的硬盘；</li>
-<li>很多<code>/dev/loop</code>目录使用率100%；</li>
-<li><code>/var</code>和<code>/home</code>目录增长过快，导致根分区占满；</li>
-</ul>
-<h2 id=二问题解决>二、问题解决</h2>
-<h3 id=1解决回环设备devloop占用率100问题>1、解决回环设备<code>/dev/loop</code>占用率100%问题</h3>
-<p>首先解释下为什么会出现这么多<code>/dev/loop</code>设备，其实这是正常现象，snap 使用的是 SquashFS 文件系统，这是一个只读的文件系统，所以它的大小在创建的时候一定是刚刚好能够存放它的内容就可以了，因为它是只读，所以它的大小之后不会改变。所以占用量肯定是 100%。
-解决方法有两个：</p>
-<ul>
-<li>如果不适用snap，直接卸载snap即可，命令如下</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo apt autoremove --purge snapd
-</code></pre></div><ul>
-<li>如果需要使用不能卸载，则可以屏蔽显示：</li>
-</ul>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>df -x squashfs -h
-</code></pre></div><p>如果嫌弃每次输选项麻烦，可以在 &ldquo;~/.bashrc&rdquo; 文件里起别名：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>echo</span> <span style=color:#b44>&#34;alias df=&#39;df -x squashfs -x tmpfs -x devtmpfs&#39;&#34;</span> &gt;&gt; ~/.bashrc
-</code></pre></div><p>然后 source 一下生效：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#a2f>source</span> ~/.bashrc
-</code></pre></div><h3 id=2ubuntu--vg-ubuntu--lv未完整使用整个硬盘问题解决>2、ubuntu&ndash;vg-ubuntu&ndash;lv未完整使用整个硬盘问题解决</h3>
-<p>命令<code>df /etc</code>可以查看<code>/etc</code>目所在的挂载路径磁盘使用情况：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>Filesystem                        1K-blocks     Used Available Use% Mounted on
-/dev/mapper/ubuntu--vg-ubuntu--lv <span style=color:#666>229114260</span> <span style=color:#666>11471180</span> <span style=color:#666>207131472</span>   6% /
-</code></pre></div><p>命令<code>vgdisplay</code>可以查看lvm卷组的信息；
-如果发现ubuntu&ndash;vg-ubuntu&ndash;lv还可以扩容，则可以通过以下命令扩容：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo lvextend -L +100G /dev/mapper/ubuntu--vg-ubuntu--lv <span style=color:#080;font-style:italic># 扩容100G</span>
-sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv <span style=color:#080;font-style:italic># 生效扩容</span>
-sudo vgdisplay <span style=color:#080;font-style:italic># 查看结果</span>
-</code></pre></div><p>其他扩容命令：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>lvextend -L 10G /dev/mapper/ubuntu--vg-ubuntu--lv      //增大或减小至19G
-lvextend -L +10G /dev/mapper/ubuntu--vg-ubuntu--lv     //增加10G
-lvreduce -L -10G /dev/mapper/ubuntu--vg-ubuntu--lv     //减小10G
-lvresize -l  +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv   //按百分比扩
-</code></pre></div><h3 id=3将var和home目录挂载到新添加的磁盘>3、将/var和/home目录挂载到新添加的磁盘</h3>
-<h4 id=a新添加磁盘分区>a、新添加磁盘分区</h4>
-<p>使用<code>df -T</code>命令可以查看已有文件系统格式；</p>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>fdisk -l # 可以查看所有磁盘列表以及各磁盘分区情况
-fdisk /dev/sdb # 对需要的磁盘进行分区
-m # 查询帮助
-d # 删除已有分区
-p # 显示已有分区
-n # 新建分区
-w # 写入分区结果
-F # 显示为分配信息
+<p>Scratch是由MIT（麻省理工学院）米切尔·瑞斯尼克(Mitch Resnick)教授带领的“终身幼儿园团队”(Lifelong Kindergarten Group)开发的一款积木式少儿编程软件。</p>
+<p>通过类似拖动积木块的方式和使用软件中的素材，可以很容易地创造有趣的动画、游戏，以及控制机器人和电子设备等，在创作的过程中不仅习得了Science（科学）, Technology（技术）, Engineering（工程）, Arts（艺术）, Maths（数学）等多个领域的知识，而且可以培养逻辑思维能力、观察能力、创新能力和想象力。</p>
+<p><img src=https://gitee.com/qz757/picgo/raw/master/img/scratch3.0%E5%9B%BE%E6%A0%87.jpeg alt=scratch3.0图标></p>
+<h2 id=简介>简介</h2>
+<p>想在家里的服务器部署Scratch3.0环境给小朋友学编程，但是pad安装安卓版本后现实很小，就想部署服务器版本通过浏览器操作，因此在ubuntu使用docker部署容器，基于Ubuntu部署Docker环境可参考<a href=../%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83>基于Ubuntu部署Docker环境</a>。</p>
+<p>整体流程如下：本地下载Scratch3.0源码->使用node:12.16镜像进行npm编译->使用apache镜像发布；</p>
+<h2 id=一scratch30源码下载>一、Scratch3.0源码下载</h2>
+<p>下载scratch-gui、scratch-blocks、scratch-www、scratch-vm四个仓库的代码到本地，命令如下：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>git clone git@github.com:LLK/scratch-gui.git
+git clone git@github.com:LLK/scratch-blocks.git
+git clone git@github.com:LLK/scratch-www.git
+git clone git@github.com:LLK/scratch-vm.git
+</code></pre></div><h2 id=二使用node1216镜像进行编译>二、使用node:12.16镜像进行编译</h2>
+<h3 id=1启动容器>1、启动容器</h3>
+<p>使用以下命令进入容器shell，node镜像接近1G，如果下载慢，可以参考<a href=ubuntu%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1-202201081127.md>ubuntu环境使用Docker部署服务</a>配置镜像加速器，也可以使用node:12.16-alpine3.11镜像，这个小一些，按时alpine不熟悉，因此我还是使用基于debian的node镜像，同时将代码目录挂载到容器中：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run -ti -v ~/work/data/scratch:/scratch node:12.16 bash
+</code></pre></div><h3 id=2配置编译环境>2、配置编译环境</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 修改镜像源为阿里云</span>
+sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list 
+sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+<span style=color:#080;font-style:italic>## 更新</span>
+apt update 
+apt upgrade -y
+<span style=color:#080;font-style:italic>## 安装vim</span>
+apt install vim 
+vim /etc/apt/sources.list
+</code></pre></div><p>将整个软件源替换为阿里源(debian11.x)：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>deb http://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb http://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb-src http://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+</code></pre></div><p>然后再更新一次，并安装必要的依赖包：</p>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 更新</span>
+apt update 
+apt upgrade -y
+<span style=color:#080;font-style:italic>## 安装依赖包</span>
+apt install git  python2 curl openssh-server openssh-client
+</code></pre></div><h3 id=3安装npm依赖包>3、安装npm依赖包</h3>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 配置阿里源并查看</span>
+npm config <span style=color:#a2f>set</span> registry https://registry.npm.taobao.org/
+npm config get registry
 
-## 通过n新建分区时，建议起始值使用建议值，不要从1或者紧接着上一个分区进行分配；
-
-mkfs.ext4 /dev/sdb1 # 格式化新建的分区为ext4格式
-</code></pre></div><p>分区结果如下：
-<img src=https://gitee.com/qz757/picgo/raw/master/img/3T%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%E7%BB%93%E6%9E%9C.png alt=3T硬盘分区结果></p>
-<h4 id=b重新挂载目录>b、重新挂载目录</h4>
-<ol>
-<li>创建临时目录 <code>sudo mkdir /storage</code></li>
-<li>把<code>/dev/sdb1</code>挂载到<code>/storage</code>，命令：<code>sudo mount /dev/sdb1 /storage</code></li>
-<li>拷贝数据到临时目录：<code>cp -pdr /var/* /storage/</code></li>
-<li>备份原目录：<code>sudo mv /var /var_old</code></li>
-<li>新建/var：<code>sudo mkdir /var</code></li>
-<li>取消临时目录挂载：<code>sudo umount /dev/sdb1</code></li>
-<li>重新挂载<code>/dev/sdb1</code>到<code>/var</code>：<code>mount /dev/sdb1 /var</code></li>
-<li>清理对于目录：<code>rm -rf /var/lost+found</code></li>
-<li>设置开机自动挂载磁盘:</li>
-</ol>
-<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>vim /etc/fstab
-<span style=color:#080;font-style:italic>## 增加卷自动挂载配置</span>
-<span style=color:#b8860b>UUID</span><span style=color:#666>=</span>9fb0bd07-50df-46e1-8944-db25f3ac100a /var   ext4 defaults <span style=color:#666>0</span> <span style=color:#666>2</span> 
-<span style=color:#b8860b>UUID</span><span style=color:#666>=</span>c684f54c-057d-4e4f-91c0-c028837c2c00 /home  ext4 defaults <span style=color:#666>0</span> <span style=color:#666>2</span>
-
-<span style=color:#080;font-style:italic>## 其中uuid可以通过以下命令查看</span>
-blkid /dev/sdb1
-</code></pre></div><ol start=10>
-<li>重启服务器查看是否生效，生效后将old目录删除；</li>
-</ol>
-<h2 id=三附录linux目录说明>三、附录：linux目录说明</h2>
-<p><img src=https://gitee.com/qz757/picgo/raw/master/img/Linux%E7%9B%AE%E5%BD%95%E8%AF%B4%E6%98%8E.png alt=Linux目录说明></p>
-<h2 id=标签和链接>标签和链接</h2>
-<p>Index： #Linux-Index
-Info： #Ubuntu</p>
+npm i -g webpack webpack-cli webpack-dev-server
+<span style=color:#a2f>cd</span> /scratch/scratch-gui/
+npm install
+<span style=color:#b8860b>BUILD_MODE</span><span style=color:#666>=</span>dist npm run build
+</code></pre></div><p>在build目录下会生成编译好的网站文件；</p>
+<h2 id=三使用apache镜像发布>三、使用apache镜像发布</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#080;font-style:italic>## 将编译生成的buid目录挂载到apache2的默认网站路径</span>
+docker run -d --name apache2-container -e <span style=color:#b8860b>TZ</span><span style=color:#666>=</span>UTC -p 8181:80 -v ~/work/data/scratch/scratch-gui/build:/var/www/html ubuntu/apache2
+</code></pre></div><h2 id=四使用已有scratch30镜像直接发布>四、使用已有Scratch3.0镜像直接发布</h2>
+<div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docker run -d -p 7777:80 xaviblanes/scratch3.0 /bin/bash -c <span style=color:#b44>&#34;nohup ping -i 1000 www.baidu.com&#34;</span>
+docker <span style=color:#a2f>exec</span> -it <span style=color:#b44>&#39;container id&#39;</span>
+service apache2 start
+</code></pre></div><h2 id=标签和链接>标签和链接</h2>
+<p>Index： #Linux-Index</p>
+<p>Info： #Scratch</p>
 <h2 id=参考文献>参考文献</h2>
-<p><a href=https://www.cnblogs.com/jianglaoda/p/9253282.html>/etc/fstab详细参数配置</a></p>
+<p><a href=https://qiita.com/ken992/items/d515cad8f3f5ce206d01>使用 Docker 轻松构建 Scratch 3.0</a>
+<a href=https://blog.csdn.net/baidu_32523857/article/details/105104009>CentOS(宝塔)部署安装发布Scratch3.0</a></p>
 </div>
 <footer class=post-footer>
 <div class=post-tags>
-<a href=/tags/ubuntu rel=tag title=Ubuntu>#Ubuntu#</a>
+<a href=/tags/scratch rel=tag title=Scratch>#Scratch#</a>
 </div>
 <div class=post-nav>
 <div class="post-nav-next post-nav-item">
+<a href=https://qz757.github.io/post/ubuntu20.04%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8D%A0%E6%BB%A1%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/ rel=next title=Ubuntu20.04根目录占满处理方法>
+<i class="fa fa-chevron-left"></i> Ubuntu20.04根目录占满处理方法
+</a>
 </div>
 <div class="post-nav-prev post-nav-item">
-<a href=https://qz757.github.io/post/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2scratch3.0/ rel=prev title=使用Docker部署Scratch3.0>
-使用Docker部署Scratch3.0
+<a href=https://qz757.github.io/post/%E5%9F%BA%E4%BA%8Eubuntu%E9%83%A8%E7%BD%B2docker%E7%8E%AF%E5%A2%83/ rel=prev title=基于Ubuntu部署Docker环境>
+基于Ubuntu部署Docker环境
 <i class="fa fa-chevron-right"></i>
 </a>
 </div>
@@ -372,21 +335,17 @@ GitHub
 <div class=post-toc>
 <div class=post-toc-content><nav id=TableOfContents>
 <ul>
-<li><a href=#一问题排查>一、问题排查</a>
+<li><a href=#简介>简介</a></li>
+<li><a href=#一scratch30源码下载>一、Scratch3.0源码下载</a></li>
+<li><a href=#二使用node1216镜像进行编译>二、使用node:12.16镜像进行编译</a>
 <ul>
-<li><a href=#1排查整体目录和磁盘使用情况>1、排查整体目录和磁盘使用情况</a></li>
-<li><a href=#2查找具体问题目录>2、查找具体问题目录</a></li>
-<li><a href=#3问题汇总>3、问题汇总</a></li>
+<li><a href=#1启动容器>1、启动容器</a></li>
+<li><a href=#2配置编译环境>2、配置编译环境</a></li>
+<li><a href=#3安装npm依赖包>3、安装npm依赖包</a></li>
 </ul>
 </li>
-<li><a href=#二问题解决>二、问题解决</a>
-<ul>
-<li><a href=#1解决回环设备devloop占用率100问题>1、解决回环设备<code>/dev/loop</code>占用率100%问题</a></li>
-<li><a href=#2ubuntu--vg-ubuntu--lv未完整使用整个硬盘问题解决>2、ubuntu&ndash;vg-ubuntu&ndash;lv未完整使用整个硬盘问题解决</a></li>
-<li><a href=#3将var和home目录挂载到新添加的磁盘>3、将/var和/home目录挂载到新添加的磁盘</a></li>
-</ul>
-</li>
-<li><a href=#三附录linux目录说明>三、附录：linux目录说明</a></li>
+<li><a href=#三使用apache镜像发布>三、使用apache镜像发布</a></li>
+<li><a href=#四使用已有scratch30镜像直接发布>四、使用已有Scratch3.0镜像直接发布</a></li>
 <li><a href=#标签和链接>标签和链接</a></li>
 <li><a href=#参考文献>参考文献</a></li>
 </ul>
