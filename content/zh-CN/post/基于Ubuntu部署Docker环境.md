@@ -10,11 +10,7 @@ categories : [
 ]
 toc : true
 ---
-<<<<<<< HEAD
 在看了[ Dock Life: Using Docker for All The Things!](https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things)这篇文章后，解决了我一直以来使用Linux的一个担忧，由于对Linux运维并没有非常熟悉，因此有时候安装了软件失败或者卸载后，有文件残留，因此希望能与host进行隔离，Docker便成了最好的解决方案。如果使用的镜像多，建议将`/var`目录独立分区，镜像下载到/var目录下，避免过度导致根目录被占满，如果有类似问题可参考：[Ubuntu20.04根目录占满处理方法](../ubuntu20.04根目录占满处理方法)。
-=======
-在看了[ Dock Life: Using Docker for All The Things!](https://nystudio107.com/blog/dock-life-using-docker-for-all-the-things)这篇文章后，解决了我一直以来使用Linux的一个担忧，由于对Linux运维并没有非常熟悉，因此有时候安装了软件失败或者卸载后，有文件残留，因此希望能与host进行隔离，Docker便成了最好的解决方案。如果使用的镜像多，建议将`/var`目录独立分区，镜像下载到/var目录下，避免过度导致根目录被占满，如果有类似问题可参考：[Ubuntu20.04根目录占满处理方法](../Ubuntu20.04根目录占满处理方法)。
->>>>>>> 0805481731c8ea2b0bbca35a5e1adee0d6d0d0b3
 
 <!--more--> 
 
